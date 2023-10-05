@@ -1,0 +1,21 @@
+.v21 .v21-insurance--header {
+    margin: 0 0 20px 0;
+}
+.v21 .v21-insurance--form {
+    margin: 40px 0 0 0;
+}
+.v21 .v21-insurance-application {
+    margin: 50px 0 0 0;
+}
+
+@media all and (min-width: 768px) {
+    .v21 .v21-insurance--header {
+        margin-bottom: 60px;
+    }
+    .v21 .v21-insurance--form {
+        margin-top: 70px;
+    }
+    .v21 .v21-insurance-application {
+        margin-top: 90px;
+    }
+}

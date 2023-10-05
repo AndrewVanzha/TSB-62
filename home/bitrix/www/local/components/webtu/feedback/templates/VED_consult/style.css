@@ -1,0 +1,109 @@
+.v21 .ved-consult {
+    display: flex;
+    justify-content: space-between;
+}
+.v21 .ved-consult--text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 49%;
+}
+.v21 .ved-consult .ved-consult--text_title {
+    margin: 0 0 30px 0;
+    font-weight: 400;
+    line-height: 52px;
+}
+.v21 .ved-consult--box {
+    padding-left: 20px;
+    margin: 0;
+    font-size: 19px;
+    line-height: 29px;
+}
+.v21 .ved-consult--box li {
+    margin-bottom: 10px;
+}
+@media screen and (min-width: 1400px) {
+    .v21 .ved-consult--box li {
+        padding-right: 130px;
+    }
+}
+.v21 .ved-consult--form {
+    width: 49%;
+}
+.v21 .ved-consult--form_content {
+    padding: 60px 70px 64px 70px;
+    background-color: transparent;
+    border: 1px solid #a58a57;
+    border-radius: 4px;
+}
+.v21 .ved-consult--form_input-group {
+    display: block;
+    margin: 0 0 20px;
+}
+.v21 .ved-consult--form_input-group .caption {
+    display: block;
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    line-height: 18px;
+}
+.v21 .ved-consult--form_input-group .content {
+    display: block;
+    /*margin: 0 0 32px;*/
+}
+.v21 .ved-consult--form_input-group .input-field {
+    width: 100%;
+    height: 60px;
+    border: 1px solid rgba(32, 32, 32, .12);
+    border-radius: 4px;
+    font-family: RF Dewi;
+    font-size: 16px;
+}
+.v21 .ved-consult--form_agreement {
+    display: block;
+    margin: 32px 0 32px 0;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+.v21 .ved-consult--form_agreement .v21-checkbox__text {
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #202020;
+}
+.v21 .ved-consult--form_agreement .v21-link__text {
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
+.v21 .ved-consult--form_captcha {
+    margin: 0 0 32px;
+}
+.v21 .ved-consult--form_button {}
+@media screen and (max-width: 1100px) {
+    .v21 .ved-consult {
+        flex-wrap: wrap;
+    }
+    .v21 .ved-consult--text {
+        width: 100%;
+    }
+    .v21 .ved-consult--form {
+        width: 100%;
+    }
+    .v21 .ved-consult--form form {
+        margin: 0 auto;
+        max-width: 580px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .v21 .ved-consult--form_content {
+        padding: 25px 20px 30px 20px;
+    }
+}

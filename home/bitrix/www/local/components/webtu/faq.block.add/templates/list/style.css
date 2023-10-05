@@ -1,0 +1,84 @@
+.v21 .v21-questions {
+    /*max-width: 810px;*/
+    display: flex;
+    justify-content: space-between;
+}
+.v21 .v21-questions-block {
+    width: 100%;
+}
+@media screen and (max-width: 1200px) {
+    .v21 .v21-questions {
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+    }
+}
+.v21 .v21-questions--header {
+    margin: 0 40px 46px 0;
+    font-weight: 400;
+    /*line-height: 37.26px;*/
+    line-height: 52px;
+    max-width: 450px;
+}
+@media screen and (max-width: 479px) {
+    .v21 .v21-questions {
+        margin-bottom: 99px;
+    }
+    .v21 .v21-questions--header {
+        margin-bottom: 26px;
+        font-size: 26px;
+        line-height: 32.29px;
+    }
+}
+.v21 .v21-questions--block {}
+.v21 .v21-questions--block__item {
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 1100px) {
+    .v21 .v21-questions--block__item {
+        margin-bottom: 12px;
+    }
+}
+.v21 .v21-questions--block__item-header {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    position: relative;
+}
+.v21 .v21-questions--block__item-header::before {
+    content: "";
+    position: absolute;
+    width: 8.5px;
+    height: 8.5px;
+    right: 0;
+    top: 10px;
+    border-top: 1.5px solid #202020;
+    border-right: 1.5px solid #202020;
+    /*transform: matrix(-1, 0, 0, 1, 0, 0);*/
+    /*background-image: url("/assets/images/broker-deposit/arrow.svg");*/
+    transform: rotate(135deg);
+    -webkit-transition: background-color 1s, -webkit-transform .5s;
+    transition: background-color 1s, transform .5s;
+}
+@media screen and (max-width: 479px) {
+    .v21 .v21-questions--block__item-header {
+        font-weight: 600;
+    }
+}
+.v21 .v21-show-answer__rotate::before {
+    top: 10px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.v21 .v21-questions--block__item-box {
+    display: none;
+    margin: 17px 0;
+    font-size: 16px;
+    line-height: 24px;
+}
+.v21 .v21-show-answer {
+    margin-bottom: 17px;
+    display: block;
+}

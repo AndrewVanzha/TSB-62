@@ -1,0 +1,1 @@
+<span style="color: #d7952a; font-size: 17px;">*The rental cost of an individual safe deposit box depends on the time period for which the Agreement for Safekeeping of Valuables in Individual Safe Deposit Box is concluded.</span>

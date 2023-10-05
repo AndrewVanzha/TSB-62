@@ -1,0 +1,110 @@
+#corporative .wrapp-slider .owl-carousel .slide {
+    height: 626px;
+}
+
+.slider-window {
+    position: relative;
+    /*height: 864px;*/
+    height: 364px;
+    z-index: 800;
+    display: flex;
+}
+.mainslider-window {
+    width: 50%;
+}
+.mainslider-wrapper {
+}
+
+.mainslider-window .mainpage-slider {}
+.mainslider-window .owl-carousel {
+    /*position: relative;*/
+}
+.mainslider-window .owl-carousel .slide {
+    height: 626px;
+    /*height: 864px;*/
+}
+.mainslider-window .mainpage-slider .owl-carousel .container {
+    width: 1410px;
+    margin: 0 auto;
+}
+.mainpage-slider .owl-carousel .owl-stage .slide-dt {
+    display: none;
+}
+.mainpage-slider .owl-carousel .owl-stage .slide-mob {
+    display: block;
+}
+.mainslider-window .mainpage-slider .owl-nav {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    column-gap: 10px;
+}
+.mainslider-window .mainpage-slider .owl-nav .owl-prev {}
+.mainslider-window .mainpage-slider .owl-nav .owl-next {}
+.mainslider-window .mainpage-slider .pager {}
+.mainslider-window .mainpage-slider .owl-dot {
+    width: 12px;
+    height: 29px;
+    font-family: RF Dewi;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 991px) {
+    .mainpage-slider .owl-carousel .owl-stage .slide-dt {
+        display: block;
+    }
+    .mainpage-slider .owl-carousel .owl-stage .slide-mob {
+        display: none;
+    }
+}
+
+.textslider-window {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+}
+.textslider-wrapper {
+    position: absolute;
+    top: 20px;
+    left: 30%;
+}
+.textslider-window .owl-carousel {
+    position: relative;
+}
+.textslider-window .mainpage-slider .owl-carousel .container {
+    width: 100%;
+    margin: 0 auto;
+}
+.textslider-window .owl-carousel .slide {
+    height: 340px;
+}
+.textslider-window .owl-carousel .owl-dots {
+    position: absolute;
+    top: 220px;
+    display: flex;
+    column-gap: 10px;
+}
+.textslider-window .mainpage-slider .owl-nav {
+    position: absolute;
+    top: 240px;
+    left: 4%;
+    display: flex;
+    column-gap: 10px;
+}
+.textslider-window .mainpage-slider .owl-nav .owl-prev {}
+.textslider-window .mainpage-slider .owl-nav .owl-next {}
+.textslider-window .mainpage-slider .pager {}
+.textslider-window .mainpage-slider .owl-dot {
+    width: 12px;
+    height: 29px;
+    font-family: RF Dewi;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0;
+}

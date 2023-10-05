@@ -1,0 +1,1 @@
+Как платить смартфоном <span>Samsung Galaxy</span>

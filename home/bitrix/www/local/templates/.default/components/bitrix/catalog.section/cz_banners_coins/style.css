@@ -1,0 +1,36 @@
+.row .col_3{
+    width: 33%;
+    box-sizing: border-box;
+    float: left;
+    padding: 0 15px;
+    min-height: 250px;
+}
+.row .col_3 .cover_type{
+    padding: 27px 26px 17px;
+    min-height: 175px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    position: relative;
+    /*height: 350px;*/
+}
+.row .col_3 a {
+    color: #012d6b;
+    font: 28px/1.1 'ProximaNovaCond-Bold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+}
+.row .col_3 a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px) {
+    .row .col_3{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 920px) {
+    .row .col_3{
+        width: 100%;
+    }
+}

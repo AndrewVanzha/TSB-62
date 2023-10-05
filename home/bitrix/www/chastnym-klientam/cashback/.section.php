@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Кэшбэк";
+$arDirProperties = array(
+
+);
+?>

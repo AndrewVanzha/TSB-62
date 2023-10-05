@@ -1,0 +1,3 @@
+<?
+$sSectionName="vklad0204";
+?>

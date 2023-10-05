@@ -1,0 +1,1 @@
+Денежные переводы <span>Samsung Pay</span>

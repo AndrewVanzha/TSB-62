@@ -1,0 +1,94 @@
+.popup-before-credit {
+    position: fixed;
+    max-width: 514px;
+    font-size: 17px;
+    line-height: 24px;
+    left: 20px;
+    bottom: 20px;
+    padding: 40px 60px;
+    background-color: white;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    border-radius: 8px;
+    transform: translateX(-150%);
+    transition: .7s;
+    z-index: 99999999;
+}
+.popup-before-credit__show {
+    transform: translateX(0);
+}
+.popup-before-credit__title {
+    display: inline-flex;
+    justify-content: space-between;
+    padding-left: 18px;
+    margin: 0 -18px;
+    width: 100%;
+    color: black;
+    font-size: 21px;
+    line-height: 28px;
+    font-weight: 600;
+}
+.popup-before-credit__title svg {
+    flex: 0 0 22px;
+    margin-right: 10px;
+}
+.popup-before-credit__title span:first-of-type {
+    flex: 1 0 calc(100% - 22px);
+    text-align: left;
+}
+.popup-before-credit__close {
+    flex: 0 0 22px;
+    height: 16px;
+    position: relative;
+    top: -10px;
+    padding: 0 3px;
+    cursor: pointer;
+}
+.popup-before-credit__info {
+    margin: 25px 0;
+    display: flex;
+    align-items: flex-start;
+}
+.popup-before-credit__icons {
+    width: 63px;
+    min-width: 63px;
+    margin-right: 20px;
+}
+.popup-before-credit__icons svg {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.popup-before-credit__icons svg:last-child {
+    margin-bottom: 0;
+}
+.popup-before-credit__desc p {
+    margin-top: 0;
+}
+.popup-before-credit__contact a {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 1px;
+    border-bottom: 1px dashed black;
+    transition: .5s;
+}
+.popup-before-credit__contact a:hover {
+    border-bottom: 1px dashed transparent;
+    color: #A58A57;
+}
+.popup-before-credit__button {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 0;
+    border: 1px solid black;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+}
+.popup-before-credit__button:hover {
+    background-color: #A58A57;
+    border-color: #A58A57;
+    color: white;
+}
