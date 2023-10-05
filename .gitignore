@@ -3,17 +3,17 @@
 /home/bitrix/backup/
 /home/bitrix/mail.php
 /home/bitrix/testmail.php
+
 /home/bitrix/www/bitrix/
+/home/bitrix/www/ees-ods/
 /home/bitrix/www/.DS_Store
 
-
-/.Trash-1000/
-/currency/
-/temp/
-/test*/
-/zagruzka/
-/turbo-img/
-/bitrix/
+/home/bitrix/www/.Trash-1000/
+/home/bitrix/www/currency/
+/home/bitrix/www/temp/
+/home/bitrix/www/test*/
+/home/bitrix/www/zagruzka/
+/home/bitrix/www/turbo-img/
 
 # конфиги PHPStorm
 /.idea/
@@ -63,13 +63,24 @@ ehthumbs.db
 *.txt
 *.log
 *.css.map
-*.min.css
-*.min.js
+
 *.png
 *.gif
 *.svg
 *.jpg
 *.jpeg
+*.webp
+
+*.csv
+*.json
+*.pdf
+*.doc
+*.docx
+*.ttf
+*.woff
+*.woff2
+*.otf
+*.eot
 
 # архивы, включая многотомные
 *.zip

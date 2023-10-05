@@ -1,0 +1,31 @@
+.v21 .v21-intro-card__content .v21-intro-card__title {
+    margin-bottom: 10px;
+}
+.v21 .v21-intro-card__content ul {
+    position: relative;
+    left: -40px;
+}
+.v21 .v21-intro-card__content ul li {
+    position: relative;
+    left: 20px;
+}
+.v21 .v21-intro-card__content ul li a {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+@media screen and (min-width: 480px) {
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+@media screen and (min-width: 1024px) {
+}
+@media screen and (min-width: 1280px) {
+}
+@media screen and (min-width: 1440px) {
+}
+
+@media all and (min-width: 580px) {
+}

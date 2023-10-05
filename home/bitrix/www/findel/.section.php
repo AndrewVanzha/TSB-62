@@ -1,0 +1,6 @@
+<?
+$sSectionName = "findel";
+$arDirProperties = Array(
+
+);
+?>

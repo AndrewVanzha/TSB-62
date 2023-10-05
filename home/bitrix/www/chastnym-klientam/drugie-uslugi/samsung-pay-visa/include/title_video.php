@@ -1,0 +1,1 @@
+Видео о <span>Samsung Pay</span>

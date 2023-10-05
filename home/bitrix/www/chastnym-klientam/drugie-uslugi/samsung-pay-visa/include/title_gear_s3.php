@@ -1,0 +1,1 @@
+Как платить <span>Gear S3</span>
