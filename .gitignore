@@ -74,8 +74,6 @@ ehthumbs.db
 *.csv
 *.json
 *.pdf
-*.doc
-*.docx
 *.ttf
 *.woff
 *.woff2
@@ -97,10 +95,10 @@ ehthumbs.db
 *.rar
 .hg
 .ftpconfig
+
+*.rtf
 *.doc
 *.docx
-*.pdf
-*.rtf
 *.xls
 *.xlsx
 *.ppt
