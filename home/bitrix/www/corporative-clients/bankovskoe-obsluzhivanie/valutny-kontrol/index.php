@@ -382,6 +382,7 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
 <div class="v21-wide-container v21-description-container">
 
+<?/*?>
 <div class="v21-container">
     <?$APPLICATION->IncludeComponent(
         "bitrix:main.include",
@@ -393,5 +394,6 @@ $APPLICATION->IncludeComponent(
         )
     );?>
 </div>
+<?*/?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
