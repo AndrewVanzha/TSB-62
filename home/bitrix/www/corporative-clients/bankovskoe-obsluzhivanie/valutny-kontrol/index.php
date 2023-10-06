@@ -10,35 +10,36 @@ Asset::getInstance()->addCss("/assets/css/style-broker-deposit.css?v=1.0.6");
 Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/style.css");
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
-    <style>
-        .v21 {
-            overflow: hidden;
-        }
-        .v21 .v21-section {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        .v21 .v21-container.v21-container--header {
-            position: relative;
-            z-index: 0;
-        }
-        .v21 .v21-wide-container {
-            margin-top: 0;
-            overflow: visible;
-        }
-        /*.v21 .js-color-switch .v21-block-interests--left,
-        .v21 .js-color-switch .v21-block-interests--right {
-            background-color: transparent;
-            box-shadow: none;
-        }
-        .v21 .js-color-switch .v21-block-interests--right::before,
-        .v21 .js-color-switch .v21-block-interests--left::before {
-            content: none;
-        }*/
-    </style>
-<?$APPLICATION->IncludeComponent(
+<style>
+    .v21 {
+        overflow: hidden;
+    }
+    .v21 .v21-section {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .v21 .v21-container.v21-container--header {
+        position: relative;
+        z-index: 0;
+    }
+    .v21 .v21-wide-container {
+        margin-top: 0;
+        overflow: visible;
+    }
+    /*.v21 .js-color-switch .v21-block-interests--left,
+    .v21 .js-color-switch .v21-block-interests--right {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .v21 .js-color-switch .v21-block-interests--right::before,
+    .v21 .js-color-switch .v21-block-interests--left::before {
+        content: none;
+    }*/
+</style>
+<? $iblock_id = "222";  // Валютный контроль
+$APPLICATION->IncludeComponent(
     "bitrix:news",
-    "account-in-yuans",
+    "valutny-kontrol",
     Array(
         "ADD_ELEMENT_CHAIN" => "N",	// Включать название элемента в цепочку навигации
         "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
@@ -75,7 +76,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
         "DISPLAY_PREVIEW_TEXT" => "Y",	// Выводить текст анонса
         "DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",	// Скрывать ссылку, если нет детального описания
-        "IBLOCK_ID" => "221",	// Инфоблок
+        "IBLOCK_ID" => $iblock_id,	// Инфоблок
         "IBLOCK_TYPE" => "corporative_clients",	// Тип инфоблока
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",	// Включать инфоблок в цепочку навигации
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
@@ -130,7 +131,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
     false
 );?>
 <div class="v21-card-application" id="fBusinessAccountForm">
-    <?$APPLICATION->IncludeComponent(
+    <? $iblock_id = "215";  // Заявка на открытие счета
+    $APPLICATION->IncludeComponent(
         "webtu:feedback",
         "account_application_new",
         Array(
@@ -142,7 +144,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
             "AJAX_OPTION_STYLE" => "Y",
             "COMPONENT_TEMPLATE" => "account_application_new",
             "EVENT_CALLBACK" => function($post){$post['RECOURSE']='Уважаемый(ая)';return$post;},
-            "IBLOCK_ID" => "215",  // Заявка на открытие счета
+            "IBLOCK_ID" => $iblock_id,  // Заявка на открытие счета
             "PROPERTIES" => array("PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","CURRENCY","FIO","NAME","EMAIL","CITY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
             "SITES" => array(0=>"s1",),
             "USER_EVENT" => "WEBTU_FEEDBACK_ACCOUNTS_USER",
@@ -182,7 +184,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                         <div class="rko-doc__title">Тарифы</div>
                     </header>
                     <div class="rko-doc__items">
-                        <?$APPLICATION->IncludeComponent(
+                        <? $iblock_id = "189";  //
+                        $element_id = "8888"; //
+                        $APPLICATION->IncludeComponent(
                             "bitrix:news.detail",
                             "documents-type-1",
                             Array(
@@ -207,9 +211,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                                 "DISPLAY_PREVIEW_TEXT" => "Y",
                                 "DISPLAY_TOP_PAGER" => "N",
                                 "ELEMENT_CODE" => "",
-                                "ELEMENT_ID" => "8887",
+                                "ELEMENT_ID" => $element_id,
                                 "FIELD_CODE" => array("", ""),
-                                "IBLOCK_ID" => "189",
+                                "IBLOCK_ID" => $iblock_id,
                                 "IBLOCK_TYPE" => "ls_documents",
                                 "IBLOCK_URL" => "",
                                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
@@ -241,7 +245,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                         <div class="rko-doc__title">Договоры</div>
                     </header>
                     <div class="rko-doc__items">
-                        <?$APPLICATION->IncludeComponent(
+                        <? $iblock_id = "189";  //
+                        $element_id = "8888"; //
+                        $APPLICATION->IncludeComponent(
                             "bitrix:news.detail",
                             "documents-type-1",
                             Array(
@@ -266,9 +272,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                                 "DISPLAY_PREVIEW_TEXT" => "Y",
                                 "DISPLAY_TOP_PAGER" => "N",
                                 "ELEMENT_CODE" => "",
-                                "ELEMENT_ID" => "8888",
+                                "ELEMENT_ID" => $element_id,
                                 "FIELD_CODE" => array("", ""),
-                                "IBLOCK_ID" => "189",
+                                "IBLOCK_ID" => $iblock_id,
                                 "IBLOCK_TYPE" => "ls_documents",
                                 "IBLOCK_URL" => "",
                                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
@@ -300,7 +306,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                         <div class="rko-doc__title">Документы для предоставления в Банк</div>
                     </header>
                     <div class="rko-doc__items row">
-                        <?$APPLICATION->IncludeComponent(
+                        <?  $iblock_id = "189";  //
+                            $element_id = "8889"; //
+                        $APPLICATION->IncludeComponent(
                             "bitrix:news.detail",
                             "documents-type-1",
                             Array(
@@ -325,9 +333,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
                                 "DISPLAY_PREVIEW_TEXT" => "Y",
                                 "DISPLAY_TOP_PAGER" => "N",
                                 "ELEMENT_CODE" => "",
-                                "ELEMENT_ID" => "8889",
+                                "ELEMENT_ID" => $element_id,
                                 "FIELD_CODE" => array("", ""),
-                                "IBLOCK_ID" => "189",
+                                "IBLOCK_ID" => $iblock_id,
                                 "IBLOCK_TYPE" => "ls_documents",
                                 "IBLOCK_URL" => "",
                                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
