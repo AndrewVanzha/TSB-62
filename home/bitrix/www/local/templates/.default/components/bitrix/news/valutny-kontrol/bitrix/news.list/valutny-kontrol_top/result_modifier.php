@@ -23,32 +23,34 @@ while ($sectionProp = $secRes->GetNext()) {
     $arSection[] = $sectionProp;
 }
 //debugg('$arSection');
-debugg($arSection);
+//debugg($arSection);
+$arResult["DESCRIPTION"] = $arSection[0]['DESCRIPTION'];
+$arResult["~DESCRIPTION"] = $arSection[0]['~DESCRIPTION'];
 
 $arResult["SECTION"]["PATH"] = [];
 for ($ii=0; $ii<count($arSection[0]['UF_VALUTNY_KONTROL_TOP']); $ii++) {
     if ($ii == 0) {
-        $arResult["SECTION"]["PATH"]['320']['ID'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][0];
+        $arResult["SECTION"]["PATH"]['320']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][0];
         $arResult["SECTION"]["PATH"]['320']['STYLE'] = '320';
     }
     if ($ii == 1) {
-        $arResult["SECTION"]["PATH"]['480']['ID'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][1];
+        $arResult["SECTION"]["PATH"]['480']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][1];
         $arResult["SECTION"]["PATH"]['480']['STYLE'] = '480';
     }
     if ($ii == 2) {
-        $arResult["SECTION"]["PATH"]['768']['ID'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][2];
+        $arResult["SECTION"]["PATH"]['768']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][2];
         $arResult["SECTION"]["PATH"]['768']['STYLE'] = '768';
     }
     if ($ii == 3) {
-        $arResult["SECTION"]["PATH"]['1024']['ID'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][3];
+        $arResult["SECTION"]["PATH"]['1024']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][3];
         $arResult["SECTION"]["PATH"]['1024']['STYLE'] = '1024';
     }
     if ($ii == 4) {
-        $arResult["SECTION"]["PATH"]['1366']['ID'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][4];
+        $arResult["SECTION"]["PATH"]['1366']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][4];
         $arResult["SECTION"]["PATH"]['1366']['STYLE'] = '1366';
     }
 }
-debugg($arResult["SECTION"]["PATH"]);
+//debugg($arResult["SECTION"]["PATH"]);
 /*
 \Bitrix\Main\Loader::includeModule('iblock');
 $res = \Bitrix\Iblock\Elements\ElementValutnyKontrolTable::getList([
