@@ -16,6 +16,7 @@ $this->setFrameMode(true);
 <? //debugg($arResult["PROPERTIES"]) ?>
 <??>
 <section class="account-service-tileblock">
+    <h2><?= $arResult["PROPERTY_HEADER"] ?></h2>
     <div class="account-service-tileblock__grid">
         <?/*?><div class="base-account-tileblock__grid--horline horline-1"></div>
         <div class="base-account-tileblock__grid--horline horline-2"></div><?*/?>

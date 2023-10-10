@@ -121,7 +121,7 @@ $APPLICATION->IncludeComponent(
             <? $services_block = [10644]; // Новые возможности для вашего бизнеса
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
-                "account_services",
+                "business_possibilities",
                 Array(
                     "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
                     "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
