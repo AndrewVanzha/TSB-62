@@ -51,17 +51,19 @@ $this->setFrameMode(true);
 );
 ?>
 <?endif?>
-<?*/?>
+
+<?
+Включен API инфоблока Валютный контроль ValutnyKontrol
+*/?>
 <? $parent_section = 593;  // Валютный контроль - вариант октября 2023
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"header_template",
+	"valutny-kontrol_top",
 	Array(
 		"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 		"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
 		"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
 		"PARENT_SECTION" => $parent_section,
-		//"BASE_TARIFF_PARAM" => [10205],
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
@@ -110,7 +112,7 @@ $APPLICATION->IncludeComponent(
 	),
 	$component
 );?>
-</div><!-- v21-container -->
+    </div><!-- v21-container -->
 </div><!-- v21-section -->
 
 <div class="v21-section">

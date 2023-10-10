@@ -64,7 +64,7 @@ $this->setFrameMode(true);
                             title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
                     />
                 </div>
-                <div class="business-account-topblock__image business-account-topblock__image--320">
+                <div class="business-account-topblock__image valutny-kontrol-topblock__image--320">
                     <img
                             src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_5"])?>"
                             alt="картинка символа юаня"
