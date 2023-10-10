@@ -12,72 +12,88 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
+<?// debugg($arResult) ?>
 <?// debugg($arResult["ITEMS"]) ?>
 
 <? if($arParams["DISPLAY_PREVIEW_TEXT"]!="N"): ?>
-    <div class="business-account-topblock">
-        <?/*?><section class="business-account-topblock"><?*/?>
-            <?/*?><div class="business-account-tileblock__grid--horline horline-1"></div>
-            <div class="business-account-tileblock__grid--verline verline-1"></div><?*/?>
-            <div class="business-account-topblock__block">
+    <div class="template-topblock">
+        <?/*?><section class="template-topblock"><?*/?>
+            <?/*?><div class="template-tileblock__grid--horline horline-1"></div>
+            <div class="template-tileblock__grid--verline verline-1"></div><?*/?>
+            <div class="template-topblock__block">
                 <? if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]): ?>
-                    <h1 class="business-account-topblock__header"><?= $arResult["~NAME"] ?></h1>
+                    <h1 class="template-topblock__header"><?= $arResult["~NAME"] ?></h1>
                 <? endif; ?>
 
-                <h3 class="business-account-topblock__content"><?echo $arResult["SECTION"]["PATH"][0]["~DESCRIPTION"]; ?></h3>
-                <div class="business-account-topblock__buttons">
-                    <a href="#fBusinessAccountForm" class="v21-button-2022 business-account-topblock__button button-1 js-business-account__button">
-                        <span>Открыть счёт</span>
-                    </a>
-                    <?/*?><a href="https://rezervscheta.transstroybank.ru/login" class="v21-button-2022 business-account-topblock__button js-business-account__button"><?*/?>
-                    <a href="https://193.42.145.78/login" class="v21-button-2022 business-account-topblock__button button-2">
-                        <span>Личный кабинет</span>
+                <h3 class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></h3>
+                <div class="template-topblock__buttons">
+                    <a href="#fValutnyKontrolForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
+                        <span>Получить консультацию</span>
                     </a>
                 </div>
             </div>
             <?if($arParams["DISPLAY_PICTURE"]!="N"):?>
-                <div class="business-account-topblock__image business-account-topblock__image--1366">
-                    <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_1"])?>"
-                        alt="картинка символа юаня"
-                        title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
-                    />
-                </div>
-                <div class="business-account-topblock__image business-account-topblock__image--1024">
-                    <img
-                            src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_2"])?>"
-                            alt="картинка символа юаня"
-                            title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
-                    />
-                </div>
-                <div class="business-account-topblock__image business-account-topblock__image--768">
-                    <img
-                            src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_3"])?>"
-                            alt="картинка символа юаня"
-                            title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
-                    />
-                </div>
-                <div class="business-account-topblock__image business-account-topblock__image--480">
-                    <img
-                            src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_4"])?>"
-                            alt="картинка символа юаня"
-                            title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
-                    />
-                </div>
-                <div class="business-account-topblock__image business-account-topblock__image--320">
+                <? if ($arResult["SECTION"]["PATH"][1366]) : ?>
+                    <div class="template-topblock__image template-topblock__image--1366">
+                        <img
+                                src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1366]["PICTURE"])?>"
+                                alt="картинка"
+                                title="<?=$arResult["NAME"]?>"
+                        />
+                    </div>
+                <? endif; ?>
+                <? if ($arResult["SECTION"]["PATH"][1024]) : ?>
+                    <div class="template-topblock__image template-topblock__image--1024">
+                        <img
+                                src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1024]["PICTURE"])?>"
+                                alt="картинка"
+                                title="<?=$arResult["NAME"]?>"
+                        />
+                    </div>
+                <? endif; ?>
+                <? if ($arResult["SECTION"]["PATH"][768]) : ?>
+                    <div class="template-topblock__image template-topblock__image--768">
+                        <img
+                                src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][768]["PICTURE"])?>"
+                                alt="картинка"
+                                title="<?=$arResult["NAME"]?>"
+                        />
+                    </div>
+                <? endif; ?>
+                <? if ($arResult["SECTION"]["PATH"][480]) : ?>
+                    <div class="template-topblock__image template-topblock__image--480">
+                        <img
+                                src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][480]["PICTURE"])?>"
+                                alt="картинка"
+                                title="<?=$arResult["NAME"]?>"
+                        />
+                    </div>
+                <? endif; ?>
+                <? if ($arResult["SECTION"]["PATH"][320]) : ?>
+                    <div class="template-topblock__image template-topblock__image--320">
+                        <img
+                                src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][320]["PICTURE"])?>"
+                                alt="картинка"
+                                title="<?=$arResult["NAME"]?>"
+                        />
+                    </div>
+                <? endif; ?>
+                <?/*?>
+                <div class="template-topblock__image template-topblock__image--320">
                     <img
                             src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][0]["PICTURE_5"])?>"
-                            alt="картинка символа юаня"
+                            alt="картинка"
                             title="<?=$arResult["SECTION"]["PATH"][0]["~NAME"]?>"
                     />
                 </div>
+                <?*/?>
             <?endif?>
         <?/*?></section><?*/?>
     </div>
 
     <script>
         $(document).ready(function () {
-            $('.js-business-account__button').on('click', function() {
+            $('.js-valutny-kontrol__button').on('click', function() {
                 let href = $(this).attr('href');
                 $('html, body').animate({
                     scrollTop: $(href).offset().top - 120
@@ -174,7 +190,7 @@ $this->setFrameMode(true);
                         </div>
                     </div>
                     <div class="business-account-tileblock__grid--item-box box-4">
-                        <a href="#fBusinessAccountForm" class="v21-button-2022 business-account-tileblock__grid__button js-business-account__button">
+                        <a href="#fValutnyKontrolForm" class="v21-button-2022 business-account-tileblock__grid__button js-business-account__button">
                             <span>Открыть счёт</span>
                         </a>
                         <a href="<?= $arItem["PROPERTIES"]["ATT_BA_DETAIL_LINK"]["VALUE"]; ?>" target="_blank" class="business-account-details">
