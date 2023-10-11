@@ -1313,7 +1313,7 @@ if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW'])) {
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK'])) {
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS'])) {
-					if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS', 'IDR', 'RON', 'KWD'])) {
+					if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS', 'IDR', 'RON', 'KWD', 'MUR'])) {
                         //continue;  //  вывожу все валюты
 					} /* AUD TRY AZN BYN ILS QAR SAR AED EGP INR KZT CAD SGD */ /* KGS ZAR */
 
