@@ -107,3 +107,6 @@ if (!empty($main_items) && !empty($dop_items) && !empty($icon_items)) {
 }
 
 //debugg($arResult['PROPERTIES']);
+unset($main_items);
+unset($dop_items);
+unset($icon_items);
