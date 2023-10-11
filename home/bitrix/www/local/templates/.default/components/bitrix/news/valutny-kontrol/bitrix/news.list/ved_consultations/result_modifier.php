@@ -28,7 +28,7 @@ debugg($arSection);
 //debugg($arParams);
 //debugg($arResult);
 
-$arResult['PROPERTIES'] = [];
+//$arResult['PROPERTIES'] = [];
 $main_items = [];
 $dop_items = [];
 $icon_items = [];

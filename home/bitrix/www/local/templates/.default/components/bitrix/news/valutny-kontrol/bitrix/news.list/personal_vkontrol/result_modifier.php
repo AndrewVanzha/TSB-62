@@ -26,7 +26,7 @@ while ($sectionProp = $secRes->GetNext()) {
 debugg($arSection);
 */
 //debugg($arParams);
-$arResult['PROPERTIES'] = [];
+//$arResult['PROPERTIES'] = [];
 $main_items = [];
 $dop_items = [];
 $icon_items = [];

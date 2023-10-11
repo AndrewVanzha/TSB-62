@@ -59,7 +59,7 @@ $res = \Bitrix\Iblock\Elements\ElementValutnyKontrolTable::getList([
 //debugg('$res');
 //debugg($res);
 
-$arResult['PROPERTIES'] = [];
+//$arResult['PROPERTIES'] = [];
 $main_items = [];
 $dop_items = [];
 $icon_items = [];
