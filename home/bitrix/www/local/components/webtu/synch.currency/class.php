@@ -274,6 +274,13 @@ class SynchCurrency extends CBitrixComponent
                 'iso_n' => '484',
                 'iso_s' => 'MXN' ,
             ],
+            'MUR' => [
+                'name' => 'Маврикийская рупия',  // добавка с 11.10.23
+                'symbol' => 'Rs',
+                'count' => 10,
+                'iso_n' => '480',
+                'iso_s' => 'MUR' ,
+            ],
             'MVR' => [
                 'name' => 'Мальдивская руфия',  // добавка с 26.05.23
                 'symbol' => 'L',
@@ -1175,7 +1182,7 @@ class SynchCurrency extends CBitrixComponent
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682 && $template['iso_n'] !== 410) { // кроме ILS, AED, RSD, THB, SAR, KRW
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682) { // кроме ILS, AED, RSD, THB, SAR
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682 && $template['iso_n'] !== 634 && $template['iso_n'] !== 484) { // кроме ILS, AED, RSD, THB, SAR, QAR, MXN
-if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template['iso_n'] != '682' && $template['iso_n'] != '484' && $template['iso_n'] != '458' && $template['iso_n'] != '504' && $template['iso_n'] != '048' && $template['iso_n'] != '144' && $template['iso_n'] != '462' && $template['iso_n'] != '512') { // кроме ILS, SAR, MXN, MYR, MAD, BHD, LKR, MVR, OMR
+if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template['iso_n'] != '682' && $template['iso_n'] != '484' && $template['iso_n'] != '458' && $template['iso_n'] != '504' && $template['iso_n'] != '048' && $template['iso_n'] != '144' && $template['iso_n'] != '462' && $template['iso_n'] != '512' && $template['iso_n'] != '480') { // кроме ILS, SAR, MXN, MYR, MAD, BHD, LKR, MVR, OMR, MUR
                         $result[$template['iso_s']]['course'] = str_replace(",", ".", $course[4]);
                         $result[$template['iso_s']]['status'] = '>';
                     }
@@ -1686,6 +1693,12 @@ if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template
         $courses['MXN']['count'] = 10;
         $courses['MXN']['iso_n'] = '484';
         $courses['MXN']['iso_s'] = 'MXN'; // **
+
+        $courses['MUR']['name'] = 'Маврикийская рупия';  // добавка с 11.10.23
+        $courses['MUR']['symbol'] = 'Rs';
+        $courses['MUR']['count'] = 10;
+        $courses['MUR']['iso_n'] = '480';
+        $courses['MUR']['iso_s'] = 'MUR'; // **
 
         $courses['MVR']['name'] = 'Мальдивская руфия';  // добавка с 26.05.23
         $courses['MVR']['symbol'] = 'L';
