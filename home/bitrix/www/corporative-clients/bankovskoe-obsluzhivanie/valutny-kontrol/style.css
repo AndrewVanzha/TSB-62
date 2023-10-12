@@ -7,20 +7,21 @@
 .v21 .v21-ved-consultations-wrap {
     display: flex;
     column-gap: 8px;
-    flex-wrap: nowrap;
+    row-gap: 16px;
+    flex-wrap: wrap;
 }
 .v21 .v21-ved-consultation-header {
-    margin: 0 0 24px 0;
+    margin: 0 0 32px 0;
     font-family: Canela Deck LC;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 300;
-    line-height: 50px;
+    line-height: 39px;
     letter-spacing: 0em;
     text-align: center;
 }
 .v21 .v21-tariff-table-container {}
 .v21 .v21-consult-application {
-    flex: 1 1 57.4%;
+    flex: 1 1 100%;
 }
 .v21 .v21-popproducts-inyuans--wrap {
     padding: 32px 0;
@@ -30,6 +31,8 @@
 @media screen and (min-width: 768px) {
     .v21 .v21-ved-consultation-header {
         margin-bottom: 64px;
+        font-size: 36px;
+        line-height: 50px;
     }
     .v21 .v21-popproducts-inyuans--wrap {
         padding-top: 64px;
@@ -37,8 +40,11 @@
     }
 }
 @media screen and (min-width: 1024px) {
+    .v21 .v21-ved-consultations-wrap {
+        flex-wrap: nowrap;
+    }
     .v21 .v21-consult-application {
-        flex-basis: 100%;
+        flex-basis: 57.4%;
     }
 }
 @media screen and (min-width: 1366px) {
