@@ -15,23 +15,23 @@ $this->setFrameMode(true);
 <? //debugg($arParams["SERVICES_BLOCK"]) ?>
 <? //debugg($arResult["PROPERTIES"]) ?>
 <??>
-<section class="possibilities-tileblock">
-    <h3 class="possibilities-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
-    <div class="possibilities-tileblock__grid">
+<section class="consultations-tileblock">
+    <h3 class="consultations-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
+    <div class="consultations-tileblock__grid">
         <?/*?><div class="base-account-tileblock__grid--horline horline-1"></div>
         <div class="base-account-tileblock__grid--horline horline-2"></div><?*/?>
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-            <div class="possibilities-tileblock__grid--item">
-                <div class="possibilities-tileblock__grid--item-box box-1">
-                    <div class="possibilities-tileblock__grid--img">
+            <div class="consultations-tileblock__grid--item">
+                <div class="consultations-tileblock__grid--item-box box-1">
+                    <div class="consultations-tileblock__grid--img">
                         <img
                                 src="<?=CFile::GetPath($arItem["icon"])?>"
                                 alt="иконка"
                                 title="<?=$arItem["main"]?>"
                         />
                     </div>
-                    <h4 class="possibilities-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
-                    <p class="possibilities-tileblock__grid--subtitle">
+                    <h4 class="consultations-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
+                    <p class="consultations-tileblock__grid--subtitle">
                         <span><?= $arItem["dop"]; ?></span>
                     </p>
                 </div>

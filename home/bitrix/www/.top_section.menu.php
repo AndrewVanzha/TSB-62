@@ -176,6 +176,16 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Валютный контроль",
+        "/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/",
+        Array(),
+        Array(
+            'subheader' => false,
+            'subgroup' => 3,
+        ),
+        ""
+    ),
+    Array(
         "Зарплатный проект",
         "/corporative-clients/bankovskoe-obsluzhivanie/zarplatnyy-proekt/",
         Array(),

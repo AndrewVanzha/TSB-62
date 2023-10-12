@@ -249,7 +249,7 @@ $APPLICATION->IncludeComponent(
             <? $services_block = [10646]; // Бесплатные консультации по ВЭД
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
-                "ved_consultations",
+                "ved_consultations2",
                 Array(
                     "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
                     "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
@@ -311,13 +311,13 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
     <div class="v21-wide-container v21-ved-consultations-container">
         <div class="v21-container">
-            <h3 class="v21-ved-consultation-header">Бесплатная консульт</h3>
+            <h3 class="v21-ved-consultation-header">Закажите бесплатную консультацию по валютному законодательству</h3>
         </div>
         <div class="v21-container v21-ved-consultations-wrap">
             <? $services_block = [10647]; // Закажите бесплатную консультацию по валютному законодательству
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
-                "",
+                "ved_consultations",
                 Array(
                     "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
                     "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
