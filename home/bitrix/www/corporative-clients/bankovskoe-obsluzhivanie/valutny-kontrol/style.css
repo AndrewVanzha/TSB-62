@@ -1,5 +1,5 @@
 .v21 .v21-account-services-container,
-/*.v21 .v21-ved-consultations-container,*/
+.v21 .v21-fast-transactions-container,
 .v21 .v21-risk-hedge-container,
 .v21 .v21-popproducts-inyuans-container {
     background-color: #ffffff;
@@ -19,7 +19,6 @@
     letter-spacing: 0em;
     text-align: center;
 }
-.v21 .v21-tariff-table-container {}
 .v21 .v21-consult-application {
     flex: 1 1 100%;
 }
