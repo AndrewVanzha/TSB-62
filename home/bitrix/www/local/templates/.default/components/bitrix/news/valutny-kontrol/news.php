@@ -481,7 +481,7 @@ $APPLICATION->IncludeComponent(
         <? $services_block = [10649]; // Открываем счета в разных валютах
         $APPLICATION->IncludeComponent(
             "bitrix:news.list",
-            "tariff_table",
+            "accounts-in-currencies",
             Array(
                 "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
                 "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],

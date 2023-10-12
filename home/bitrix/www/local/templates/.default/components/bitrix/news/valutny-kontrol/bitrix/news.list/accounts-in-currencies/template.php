@@ -14,31 +14,40 @@ $this->setFrameMode(true);
 ?>
 <? //debugg($arParams["SERVICES_BLOCK"]) ?>
 <? //debugg($arResult["ITEMS"]) ?>
+<? //debugg($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]]) ?>
 <??>
-<section class="ved-solution-tileblock">
-    <h3 class="ved-solution-tileblock__header"><?= $arResult["PROPERTY_HEADER"]; ?></h3>
-    <div class="ved-solution-tileblock__grid">
-        <?/*?><div class="ved-solution-tileblock__grid--horline horline-1"></div>
-        <div class="ved-solution-tileblock__grid--horline horline-2"></div><?*/?>
+<?
+if (count($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]])%2) { // odd
+    $gridFlag = 'odd';
+}
+else { // even
+    $gridFlag = 'even';
+}
+$ix = 0;
+?>
+<section class="accounts-currencies-tileblock">
+    <h3 class="accounts-currencies-tileblock__header"><?= $arResult["PROPERTY_HEADER"]; ?></h3>
+    <div class="accounts-currencies-tileblock__grid--<?= $gridFlag ?>">
+        <?/*?><div class="accounts-currencies-tileblock__grid--horline horline-1"></div>
+        <div class="accounts-currencies-tileblock__grid--horline horline-2"></div><?*/?>
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-            <div class="ved-solution-tileblock__grid--item" >
-                <div class="ved-solution-tileblock__grid--img">
-                    <img
-                            src="<?=CFile::GetPath($arItem["icon"])?>"
-                            alt="иконка"
-                            title="<?=$arItem["main"]?>"
-                    />
-                </div>
-                <div class="ved-solution-tileblock__grid--item-box box-1">
-                    <h4 class="ved-solution-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
-                    <p class="ved-solution-tileblock__grid--subtitle"><?= $arItem["dop"]; ?></p>
+            <div class="accounts-currencies-tileblock__grid--item grid--item__<?= $gridFlag ?>-<?= $ix++ ?>" >
+                <div class="accounts-currencies-tileblock__grid--item-box box-1">
+                    <div class="accounts-currencies-tileblock__grid--img">
+                        <img
+                                src="<?=CFile::GetPath($arItem["icon"])?>"
+                                alt="иконка"
+                                title="<?=$arItem["main"]?>"
+                        />
+                    </div>
+                    <h4 class="accounts-currencies-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
                 </div>
             </div>
         <? endforeach; ?>
     </div>
 </section>
-
-<?/*?>
+<??>
+<?php/*?>
 <script>
     $(document).ready(function () {
         $('.js-base-account__button').on('click', function() {
@@ -58,4 +67,4 @@ $this->setFrameMode(true);
         );
     });
 </script>
-<?*/?>
+<?php*/?>
