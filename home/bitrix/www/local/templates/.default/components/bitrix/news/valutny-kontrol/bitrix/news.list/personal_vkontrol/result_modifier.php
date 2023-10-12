@@ -26,39 +26,6 @@ while ($sectionProp = $secRes->GetNext()) {
 debugg($arSection);
 */
 //debugg($arParams);
-//debugg($arResult);
-\Bitrix\Main\Loader::includeModule('iblock');
-$res = \Bitrix\Iblock\Elements\ElementValutnyKontrolTable::getList([
-    //'select' => ['ID', 'NAME', 'SECTIONS', 'SORT', 'ATT_*'],
-    'select' => ['ID', 'NAME', 'ATT_NOTES', 'ATT_SERVICES', 'ATT_SERVICES_DESCRIPTION'],
-    //'select' => ['*'],
-    'filter' => [
-        'IBLOCK_SECTION_ID' => $arParams["PARENT_SECTION"],
-        'ID' => $arParams["SERVICES_BLOCK"],
-        'ACTIVE' => "Y",
-    ],
-    'order' => ['SORT' => 'ASC'],
-]);
-while ($ar_item = $res->fetch()) {
-    //debugg('$res');
-    //debugg($ar_item);
-    $ar_element['1'] = $ar_item['IBLOCK_ELEMENTS_ELEMENT_VALUTNY_KONTROL_ATT_SERVICES_VALUE'];
-    $ar_element['2'] = $ar_item['IBLOCK_ELEMENTS_ELEMENT_VALUTNY_KONTROL_ATT_SERVICES_DESCRIPTION'];
-    //$arResult['RES'] = $ar_element;
-}
-$res = \Bitrix\Iblock\Elements\ElementValutnyKontrolTable::getList([
-    'select' => ['ID', 'NAME', 'ATT_SERVICES_ICONS'],
-    //'select' => ['*'],
-    'filter' => [
-        'IBLOCK_SECTION_ID' => $arParams["PARENT_SECTION"],
-        'ID' => $arParams["SERVICES_BLOCK"],
-        'ACTIVE' => "Y",
-    ],
-    'order' => ['SORT' => 'ASC'],
-])->fetchAll();
-//debugg('$res');
-//debugg($res);
-
 //$arResult['PROPERTIES'] = [];
 $main_items = [];
 $dop_items = [];
@@ -74,8 +41,8 @@ foreach ($arResult["ITEMS"] as $arItem) {
                 $main_items[] = $item;
             }
         }
-        if ($arItem['PROPERTIES']['ATT_SERVICES']['DESCRIPTION']) {
-            foreach ($arItem['PROPERTIES']['ATT_SERVICES']['DESCRIPTION'] as $item) {
+        if ($arItem['PROPERTIES']['ATT_SERVICES_DESCRIPTION']['VALUE']) {
+            foreach ($arItem['PROPERTIES']['ATT_SERVICES_DESCRIPTION']['VALUE'] as $item) {
                 $dop_items[] = $item;
             }
         }
@@ -91,7 +58,8 @@ foreach ($arResult["ITEMS"] as $arItem) {
 //debugg($dop_items);
 //debugg($icon_items);
 
-if (!empty($main_items) && !empty($dop_items) && !empty($icon_items)) {
+//if (!empty($main_items) && !empty($dop_items) && !empty($icon_items)) {
+if (!empty($main_items) && !empty($dop_items) &&!empty($icon_items)) {
     for ($ii=0; $ii<count($main_items); $ii++) {
         $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['main'] = $main_items[$ii];
         if ($dop_items[$ii]) {
