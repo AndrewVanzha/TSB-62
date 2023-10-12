@@ -174,7 +174,8 @@
 
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics">
+                                <?/*?><input type="checkbox" checked name="" class="v21-checkbox__input" id="politics"><?*/?>
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics">
                                 <span class="v21-checkbox__text">
                                     <?= $politics_output ?>
                                 </span>
