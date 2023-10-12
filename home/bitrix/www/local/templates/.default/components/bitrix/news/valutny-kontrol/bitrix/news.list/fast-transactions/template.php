@@ -15,24 +15,24 @@ $this->setFrameMode(true);
 <?// debugg($arParams["SERVICES_BLOCK"]) ?>
 <?// debugg($arResult["PROPERTIES"]) ?>
 <??>
-<section class="personal-vkontrol-tileblock">
-    <h3 class="personal-vkontrol-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
-    <div class="personal-vkontrol-tileblock__grid">
-        <div class="personal-vkontrol-tileblock__grid--textbox">
+<section class="fast-transactions-tileblock">
+    <h3 class="fast-transactions-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
+    <div class="fast-transactions-tileblock__grid">
+        <div class="fast-transactions-tileblock__grid--textbox">
             <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-                <div class="personal-vkontrol-tileblock__grid--item">
-                    <div class="personal-vkontrol-tileblock__grid--item-box box-1">
-                        <h4 class="personal-vkontrol-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
-                        <p class="personal-vkontrol-tileblock__grid--subtitle">
+                <div class="fast-transactions-tileblock__grid--item">
+                    <div class="fast-transactions-tileblock__grid--item-box box-1">
+                        <h4 class="fast-transactions-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
+                        <p class="fast-transactions-tileblock__grid--subtitle">
                             <span><?= $arItem["dop"]; ?></span>
                         </p>
                     </div>
                 </div>
             <? endforeach; ?>
         </div>
-        <div class="personal-vkontrol-tileblock__grid--imgbox">
+        <div class="fast-transactions-tileblock__grid--imgbox">
             <?/* if ($arResult["PROPERTIES"]["PATH"]["icon"]) : ?>
-                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--1366">
+                <div class="fast-transactions-topblock__image fast-transactions-topblock__image--1366">
                     <img
                             src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1366]["icon"])?>"
                             alt="картинка"
@@ -41,7 +41,7 @@ $this->setFrameMode(true);
                 </div>
             <? endif; */?>
             <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][3]["icon"]) : ?>
-                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--1024">
+                <div class="fast-transactions-topblock__image fast-transactions-topblock__image--1024">
                     <img
                             src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][3]["icon"])?>"
                             alt="картинка"
@@ -50,7 +50,7 @@ $this->setFrameMode(true);
                 </div>
             <? endif; ?>
             <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][2]["icon"]) : ?>
-                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--768">
+                <div class="fast-transactions-topblock__image fast-transactions-topblock__image--768">
                     <img
                             src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][2]["icon"])?>"
                             alt="картинка"
@@ -59,7 +59,7 @@ $this->setFrameMode(true);
                 </div>
             <? endif; ?>
             <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][1]["icon"]) : ?>
-                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--480">
+                <div class="fast-transactions-topblock__image fast-transactions-topblock__image--480">
                     <img
                             src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][1]["icon"])?>"
                             alt="картинка"
@@ -68,7 +68,7 @@ $this->setFrameMode(true);
                 </div>
             <? endif; ?>
             <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][0]["icon"]) : ?>
-                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--320">
+                <div class="fast-transactions-topblock__image fast-transactions-topblock__image--320">
                     <img
                             src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][0]["icon"])?>"
                             alt="картинка"
