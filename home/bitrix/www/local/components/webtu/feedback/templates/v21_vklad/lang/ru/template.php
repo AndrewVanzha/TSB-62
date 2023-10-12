@@ -1,6 +1,6 @@
 <?php
-$MESS["WEBTU_FEEDBACK_8_HEADER"]        = "Онлайн-заявка на открытие вклада";
-
+//$MESS["WEBTU_FEEDBACK_8_HEADER"]        = "Онлайн-заявка на открытие вклада";
+$MESS["WEBTU_FEEDBACK_8_HEADER"]        = "Онлайн-заявка на подбор вклада";
 $MESS["WEBTU_FEEDBACK_8_LAST_NAME"]     = "Фамилия";
 $MESS["WEBTU_FEEDBACK_8_FIRST_NAME"]    = "Имя";
 $MESS["WEBTU_FEEDBACK_8_SECOND_NAME"]   = "Отчество";

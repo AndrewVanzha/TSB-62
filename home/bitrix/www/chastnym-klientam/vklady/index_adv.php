@@ -12,14 +12,14 @@
         <li class="v21-deposit-scheme__item">
             <img src="<?= SITE_TEMPLATE_PATH ?>/img/v21_v21-deposit-scheme-1.png" alt="" class="v21-deposit-scheme__image">
             <div class="v21-deposit-scheme__text">
-                Посетить <a href="/ofisy-i-bankomaty/" class="v21-link"><span class="v21-link__text">Офис Банка</span></a> или направить <a href="#v21_depositOrder" class="v21-link js-v21-modal-toggle"><span class="v21-link__text">он-лайн заявку</span></a>
+                Заполнить <a href="#v21_depositOrder" class="v21-link js-v21-modal-toggle"><span class="v21-link__text">он-лайн заявку на подбор вклада</span></a>
             </div>
         </li><!-- /.v21-deposit-scheme__item -->
 
         <li class="v21-deposit-scheme__item">
             <img src="<?= SITE_TEMPLATE_PATH ?>/img/v21_v21-deposit-scheme-2.png" alt="" class="v21-deposit-scheme__image">
             <div class="v21-deposit-scheme__text">
-                Оформить документы на открытие вклада
+                Посетить <a href="/ofisy-i-bankomaty/" class="v21-link"><span class="v21-link__text">Офис Банка</span></a> и оформить документы на открытие вклада
             </div>
         </li><!-- /.v21-deposit-scheme__item -->
 
