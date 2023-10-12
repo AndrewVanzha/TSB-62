@@ -14,23 +14,33 @@ $this->setFrameMode(true);
 ?>
 <? //debugg($arParams["SERVICES_BLOCK"]) ?>
 <? //debugg($arResult["ITEMS"]) ?>
+<? //debugg($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]]) ?>
 <??>
-<section class="risk-hedge-tileblock">
-    <h3 class="risk-hedge-tileblock__header"><?= $arResult["PROPERTY_HEADER"]; ?></h3>
-    <div class="risk-hedge-tileblock__grid">
-        <?/*?><div class="risk-hedge-tileblock__grid--horline horline-1"></div>
-        <div class="risk-hedge-tileblock__grid--horline horline-2"></div><?*/?>
+<?
+if (count($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]])%2) { // odd
+    $gridFlag = 'odd';
+}
+else { // even
+    $gridFlag = 'even';
+}
+$ix = 0;
+?>
+<section class="accounts-currencies-tileblock">
+    <h3 class="accounts-currencies-tileblock__header"><?= $arResult["PROPERTY_HEADER"]; ?></h3>
+    <div class="accounts-currencies-tileblock__grid--<?= $gridFlag ?>">
+        <?/*?><div class="accounts-currencies-tileblock__grid--horline horline-1"></div>
+        <div class="accounts-currencies-tileblock__grid--horline horline-2"></div><?*/?>
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-            <div class="risk-hedge-tileblock__grid--item" >
-                <div class="risk-hedge-tileblock__grid--item-box box-1">
-                    <div class="risk-hedge-tileblock__grid--img">
+            <div class="accounts-currencies-tileblock__grid--item grid--item__<?= $gridFlag ?>-<?= $ix++ ?>" >
+                <div class="accounts-currencies-tileblock__grid--item-box box-1">
+                    <div class="accounts-currencies-tileblock__grid--img">
                         <img
                                 src="<?=CFile::GetPath($arItem["icon"])?>"
                                 alt="иконка"
                                 title="<?=$arItem["main"]?>"
                         />
                     </div>
-                    <h4 class="risk-hedge-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
+                    <h4 class="accounts-currencies-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
                 </div>
             </div>
         <? endforeach; ?>
