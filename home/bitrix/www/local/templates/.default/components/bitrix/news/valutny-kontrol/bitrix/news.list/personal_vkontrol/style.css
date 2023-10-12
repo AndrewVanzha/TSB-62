@@ -1,4 +1,4 @@
-.v21 .v21-section .consultations-tileblock {
+.v21 .v21-section .personal-vkontrol-tileblock {
     padding: 32px 0;
     /*font-family: Canela Deck LC;
     font-size: 20px;
@@ -6,70 +6,97 @@
     letter-spacing: 0em;*/
     /*outline: 1px solid darkred;*/
 }
-.v21 .consultations-tileblock__header {
+.v21 .personal-vkontrol-tileblock__header {
     margin: 0 0 32px 0;
     font-family: Canela Deck LC;
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 300;
-    line-height: 39px;
+    line-height: 50px;
     letter-spacing: 0em;
     text-align: center;
 }
-.v21 .consultations-tileblock__grid {
-    /*display: flex;
+.v21 .personal-vkontrol-tileblock__grid {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    row-gap: 24px;*/
-    display: grid;
+    row-gap: 24px;
+    /*display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: max-content;
     grid-column-gap: 0;
-    grid-row-gap: 50px;
+    grid-row-gap: 50px;*/
     position: relative;
 }
-.v21 .consultations-tileblock__grid--item {
+.v21 .personal-vkontrol-tileblock__grid--textbox {
+    flex: 1 1 100%;
+    order: 3;
+}
+.v21 .personal-vkontrol-tileblock__grid--imgbox {
+    flex: 0 0 100%;
+    order: 1;
+}
+.v21 .personal-vkontrol-tileblock__grid--item {
     /*flex: 0 0 140px;
     width: 100%;*/
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
     min-width: 140px;
 }
-.v21 .consultations-tileblock__grid--item-box {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    color: #000000;
+.v21 .personal-vkontrol-tileblock__grid--item:last-of-type {
+    margin-bottom: 0;
 }
-.v21 .consultations-tileblock__grid--item-box.box-1 {
+.v21 .personal-vkontrol-tileblock__grid--item-box {
+    display: flex;
+    /*justify-content: center;*/
+    flex-wrap: wrap;
+    row-gap: 15px;
+    position: relative;
+}
+.v21 .personal-vkontrol-tileblock__grid--item-box.box-1 {
     /*display: flex;
     justify-content: space-between;*/
     /*row-gap: 24px;*/
-    font-family: Canela Deck LC;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0em;
-    text-align: center;
+    color: #000000;
+    /*text-align: center;*/
 }
-.v21 .consultations-tileblock__grid--img {
+.v21 .personal-vkontrol-tileblock__grid--img {
     width: 48px;
     margin-bottom: 16px;
 }
-.v21 .consultations-tileblock__grid--title {
+.v21 .personal-vkontrol-topblock__image {}
+.v21 .personal-vkontrol-topblock__image--1024,
+.v21 .personal-vkontrol-topblock__image--768,
+.v21 .personal-vkontrol-topblock__image--480 {
+    display: none;
+    text-align: center;
+}
+.v21 .personal-vkontrol-topblock__image--320 {
+    display: block;
+    text-align: center;
+}
+.v21 .personal-vkontrol-tileblock__grid--title {
     /*flex: 1 0 100%;*/
     margin: 0 0 3px 0;
     width: 100%;
+    font-family: Canela Deck LC;
+    font-size: 20px;
     font-weight: 300;
+    line-height: 28px;
+    letter-spacing: 0em;
 }
-.v21 .consultations-tileblock__grid--subtitle {
+.v21 .personal-vkontrol-tileblock__grid--subtitle {
     /*flex: 1 0 100%;*/
-    margin: 0 auto;
-    font-weight: 300;
-    text-align: center;
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
     /*font-size: 16px;
     font-weight: 300;
     line-height: 24px;
     letter-spacing: 0.01em;
     color: #546770;*/
+    font-family: RF Dewi;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
 }
 /*.v21 .base-account-tileblock__grid--horline {
     position: absolute;
@@ -87,89 +114,118 @@
 }*/
 
 @media screen and (min-width: 480px) {
-    .v21 .consultations-tileblock__header {
-        font-size: 36px;
-        line-height: 50px;
+    .v21 .personal-vkontrol-tileblock__header {
+        /*font-size: 36px;
+        line-height: 50px;*/
     }
-    .v21 .consultations-tileblock__grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: max-content max-content;
+    .v21 .personal-vkontrol-tileblock__grid {
+        /*grid-template-columns: 1fr 1fr;
+        grid-template-rows: max-content max-content;*/
     }
-    .v21 .consultations-tileblock__grid--item {
+    .v21 .personal-vkontrol-tileblock__grid--item {
         /*flex-basis: 220px;*/
         /*width: 220px;*/
+    }
+    .v21 .personal-vkontrol-topblock__image--320 {
+        display: none;
+    }
+    .v21 .personal-vkontrol-topblock__image--480 {
+        display: block;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-section .consultations-tileblock {
+    .v21 .v21-section .personal-vkontrol-tileblock {
         /*margin-top: 117px;*/
         padding-top: 64px;
         padding-bottom: 64px;
         /*font-size: 24px;
         line-height: 31px;*/
     }
-    .v21 .consultations-tileblock__header {
+    .v21 .personal-vkontrol-tileblock__header {
         margin-bottom: 64px;
     }
-    .v21 .consultations-tileblock__grid {
-        grid-column-gap: 60px;
+    .v21 .personal-vkontrol-tileblock__grid {
+        /*grid-column-gap: 60px;*/
+        flex-wrap: nowrap;
     }
-    .v21 .consultations-tileblock__grid--item {
+    .v21 .personal-vkontrol-tileblock__grid--textbox {
+        flex-basis: auto;
+    }
+    .v21 .personal-vkontrol-tileblock__grid--imgbox {
+        flex-basis: 364px;
+        order: 5;
+    }
+    .v21 .personal-vkontrol-tileblock__grid--item {
         /*flex-basis: 364px;*/
         /*width: 364px;*/
     }
-    .v21 .consultations-tileblock__grid--img {
+    .v21 .personal-vkontrol-tileblock__grid--img {
         width: 60px;
     }
-    .v21 .consultations-tileblock__grid--subtitle {
+    .v21 .personal-vkontrol-tileblock__grid--subtitle {
         /*flex-basis: 198px;
         display: flex;
         justify-content: flex-end;*/
     }
+    .v21 .personal-vkontrol-topblock__image--480 {
+        display: none;
+    }
+    .v21 .personal-vkontrol-topblock__image--768 {
+        display: block;
+    }
 }
 
 @media screen and (min-width: 1024px) {
-    /*.v21 .v21-section .consultations-tileblock {
+    /*.v21 .v21-section .personal-vkontrol-tileblock {
         font-size: 30px;
         line-height: 39px;
     }*/
-    .v21 .consultations-tileblock__grid {
-        grid-column-gap: 100px;
+    .v21 .personal-vkontrol-tileblock__header {
+        margin-bottom: 120px;
+    }
+    .v21 .personal-vkontrol-tileblock__grid {
+        /*grid-column-gap: 100px;*/
         /*row-gap: 100px;*/
     }
-    .v21 .consultations-tileblock__grid--item {
+    .v21 .personal-vkontrol-tileblock__grid--imgbox {
+        flex-basis: 450px;
+    }
+    .v21 .personal-vkontrol-tileblock__grid--item {
         /*flex-basis: 480px;*/
         /*width: 480px;*/
     }
-    .v21 .consultations-tileblock__grid--img {
+    .v21 .personal-vkontrol-tileblock__grid--img {
         width: 81px;
         margin-bottom: 24px;
     }
-    .v21 .consultations-tileblock__grid--item-box.box-1 {
+    .v21 .personal-vkontrol-tileblock__grid--item-box.box-1 {
         font-size: 22px;
         line-height: 31px;
     }
+    .v21 .personal-vkontrol-topblock__image--768 {
+        display: none;
+    }
+    .v21 .personal-vkontrol-topblock__image--1024 {
+        display: block;
+    }
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-section .consultations-tileblock {
+    .v21 .v21-section .personal-vkontrol-tileblock {
         padding-top: 120px;
         padding-bottom: 120px;
     }
-    .v21 .consultations-tileblock__header {
-        margin-bottom: 120px;
-    }
-    .v21 .consultations-tileblock__grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+    .v21 .personal-vkontrol-tileblock__grid {
+        /*grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: max-content;
-        grid-column-gap: 120px;
+        grid-column-gap: 120px;*/
         /*row-gap: 32px;*/
     }
-    .v21 .consultations-tileblock__grid--item {
+    .v21 .personal-vkontrol-tileblock__grid--item {
         /*flex-basis: 300px;*/
         /*width: 300px;*/
     }
-    .v21 .consultations-tileblock__grid--img {
+    .v21 .personal-vkontrol-tileblock__grid--img {
         margin-bottom: 30px;
     }
     /*.v21 .base-account-tileblock__grid--verline {

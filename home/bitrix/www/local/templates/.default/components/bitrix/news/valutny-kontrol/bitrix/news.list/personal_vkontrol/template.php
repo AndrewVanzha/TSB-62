@@ -12,31 +12,73 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<? //debugg($arParams["SERVICES_BLOCK"]) ?>
-<? //debugg($arResult["PROPERTIES"]) ?>
+<?// debugg($arParams["SERVICES_BLOCK"]) ?>
+<?// debugg($arResult["PROPERTIES"]) ?>
 <??>
-<section class="consultations-tileblock">
-    <h3 class="consultations-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
-    <div class="consultations-tileblock__grid">
-        <?/*?><div class="base-account-tileblock__grid--horline horline-1"></div>
-        <div class="base-account-tileblock__grid--horline horline-2"></div><?*/?>
-        <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-            <div class="consultations-tileblock__grid--item">
-                <div class="consultations-tileblock__grid--item-box box-1">
-                    <div class="consultations-tileblock__grid--img">
-                        <img
-                                src="<?=CFile::GetPath($arItem["icon"])?>"
-                                alt="иконка"
-                                title="<?=$arItem["main"]?>"
-                        />
+<section class="personal-vkontrol-tileblock">
+    <h3 class="personal-vkontrol-tileblock__header"><?= $arResult["PROPERTY_HEADER"] ?></h3>
+    <div class="personal-vkontrol-tileblock__grid">
+        <div class="personal-vkontrol-tileblock__grid--textbox">
+            <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
+                <div class="personal-vkontrol-tileblock__grid--item">
+                    <div class="personal-vkontrol-tileblock__grid--item-box box-1">
+                        <h4 class="personal-vkontrol-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
+                        <p class="personal-vkontrol-tileblock__grid--subtitle">
+                            <span><?= $arItem["dop"]; ?></span>
+                        </p>
                     </div>
-                    <h4 class="consultations-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
-                    <p class="consultations-tileblock__grid--subtitle">
-                        <span><?= $arItem["dop"]; ?></span>
-                    </p>
                 </div>
-            </div>
-        <? endforeach; ?>
+            <? endforeach; ?>
+        </div>
+        <div class="personal-vkontrol-tileblock__grid--imgbox">
+            <?/* if ($arResult["PROPERTIES"]["PATH"]["icon"]) : ?>
+                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--1366">
+                    <img
+                            src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1366]["icon"])?>"
+                            alt="картинка"
+                            title="<?=$arResult["NAME"]?>"
+                    />
+                </div>
+            <? endif; */?>
+            <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][3]["icon"]) : ?>
+                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--1024">
+                    <img
+                            src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][3]["icon"])?>"
+                            alt="картинка"
+                            title="<?=$arResult["NAME"]?>"
+                    />
+                </div>
+            <? endif; ?>
+            <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][2]["icon"]) : ?>
+                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--768">
+                    <img
+                            src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][2]["icon"])?>"
+                            alt="картинка"
+                            title="<?=$arResult["NAME"]?>"
+                    />
+                </div>
+            <? endif; ?>
+            <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][1]["icon"]) : ?>
+                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--480">
+                    <img
+                            src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][1]["icon"])?>"
+                            alt="картинка"
+                            title="<?=$arResult["NAME"]?>"
+                    />
+                </div>
+            <? endif; ?>
+            <? if ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][0]["icon"]) : ?>
+                <div class="personal-vkontrol-topblock__image personal-vkontrol-topblock__image--320">
+                    <img
+                            src="<?=CFile::GetPath($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]][0]["icon"])?>"
+                            alt="картинка"
+                            title="<?=$arResult["NAME"]?>"
+                    />
+                </div>
+            <? endif; ?>
+        </div>
+        <?/*?><div class="base-account-tileblock__grid--horline horline-1"></div>
+    <div class="base-account-tileblock__grid--horline horline-2"></div><?*/?>
     </div>
 </section>
 <??>
