@@ -376,6 +376,7 @@ $APPLICATION->IncludeComponent(
                 <? $APPLICATION->IncludeComponent(
                     "webtu:feedback",
                     "v21_consult_form",
+                    //"VED_consult_new",
                     array(
                         "AJAX_MODE" => "Y",
                         "COMPONENT_TEMPLATE" => "VED_consult",
