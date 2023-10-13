@@ -15,13 +15,22 @@ $this->setFrameMode(true);
 <? //debugg($arParams["SERVICES_BLOCK"]) ?>
 <? //debugg($arResult["ITEMS"]) ?>
 <??>
+<?
+if (count($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]])%2) { // odd
+    $gridFlag = 'odd';
+}
+else { // even
+    $gridFlag = 'even';
+}
+$ix = 0;
+?>
 <section class="risk-hedge-tileblock">
     <h3 class="risk-hedge-tileblock__header"><?= $arResult["PROPERTY_HEADER"]; ?></h3>
-    <div class="risk-hedge-tileblock__grid">
+    <div class="risk-hedge-tileblock__grid--<?= $gridFlag ?>">
         <?/*?><div class="risk-hedge-tileblock__grid--horline horline-1"></div>
         <div class="risk-hedge-tileblock__grid--horline horline-2"></div><?*/?>
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
-            <div class="risk-hedge-tileblock__grid--item" >
+            <div class="risk-hedge-tileblock__grid--item grid--item__<?= $gridFlag ?>-<?= $ix++ ?>">
                 <div class="risk-hedge-tileblock__grid--item-box box-1">
                     <div class="risk-hedge-tileblock__grid--img">
                         <img

@@ -11,23 +11,51 @@
 .v21 .risk-hedge-tileblock__header {
     margin: 0 0 32px 0;
     font-family: Canela Deck LC;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 300;
-    line-height: 50px;
+    line-height: 39px;
     letter-spacing: 0em;
     text-align: center;
 }
 .v21 .risk-hedge-tileblock__grid {
+}
+.v21 .risk-hedge-tileblock__grid--even {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: max-content max-content;
-    grid-column-gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+    grid-column-gap: 5px;
+    grid-row-gap: 24px;
+    position: relative;
+}
+.v21 .risk-hedge-tileblock__grid--odd {
+    display: grid;
+    grid-template-areas:
+            "a a b b c c"
+            "f d d e e g";
+    grid-template-rows: max-content;
+    grid-column-gap: 3px;
     grid-row-gap: 24px;
     position: relative;
 }
 .v21 .risk-hedge-tileblock__grid--item {
-    margin: 0 auto;
-    width: 140px;
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 90px;
+}
+.v21 .risk-hedge-tileblock__grid--item.grid--item__odd-0 {
+    grid-area: a;
+}
+.v21 .risk-hedge-tileblock__grid--item.grid--item__odd-1 {
+    grid-area: b;
+}
+.v21 .risk-hedge-tileblock__grid--item.grid--item__odd-2 {
+    grid-area: c;
+}
+.v21 .risk-hedge-tileblock__grid--item.grid--item__odd-3 {
+    grid-area: d;
+}
+.v21 .risk-hedge-tileblock__grid--item.grid--item__odd-4 {
+    grid-area: e;
 }
 .v21 .risk-hedge-tileblock__grid--item-box {
     display: flex;
@@ -46,7 +74,7 @@
     margin: 0 0 3px 0;
     width: 100%;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
@@ -69,13 +97,9 @@
 
 
 @media screen and (min-width: 480px) {
-    .v21 .risk-hedge-tileblock__grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: max-content;
-    }
-    .v21 .risk-hedge-tileblock__grid--item {
+    /*.v21 .risk-hedge-tileblock__grid--item {
         width: 106px;
-    }
+    }*/
     .v21 .risk-hedge-tileblock__grid--img {
         width: 61px;
     }
@@ -90,10 +114,12 @@
     }
     .v21 .risk-hedge-tileblock__header {
         margin-bottom: 64px;
+        font-size: 36px;
+        line-height: 50px;
     }
-    .v21 .risk-hedge-tileblock__grid--item {
+    /*.v21 .risk-hedge-tileblock__grid--item {
         width: 178px;
-    }
+    }*/
     .v21 .risk-hedge-tileblock__grid--img {
         width: 87px;
     }
@@ -110,23 +136,30 @@
         font-size: 30px;
         line-height: 39px;
     }
-    .v21 .risk-hedge-tileblock__grid--item {
+    /*.v21 .risk-hedge-tileblock__grid--item {
         width: 236px;
-    }
+    }*/
     .v21 .risk-hedge-tileblock__grid--img {
         margin-bottom: 30px;
     }
 }
 @media screen and (min-width: 1366px) {
+    .v21 .risk-hedge-tileblock__grid--even {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .v21 .risk-hedge-tileblock__grid--odd {
+        grid-template-areas:
+            "a b c d e";
+    }
     .v21 .v21-section .risk-hedge-tileblock {
         padding: 120px 0;
     }
     .v21 .risk-hedge-tileblock__header {
         margin-bottom: 120px;
     }
-    .v21 .risk-hedge-tileblock__grid--item {
+    /*.v21 .risk-hedge-tileblock__grid--item {
         width: 300px;
-    }
+    }*/
     .v21 .risk-hedge-tileblock__grid--title {
         font-size: 22px;
         line-height: 31px;
