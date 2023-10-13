@@ -1,7 +1,7 @@
 .v21 .v21-account-services-container,
 .v21 .v21-fast-transactions-container,
 .v21 .v21-account-application-container,
-.v21 .v21-popproducts-inyuans-container {
+.v21 .v21-questiones-answers-container {
     background-color: #ffffff;
 }
 .v21 .v21-ved-consultations-wrap {
@@ -22,9 +22,9 @@
 .v21 .v21-consult-application {
     flex: 1 1 100%;
 }
-.v21 .v21-popproducts-inyuans--wrap {
+.v21 .v21-questiones-answers-container {
     padding: 32px 0;
-    outline: 1px solid darkgoldenrod;
+    /*outline: 1px solid darkgoldenrod;*/
 }
 
 @media screen and (min-width: 768px) {
@@ -33,7 +33,7 @@
         font-size: 36px;
         line-height: 50px;
     }
-    .v21 .v21-popproducts-inyuans--wrap {
+    .v21 .v21-questiones-answers-container {
         padding-top: 64px;
         padding-bottom: 64px;
     }
@@ -53,7 +53,7 @@
     .v21 .v21-ved-consultation-header {
         margin-bottom: 120px;
     }
-    .v21 .v21-popproducts-inyuans--wrap {
+    .v21 .v21-questiones-answers-container {
         padding: 120px 0;
     }
 }

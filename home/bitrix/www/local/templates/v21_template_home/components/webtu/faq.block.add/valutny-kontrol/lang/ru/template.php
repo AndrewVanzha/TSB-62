@@ -1,3 +1,3 @@
 <?
-$MESS["FAQ_BLOCK_HEADER"] = "Часто задаваемые вопросы";
+$MESS["FAQ_BLOCK_HEADER"] = "Вопросы и ответы";
 ?>
