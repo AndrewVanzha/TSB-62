@@ -130,29 +130,6 @@ $APPLICATION->IncludeComponent(
     ),
     false
 );?>
-<div class="v21-card-application" id="fBusinessAccountForm">
-    <? $iblock_id = "215";  // Заявка на открытие счета
-    $APPLICATION->IncludeComponent(
-        "webtu:feedback",
-        "account_application_new",
-        Array(
-            "ADMIN_EVENT" => "WEBTU_FEEDBACK_ACCOUNTS_ADMIN",
-            "AJAX_MODE" => "Y",
-            "AJAX_OPTION_ADDITIONAL" => "",
-            "AJAX_OPTION_HISTORY" => "N",
-            "AJAX_OPTION_JUMP" => "N",
-            "AJAX_OPTION_STYLE" => "Y",
-            "COMPONENT_TEMPLATE" => "account_application_new",
-            "EVENT_CALLBACK" => function($post){$post['RECOURSE']='Уважаемый(ая)';return$post;},
-            "IBLOCK_ID" => $iblock_id,  // Заявка на открытие счета
-            "PROPERTIES" => array("PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","CURRENCY","FIO","NAME","EMAIL","CITY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
-            "SITES" => array(0=>"s1",),
-            "USER_EVENT" => "WEBTU_FEEDBACK_ACCOUNTS_USER",
-            "UTM" => "150",
-        )
-    );?>
-</div>
-
     </div><!-- v21-container -->
 </div><!-- v21-section -->
 
