@@ -134,8 +134,23 @@ $APPLICATION->IncludeComponent(
 </div><!-- v21-section -->
 
 <div class="v21-section">
-    <div class="v21-wide-container v21-popproducts-inyuans-container">
+    <div class="v21-wide-container v21-questiones-answers-container">
+        <div class="v21-container">
+            <?$APPLICATION->IncludeComponent(
+                "webtu:faq.block.add",
+                "valutny-kontrol",
+                Array(
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "HIGHLOAD_IBLOCK_ID" => "10"  // Highload-блоки / ValutnyKontrolFAQ
+                )
+            );?>
+        </div>
+    </div><!-- v21-container -->
+</div><!-- v21-section -->
 
+<div class="v21-section">
+    <!--div class="v21-wide-container v21-popproducts-inyuans-container"-->
         <div class="v21-container">
             <?$APPLICATION->IncludeComponent(
                 "bitrix:main.include",
@@ -146,7 +161,7 @@ $APPLICATION->IncludeComponent(
                     "EDIT_TEMPLATE" => ""
                 )
             );?>
-        </div>
+        <!--/div-->
 
     </div><!-- v21-container -->
 </div><!-- v21-section -->
