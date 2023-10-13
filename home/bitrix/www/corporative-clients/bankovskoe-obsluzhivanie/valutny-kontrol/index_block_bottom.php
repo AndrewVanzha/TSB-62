@@ -1,6 +1,6 @@
 <?/*?<div class="v21-container"><?*/?>
-    <section class="v21-popproducts-inyuans--wrap v21-section-interests">
-        <?/*?><h2 class="v21-h2 v21-block-interests--header">Популярные продукты</h2><?*/?>
+    <section class="v21-valutny-kontrol--wrap v21-section-interests">
+        <??><h2 class="v21-section-interests--header">Вам может быть интересно</h2><??>
         <div class="v21-section-interests--box">
             <div class="v21-section-interests--left">
                 <div class="v21-section-interests--textbox">
