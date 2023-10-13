@@ -176,7 +176,7 @@
                             </label>
                         </div>
                     </div>
-                    <input type="hidden" name="NAME" value="<?=$arResult['POST']['COMPANY']?>" id="<?= 'name_'.$arResult['FORM_ID']; ?>">
+                    <input type="hidden" name="NAME" value="<?=$arResult['POST']['COMPANY_NAME']?>" id="<?= 'name_'.$arResult['FORM_ID']; ?>">
 
                     <div class="card-application--form__section">
                         <div class="grid__item-1">
@@ -201,8 +201,7 @@
                             <label class="input-group">
                                 <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_3_NAME")?></span><?*/?>
                                 <input class="input-group__field"
-                                        type="text"
-                                        name="FIO"
+                                        type="text" name="FIO"
                                         placeholder="ФИО"
                                     <? if (isset($arResult['POST']['FIO'])) { ?> value="<?=$arResult['POST']['FIO']?>" <? } ?>
                                 >
@@ -266,7 +265,7 @@
                     <div class="card-application--form__section">
                         <div class="grid__item-2">
                             <label class="input-group">
-                                <input class="input-group__field"
+                                <input class="input-group__field" required
                                     type="tel" name="PHONE"
                                     placeholder="+7 ___ ___ __ __"
                                     data-inputmask="'mask': '+7 999 999 99 99'"
@@ -284,8 +283,7 @@
                         <div class="grid__item-2">
                             <label class="input-group">
                                 <input class="input-group__field"
-                                    type="email"
-                                    name="EMAIL"
+                                    type="email" name="EMAIL"
                                     placeholder="email@mail.com"
                                     <? if (isset($arResult['POST']['EMAIL'])) { ?> value="<?=$arResult['POST']['EMAIL']?>" <? } ?>
                                 >
@@ -532,7 +530,7 @@
             'input[name="FIO"]',
             'input[name="CITY"]',
             'input[name="CURRENCY"]',
-            'input[name="PHONE"]',
+            //'input[name="PHONE"]',
             'input[name="EMAIL"]',
             'input[name="FROM_WHERE"]',
         ];
