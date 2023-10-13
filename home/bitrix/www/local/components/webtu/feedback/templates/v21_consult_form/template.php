@@ -119,14 +119,14 @@
 
                 <div class="ved-consult--form__section">
                     <?/*?><div class="grid__item-1"><?*/?>
-                        <div class="grid__item-button" name="WEBTU_FEEDBACK">
+                        <button class="grid__item-button" name="WEBTU_FEEDBACK">
                             <?= GetMessage("WEBTU_FEEDBACK_2_BUTTON") ?>
                             <?/*?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                                 <path d="M14.7307 1.51639C14.7307 0.964101 14.283 0.516386 13.7307 0.516386L4.73068 0.516387C4.1784 0.516386 3.73068 0.964102 3.73068 1.51639C3.73068 2.06867 4.1784 2.51639 4.73068 2.51639L12.7307 2.51639L12.7307 10.5164C12.7307 11.0687 13.1784 11.5164 13.7307 11.5164C14.283 11.5164 14.7307 11.0687 14.7307 10.5164L14.7307 1.51639ZM1.70711 14.9542L14.4378 2.22349L13.0236 0.80928L0.292893 13.54L1.70711 14.9542Z" fill="white"/>
                             </svg>
                             <?*/?>
-                        </div>
+                        </button>
                     <?/*?></div><?*/?>
                 </div>
 
@@ -266,7 +266,7 @@
 
     $('#consultForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
+        console.log('1');
         if ($("#politics3").prop("checked")) {
             $('#politics3').parent().parent().removeClass("is-error");
             //console.log('2');
