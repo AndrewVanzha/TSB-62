@@ -22,7 +22,7 @@ $this->setFrameMode(true);
         <div class="base-account-tileblock__grid--horline horline-2"></div><?*/?>
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
             <div class="consultations-tileblock__grid--item">
-                <div class="consultations-tileblock__grid--item-box box-1">
+                <div class="consultations-tileblock__grid--item-box item-box-<?= $key ?>">
                     <div class="consultations-tileblock__grid--img">
                         <img
                                 src="<?=CFile::GetPath($arItem["icon"])?>"
@@ -32,7 +32,9 @@ $this->setFrameMode(true);
                     </div>
                     <h4 class="consultations-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
                     <p class="consultations-tileblock__grid--subtitle">
-                        <span><?= $arItem["dop"]; ?></span>
+                        <? if ($arItem["dop"]) : ?>
+                            <span><?= $arItem["dop"]; ?></span>
+                        <? endif; ?>
                     </p>
                 </div>
             </div>
