@@ -132,9 +132,11 @@
         font-size: 30px;
         line-height: 39px;
     }*/
-    /*.v21 .possibilities-tileblock__grid {
-        row-gap: 100px;
-    }*/
+    .v21 .possibilities-tileblock__grid {
+        max-width: 753px;
+        margin: 0 auto;
+        grid-column-gap: 30px;
+    }
     .v21 .possibilities-tileblock__grid--item {
         /*flex-basis: 480px;*/
         /*width: 480px;*/

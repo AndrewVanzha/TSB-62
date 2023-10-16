@@ -577,9 +577,13 @@
 .v21 .rko-doc__all--link-button {
     display: block;
     margin: 0;
-    font-size: 19px;
+    /*font-size: 19px;
     font-weight: 400;
-    line-height: 23px;
+    line-height: 23px;*/
+    font-family: RF Dewi;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
     letter-spacing: 0;
     color: #00345e;
 }
@@ -599,8 +603,10 @@
 }
 .v21 .rko-doc__all--link-arrow {
     position: relative;
-    right: -4px;
-    top: 7px;
+    /*right: -4px;*/
+    right: -7px;
+    /*top: 7px;*/
+    top: 1px;
 }
 
 @media all and (max-width: 929px) {
@@ -684,4 +690,29 @@
 }
 
 @media all and (min-width: 580px) {
+}
+
+
+.v21 .v21-documents-vkontrol-tileblock .v21-section__subtitle {
+    font-family: Canela Deck LC;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 31px;
+    letter-spacing: 0em;
+    color: #000000;
+}
+.v21 .v21-documents-vkontrol-tileblock .v21-document__title {
+    font-family: RF Dewi;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    color: #000000;
+}
+.v21 .v21-documents-vkontrol-tileblock .v21-document__download {
+    font-family: RF Dewi;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
 }

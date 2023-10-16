@@ -29,6 +29,7 @@
 }
 .v21 .template-topblock__content {
     margin: 0 0 32px 0;
+    max-width: 639px;
     font-family: RF Dewi;
     font-size: 16px;
     font-weight: 400;
@@ -311,7 +312,7 @@
         display: block;
     }
     .v21 .template-topblock {
-        justify-content: flex-start;
+        justify-content: space-between;
         flex-wrap: nowrap;
         /*margin-top: 104px;*/
         padding-bottom: 67px;
@@ -466,7 +467,7 @@
         margin-top: 145px;
     }
     .v21 .template-topblock__block {
-        max-width: 692px;
+        max-width: 690px;
     }
 }
 @media screen and (min-width: 1920px) {

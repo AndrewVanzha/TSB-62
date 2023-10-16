@@ -445,8 +445,8 @@ $APPLICATION->IncludeComponent(
 
 </div><!-- v21-section -->
 
-<div class="v21-section">
-<div class="v21-wide-container v21-description-container">
+<div class="">
+<div class="">
 
 <?/*?>
 <div class="v21-container">

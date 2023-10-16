@@ -100,9 +100,6 @@
     /*.v21 .risk-hedge-tileblock__grid--item {
         width: 106px;
     }*/
-    .v21 .risk-hedge-tileblock__grid--img {
-        width: 61px;
-    }
 }
 
 @media screen and (min-width: 768px) {
@@ -121,7 +118,7 @@
         width: 178px;
     }*/
     .v21 .risk-hedge-tileblock__grid--img {
-        width: 87px;
+        width: 61px;
     }
     .v21 .risk-hedge-tileblock__grid--title {
         font-size: 20px;
@@ -141,6 +138,7 @@
     }*/
     .v21 .risk-hedge-tileblock__grid--img {
         margin-bottom: 30px;
+        width: 82px;
     }
 }
 @media screen and (min-width: 1366px) {

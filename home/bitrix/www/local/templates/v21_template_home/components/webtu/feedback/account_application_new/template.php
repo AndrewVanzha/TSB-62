@@ -263,11 +263,28 @@
                     <??>
 
                     <div class="card-application--form__section">
+                    <div class="grid__item-2">
+                            <label class="input-group">
+                                <input class="input-group__field"
+                                    type="email" name="EMAIL"
+                                    placeholder="Электронная почта"
+                                    <? if (isset($arResult['POST']['EMAIL'])) { ?> value="<?=$arResult['POST']['EMAIL']?>" <? } ?>
+                                >
+                                <div class="input-group--achtung">
+                                    <span class="input-group--warn">Обязательное поле к заполнению</span>
+                                </div>
+                                <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
+                                <?/*?><span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_EMAIL") ?></span><?*/?>
+                                <?/*?><span class="v21-input-group__note"><?= GetMessage("WEBTU_FEEDBACK_3_EMAIL_LINE") ?></span><?*/?>
+                            </label>
+                        </div>
+
                         <div class="grid__item-2">
                             <label class="input-group">
                                 <input class="input-group__field" required
                                     type="tel" name="PHONE"
-                                    placeholder="+7 ___ ___ __ __"
+                                    <?/*?>placeholder="+7 ___ ___ __ __"<?*/?>
+                                    placeholder="Мобильный телефон"
                                     data-inputmask="'mask': '+7 999 999 99 99'"
                                     <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
                                 >
@@ -277,22 +294,6 @@
                                 <?/*?><span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE") ?></span><?*/?>
                                 <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
                                 <?/*?><span class="v21-input-group__note"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE_LINE") ?></span><?*/?>
-                            </label>
-                        </div>
-
-                        <div class="grid__item-2">
-                            <label class="input-group">
-                                <input class="input-group__field"
-                                    type="email" name="EMAIL"
-                                    placeholder="email@mail.com"
-                                    <? if (isset($arResult['POST']['EMAIL'])) { ?> value="<?=$arResult['POST']['EMAIL']?>" <? } ?>
-                                >
-                                <div class="input-group--achtung">
-                                    <span class="input-group--warn">Обязательное поле к заполнению</span>
-                                </div>
-                                <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
-                                <?/*?><span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_EMAIL") ?></span><?*/?>
-                                <?/*?><span class="v21-input-group__note"><?= GetMessage("WEBTU_FEEDBACK_3_EMAIL_LINE") ?></span><?*/?>
                             </label>
                         </div>
                     </div>
