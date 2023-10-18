@@ -34,15 +34,6 @@ $ix = 0;
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
             <div class="accounts-currencies-tileblock__grid--item grid--item__<?= $gridFlag ?>-<?= $ix++ ?>" >
                 <div class="accounts-currencies-tileblock__grid--item-box box-1">
-                    <?/*?>
-                    <div class="accounts-currencies-tileblock__grid--img">
-                        <img
-                                src="<?=CFile::GetPath($arItem["icon"])?>"
-                                alt="иконка"
-                                title="<?=$arItem["main"]?>"
-                        />
-                    </div>
-                    <?*/?>
                     <? foreach ($arItem["icon"] as $key=>$icon) : ?>
                     <div class="accounts-currencies-tileblock__grid--img grid--img_<?= $key ?>">
                         <img
