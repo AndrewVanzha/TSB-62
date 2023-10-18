@@ -64,7 +64,7 @@
     font-weight: 400;
     line-height: 29px;
     letter-spacing: 0.01em;
-    color: #202020;
+    color: #000000;
     cursor: pointer;
     position: relative;
 }
@@ -75,10 +75,16 @@
     position: absolute;
     right: 0;
     top: 14px;*/
+    padding: 0;
+    width: 10px;
+    height: 6px;
+    position: absolute;
+    right: 16px;
+    top: 30px;
 }
 .v21 .faq-questions .faq-questions--block__item-mark::before {
-    top: 10px;
-    right: 16px;
+    position: absolute;
+    top: 0;
 }
 .v21 .faq-questions--block__item.is-active {}
 .v21 .faq-questions--block__item-header {
