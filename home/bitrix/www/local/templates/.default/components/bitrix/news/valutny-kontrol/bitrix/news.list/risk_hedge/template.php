@@ -22,6 +22,7 @@ if (count($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]])%2) { // odd
 else { // even
     $gridFlag = 'even';
 }
+$gridFlag = 'odd'; // рссчитываю только на 5 элементов 3х размеров
 $ix = 0;
 ?>
 <section class="risk-hedge-tileblock">
@@ -32,13 +33,15 @@ $ix = 0;
         <? foreach ($arResult["PROPERTIES"][$arParams['SERVICES_BLOCK'][0]] as $key=>$arItem) : ?>
             <div class="risk-hedge-tileblock__grid--item grid--item__<?= $gridFlag ?>-<?= $ix++ ?>">
                 <div class="risk-hedge-tileblock__grid--item-box box-1">
-                    <div class="risk-hedge-tileblock__grid--img">
+                    <? foreach ($arItem["icon"] as $key=>$icon) : ?>
+                    <div class="risk-hedge-tileblock__grid--img grid--img_<?= $key ?>">
                         <img
-                                src="<?=CFile::GetPath($arItem["icon"])?>"
+                                src="<?=CFile::GetPath($icon)?>"
                                 alt="иконка"
                                 title="<?=$arItem["main"]?>"
                         />
                     </div>
+                    <? endforeach; ?>
                     <h4 class="risk-hedge-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
                 </div>
             </div>

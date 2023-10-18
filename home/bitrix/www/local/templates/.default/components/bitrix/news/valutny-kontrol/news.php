@@ -559,6 +559,7 @@ $APPLICATION->IncludeComponent(
                         "EVENT_CALLBACK" => function($post){$post['RECOURSE']='Уважаемый(ая)';return$post;},
                         "IBLOCK_ID" => $iblock_id,  // Заявка на открытие счета
                         "PROPERTIES" => array("PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","CURRENCY","FIO","NAME","EMAIL","CITY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
+                        "FORM_HEADER" => "Запрос на открытие счета",
                         "SITES" => array(0=>"s1",),
                         "USER_EVENT" => "WEBTU_FEEDBACK_ACCOUNTS_USER",
                         "UTM" => "150",

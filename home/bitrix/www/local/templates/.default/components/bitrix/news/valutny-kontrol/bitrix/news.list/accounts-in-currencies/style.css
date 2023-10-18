@@ -71,8 +71,18 @@
 }
 .v21 .accounts-currencies-tileblock__grid--item-box.box-1 {}
 .v21 .accounts-currencies-tileblock__grid--img {
-    width: 49px;
     margin-bottom: 16px;
+}
+.v21 .accounts-currencies-tileblock__grid--img.grid--img_size_1 {
+    width: 49px;
+}
+.v21 .accounts-currencies-tileblock__grid--img.grid--img_size_2 {
+    display: none;
+    width: 62px;
+}
+.v21 .accounts-currencies-tileblock__grid--img.grid--img_size_3 {
+    display: none;
+    width: 82px;
 }
 .v21 .accounts-currencies-tileblock__grid--title {
     /*font-family: Canela Deck LC;*/
@@ -122,8 +132,11 @@
     /*.v21 .accounts-currencies-tileblock__grid--item {
         width: 178px;
     }*/
-    .v21 .accounts-currencies-tileblock__grid--img {
-        width: 61px;
+    .v21 .accounts-currencies-tileblock__grid--img.grid--img_size_1 {
+        display: none;
+    }
+    .v21 .accounts-currencies-tileblock__grid--img.grid--img_size_2 {
+        display: block;
     }
     .v21 .accounts-currencies-tileblock__grid--title {
         font-size: 20px;
@@ -142,8 +155,13 @@
         width: 236px;
     }*/
     .v21 .accounts-currencies-tileblock__grid--img {
-        width: 82px;
         margin-bottom: 24px;
+    }
+    .v21 .accounts-currencies-tileblock__grid--img.grid--img_size_2 {
+        display: none;
+    }
+    .v21 .accounts-currencies-tileblock__grid--img.grid--img_size_3 {
+        display: block;
     }
 }
 @media screen and (min-width: 1366px) {

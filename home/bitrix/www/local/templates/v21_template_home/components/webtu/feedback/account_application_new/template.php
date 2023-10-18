@@ -143,7 +143,8 @@
                 <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
                 <div class="card-application--content">
-                    <h2 class="card-application--header"><?=GetMessage("WEBTU_FEEDBACK_3_HEADER")?></h2>
+                    <?/*?><h2 class="card-application--header"><?= GetMessage("WEBTU_FEEDBACK_3_HEADER") ?></h2><?*/?>
+                    <h2 class="card-application--header"><?= $arParams['FORM_HEADER'] ?></h2>
 
                     <?/* if (!empty($arResult['ERRORS'])) { ?>
                         <? foreach ($arResult['ERRORS'] as $error) { ?>
