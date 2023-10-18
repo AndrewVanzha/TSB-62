@@ -58,6 +58,8 @@ foreach ($arResult["ITEMS"] as $arItem) {
 //debugg($main_items);
 //debugg($dop_items);
 //debugg($icon_items);
+define("N_icons", 5);   // рссчитываю только на 5 элементов одного размера
+$icon_items_cycles = (int)count($icon_items) / N_icons;   // рссчитываю только на 15 элементов 3х размеров
 
 if (!empty($main_items) && !empty($icon_items)) {
     for ($ii=0; $ii<count($main_items); $ii++) {
@@ -68,9 +70,23 @@ if (!empty($main_items) && !empty($icon_items)) {
             $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['dop'] = '';
         }*/
         if ($icon_items[$ii]) {
-            $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon'] = $icon_items[$ii];
+            $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_1'] = $icon_items[$ii];
         } else {
-            $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon'] = '';
+            $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_1'] = '';
+        }
+        if ($icon_items_cycles >= 2) {
+            if ($icon_items[$ii+N_icons]) {
+                $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_2'] = $icon_items[$ii+N_icons];
+            } else {
+                $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_2'] = '';
+            }
+        }
+        if ($icon_items_cycles >= 3) {
+            if ($icon_items[$ii+N_icons*2]) {
+                $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_3'] = $icon_items[$ii+N_icons*2];
+            }else {
+                $arResult['PROPERTIES'][$arParams['SERVICES_BLOCK'][0]][$ii]['icon']['size_3'] = '';
+            }
         }
         $arResult['NOTES'][$arParams['SERVICES_BLOCK'][0]] = $arItem['PROPERTIES']['ATT_NOTES']['VALUE'];
     }
