@@ -27,7 +27,7 @@ $this->setFrameMode(true);
 
                 <h3 class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></h3>
                 <div class="template-topblock__buttons">
-                    <a href="#fValutnyKontrolForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
+                    <a href="#fValutnyKontrolConsultForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
                         <span>Получить консультацию</span>
                     </a>
                 </div>
