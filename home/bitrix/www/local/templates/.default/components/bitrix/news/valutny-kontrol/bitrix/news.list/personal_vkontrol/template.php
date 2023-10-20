@@ -82,7 +82,7 @@ $this->setFrameMode(true);
     </div>
 </section>
 <??>
-<?php/*?>
+<?/*?>
 <script>
     $(document).ready(function () {
         $('.js-base-account__button').on('click', function() {
@@ -102,4 +102,4 @@ $this->setFrameMode(true);
         );
     });
 </script>
-<?php*/?>
+<?*/?>
