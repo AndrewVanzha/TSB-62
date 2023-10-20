@@ -42,7 +42,7 @@ foreach ($arResult["ITEMS"] as $arItem) {
             }
         }
         if ($arItem['PROPERTIES']['ATT_SERVICES_DESCRIPTION']['VALUE']) {
-            foreach ($arItem['PROPERTIES']['ATT_SERVICES_DESCRIPTION']['VALUE'] as $item) {
+            foreach ($arItem['PROPERTIES']['ATT_SERVICES_DESCRIPTION']['~VALUE'] as $item) {
                 $dop_items[] = $item;
             }
         }
