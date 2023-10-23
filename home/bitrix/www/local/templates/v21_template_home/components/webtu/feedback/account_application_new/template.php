@@ -282,12 +282,9 @@
 
                         <div class="grid__item-2">
                             <label class="input-group">
-                                <input class="input-group__field" required
-                                    type="tel" name="PHONE"
-                                    <?/*?>placeholder="+7 ___ ___ __ __"<?*/?>
-                                    placeholder="Мобильный телефон"
-                                    data-inputmask="'mask': '+7 999 999 99 99'"
-                                    <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
+                                <?/*?>placeholder="+7 ___ ___ __ __"<?*/?>
+                                <input type="tel" name="TEL" placeholder="Мобильный телефон" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field"
+                                    <? if (isset($arResult['POST']['TEL'])) { ?> value="<?=$arResult['POST']['TEL']?>" <? } ?>
                                 >
                                 <div class="input-group--achtung">
                                     <span class="input-group--warn">Обязательное поле к заполнению</span>
@@ -328,7 +325,8 @@
                         <div class="grid__item-1 grid__item-48">
                             <div class="v21-checkbox">
                                 <label class="v21-checkbox__content">
-                                    <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2">
+                                    <?/*?><input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2"><?*/?>
+                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                                     <div class="v21-checkbox__text"><?= $politics_output ?></div>
                                 </label>
                                 <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -526,26 +524,23 @@
     });*/
 
     function requiredFields() {
-        let arFields = [
+        let arCheckFields = [
             'input[name="COMPANY_NAME"]',
             'input[name="COMPANY_INN"]',
             'input[name="FIO"]',
             'input[name="CITY"]',
             'input[name="CURRENCY"]',
-            //'input[name="PHONE"]',
+            'input[name="TEL"]',
             'input[name="EMAIL"]',
             'input[name="FROM_WHERE"]',
         ];
 
         let countErr = 0;
 
-        arFields.forEach(function (value) {
-            if ($(value).val() == '' || $(value).val() == ' ') {
+        arCheckFields.forEach(function (value) {
+            if ($(value).val() == '' || $(value).val() == NaN) {
                 $(value).parent().addClass("is-error");
                 countErr += 1;
-                console.log('value');
-                console.log(value);
-                console.log('['+$(value).val()+']');
             } else {
                 $(value).parent().removeClass("is-error");
             }
@@ -562,12 +557,12 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
-            console.log('2');
+        console.log('ConsultForm');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
+            //console.log('2');
             if (requiredFields()) {
-                console.log('3');
+                //console.log('3');
                 $.ajax({
                     type: "POST",
                     //url: '/local/templates/v21_template_home/components/webtu/feedback/account_application/ajax.customer.php',
@@ -593,9 +588,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>
