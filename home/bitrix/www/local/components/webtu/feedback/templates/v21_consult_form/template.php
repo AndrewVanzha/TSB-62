@@ -225,11 +225,6 @@
 <script>
     $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
 
-    let arCheckFields = [
-        '.input_name', //'input[name="NAME"]',
-        '.input_phone', //'input[name="PHONE"]',
-    ];
-
     function clearFields () {
         $('textarea').val('').css('box-shadow', 'none');
         $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
@@ -251,7 +246,12 @@
     });*/
 
     function requiredFields2() {
+		let arCheckFields = [
+			'.input_name', //'input[name="NAME"]',
+			'.input_phone', //'input[name="PHONE"]',
+		];
         let countErr = 0;
+
         arCheckFields.forEach(function (value) {
             if ($(value).val() == '') {
                 $(value).parent().addClass("is-error");
