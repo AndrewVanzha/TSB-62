@@ -36,10 +36,10 @@ $icon_items = [];
 foreach ($arResult["ITEMS"] as $arItem) {
     if ($arItem['ID'] == $arParams['SERVICES_BLOCK'][0]) {
         //debugg($arParams['SERVICES_BLOCK'][0]);
-        //debugg($arItem);
+        //debugg($arItem['PROPERTIES']['ATT_SERVICES']);
         $arResult['PROPERTY_HEADER'] = $arItem['~NAME'];
         if ($arItem['PROPERTIES']['ATT_SERVICES']['VALUE']) {
-            foreach ($arItem['PROPERTIES']['ATT_SERVICES']['VALUE'] as $item) {
+            foreach ($arItem['PROPERTIES']['ATT_SERVICES']['~VALUE'] as $item) {
                 $main_items[] = $item;
             }
         }
