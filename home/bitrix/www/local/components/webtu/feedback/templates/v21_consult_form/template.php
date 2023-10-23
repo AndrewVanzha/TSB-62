@@ -54,11 +54,14 @@
                 <div class="ved-consult--form__section">
                     <div class="grid__item-1">
                         <label class="input-group">
-                            <input type="text" name="NAME" placeholder="ФИО" class="input-group__field input_1"
+                            <input type="text" name="NAME" placeholder="ФИО" class="input-group__field input_name"
                                 <? if (isset($arResult['POST']['NAME'])) { ?> value="<?=$arResult['POST']['NAME']?>" <? } ?>
                             >
                             <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_2_NAME")?></span><?*/?>
-                            <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
+                            <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
+                            <div class="input-group--attention">
+                                <span class="input-group--warn2">Обязательное поле к заполнению</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -66,11 +69,14 @@
                 <div class="ved-consult--form__section">
                     <div class="grid__item-1">
                         <label class="input-group">
-                            <input type="tel" name="PHONE" placeholder="+7 (___) ___-__-__" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_2"
+                            <input type="tel" name="PHONE" placeholder="Мобильный телефон" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_phone"
                                 <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
                             >
                             <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_2_PHONE")?></span><?*/?>
-                            <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
+                            <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
+                            <div class="input-group--attention">
+                                <span class="input-group--warn2">Обязательное поле к заполнению</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -85,7 +91,8 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics3">
+                                <?/*?><input type="checkbox" checked name="" class="v21-checkbox__input" id="politics3"><?*/?>
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics3">
                                 <div class="v21-checkbox__text"><?= $politics_output ?></div>
                             </label>
                             <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -239,14 +246,13 @@
     });*/
 
     function requiredFields2() {
-        let arFields = [
-            '.input_1', //'input[name="NAME"]',
-            '.input_2', //'input[name="PHONE"]',
-        ];
-
+		let arCheckFields = [
+			'.input_name', //'input[name="NAME"]',
+			'.input_phone', //'input[name="PHONE"]',
+		];
         let countErr = 0;
 
-        arFields.forEach(function (value) {
+        arCheckFields.forEach(function (value) {
             if ($(value).val() == '') {
                 $(value).parent().addClass("is-error");
                 countErr += 1;
@@ -266,9 +272,9 @@
 
     $('#fValutnyKontrolConsultForm').submit(function (e) {
         e.preventDefault();
-        console.log('1');
-        if ($("#politics3").prop("checked")) {
-            $('#politics3').parent().parent().removeClass("is-error");
+        console.log('ConsultForm');
+        //if ($("#politics3").prop("checked")) {
+            //$('#politics3').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields2()) {
                 //console.log('3');
@@ -297,9 +303,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics3').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics3').parent().parent().addClass("is-error");
+        //}
     });
 
     /*$('.input-group input[required]').change(function () {
