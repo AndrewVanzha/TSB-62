@@ -289,7 +289,8 @@
                         <div class="grid__item-1">
                             <div class="v21-checkbox">
                                 <label class="v21-checkbox__content">
-                                    <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2">
+                                    <?/*?><input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2"><?*/?>
+                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                                     <div class="v21-checkbox__text"><?= $politics_output ?></div>
                                 </label>
                                 <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -481,9 +482,9 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
                 //console.log('3');
@@ -501,7 +502,7 @@
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
                             } else {
@@ -511,9 +512,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>

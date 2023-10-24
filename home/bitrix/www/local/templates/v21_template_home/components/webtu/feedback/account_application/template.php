@@ -304,7 +304,8 @@
                         <div class="grid__item-1">
                             <div class="v21-checkbox">
                                 <label class="v21-checkbox__content">
-                                    <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2">
+                                    <?/*?><input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2"><?*/?>
+                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                                     <div class="v21-checkbox__text"><?= $politics_output ?></div>
                                 </label>
                                 <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -528,12 +529,12 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
-            console.log('2');
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
+            //console.log('2');
             if (requiredFields()) {
-                console.log('3');
+                //console.log('3');
                 $.ajax({
                     type: "POST",
                     //url: '/local/templates/v21_template_home/components/webtu/feedback/account_application/ajax.customer.php',
@@ -543,7 +544,7 @@
                     },
                     dataType: "json",
                     success: function (data) {
-                        console.log('**');
+                        //console.log('**');
                         if (data.status) {
                             clearFields ();
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
@@ -559,9 +560,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>

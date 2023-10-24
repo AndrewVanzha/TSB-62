@@ -161,12 +161,12 @@
                             <label class="input-group">
                                 <input
                                         type="text"
-                                        name="COMPANY"
+                                        name="COMPANY_NAME"
                                         placeholder="организация"
                                         class="input-group__field"
                                         <?// value пишу в input[name=NAME]?>
                                         onchange="javascript:document.getElementById('name_'+'<?=$arResult['FORM_ID']?>').value = this.value;"
-                                    <? if (isset($arResult['POST']['COMPANY'])) { ?> value="<?=$arResult['POST']['COMPANY']?>" <? } ?>
+                                    <? if (isset($arResult['POST']['COMPANY_NAME'])) { ?> value="<?=$arResult['POST']['COMPANY_NAME']?>" <? } ?>
                                 >
                                 <span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_3_ORGANIZATION")?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                     <??>
-                    <input type="hidden" name="NAME" value="<?=$arResult['POST']['COMPANY']?>" id="<?= 'name_'.$arResult['FORM_ID']; ?>">
+                    <input type="hidden" name="NAME" value="<?=$arResult['POST']['COMPANY_NAME']?>" id="<?= 'name_'.$arResult['FORM_ID']; ?>">
 
                     <div class="card-application--form__section">
                         <div class="grid__item-1">
@@ -236,8 +236,8 @@
                                 <?/*?><input type="tel" name="PHONE" placeholder="" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field" required
                                     <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
                                 ><?*/?>
-                                <input type="tel" name="PHONE" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_phone"
-                                    <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
+                                <input type="tel" name="TEL" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_phone"
+                                    <? if (isset($arResult['POST']['TEL'])) { ?> value="<?=$arResult['POST']['TEL']?>" <? } ?>
                                 >
                                 <span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE") ?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
@@ -285,7 +285,8 @@
                         <div class="grid__item-1">
                             <div class="v21-checkbox">
                                 <label class="v21-checkbox__content">
-                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics1" checked>
+                                    <?/*?><input type="checkbox" name="" class="v21-checkbox__input" id="politics1" checked><?*/?>
+                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics1">
                                     <div class="v21-checkbox__text"><?= $politics_output ?></div>
                                 </label>
                                 <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -341,7 +342,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('input[name=NAME]').val($('input[name=COMPANY]').val()); // пишу в input[name=NAME] исходное значение из input[name=COMPANY]
+        $('input[name=NAME]').val($('input[name=COMPANY_NAME]').val()); // пишу в input[name=NAME] исходное значение из input[name=COMPANY_NAME]
 
         function changeColors(scrollTop) {
             let opacityLevel = 1;
@@ -465,11 +466,11 @@
 
     function requiredFields() {
         let arFields = [
-            'input[name="COMPANY"]',
+            'input[name="COMPANY_NAME"]',
             'input[name="COMPANY_INN"]',
             'input[name="FIO"]',
             'input[name="CITY"]',
-            '.input_phone', //'input[name="PHONE"]', // влияет вторая форма на странице
+            'input[name="TEL"]', // влияет вторая форма на странице
             'input[name="EMAIL"]',
             'input[name="FROM_WHERE"]',
         ];
@@ -496,9 +497,9 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics1").prop("checked")) {
-            $('#politics1').parent().parent().removeClass("is-error");
+        //console.log('form');
+        //if ($("#politics1").prop("checked")) {
+            //$('#politics1').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
                 //console.log('3');
@@ -517,7 +518,7 @@
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
                             } else {
@@ -527,9 +528,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics1').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics1').parent().parent().addClass("is-error");
+        //}
     });
 </script>
 
