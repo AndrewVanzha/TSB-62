@@ -243,8 +243,7 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/vnes
                         "COMPONENT_TEMPLATE" => "VED_foreign_currency_account_new",
                         "EVENT_CALLBACK" => function($post){$post['RECOURSE']='Уважаемый(ая)';return$post;},
                         "IBLOCK_ID" => "206",  // Заявка на валютный счёт
-                        "PROPERTIES" => array("PHONE","COMPANY","ORGANIZATION","COMPANY_INN","FIO","NAME","EMAIL","CITY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
-                        //"PROPERTIES" => array("PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","NAME","EMAIL","CITY"),
+                        "PROPERTIES" => array("TEL","PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","FIO","NAME","EMAIL","CITY","CURRENCY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
                         //"PROPERTIES" => array("PHONE","CREDIT_SUMM","CREDIT_CURRENCY","FIO","EMAIL","ORGANIZATION","CREDIT_NAME"),
                         "SITES" => array(0=>"s1",),
                         "UTM" => "133",
