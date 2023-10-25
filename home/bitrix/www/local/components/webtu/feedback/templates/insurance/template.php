@@ -246,7 +246,8 @@ while ($ar_section=$rsSection->fetch()) {
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
                                 <input
-                                        type="checkbox" id="politics" checked
+                                        <?/*?>type="checkbox" id="politics" checked<?*/?>
+                                        type="checkbox" id="politics"
                                         name="CITYZENSHIP"
                                         class="v21-checkbox__input"
                                 >
@@ -267,7 +268,8 @@ while ($ar_section=$rsSection->fetch()) {
                     <div class="v21-grid__item">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input id="politics2" type="checkbox" checked name="politics" class="v21-checkbox__input">
+                                <?/*?><input id="politics2" type="checkbox" checked name="politics" class="v21-checkbox__input"><?*/?>
+                                <input id="politics2" type="checkbox" name="politics" class="v21-checkbox__input">
                                 <span class="v21-checkbox__text">
                                     <?= $politics_output ?>
                                 </span>
@@ -603,9 +605,9 @@ while ($ar_section=$rsSection->fetch()) {
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
                 //console.log('3');
@@ -624,7 +626,7 @@ while ($ar_section=$rsSection->fetch()) {
                             $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().parent().addClass("is-error");
                                 $('input[name="CAPTCHA_WORD"]').css('border-color', '#aa0000');
@@ -636,9 +638,9 @@ while ($ar_section=$rsSection->fetch()) {
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
     /*$('.agreement input[required]').change(function () {
