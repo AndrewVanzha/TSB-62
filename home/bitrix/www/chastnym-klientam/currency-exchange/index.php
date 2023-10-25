@@ -22,7 +22,7 @@ $currencyCode = 'USD';
 <?php
 //debugg('$cityID');
 //debugg($cityID);
-?>NEW
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"currency-exchange", 
