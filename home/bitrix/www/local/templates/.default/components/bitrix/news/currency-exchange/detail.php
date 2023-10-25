@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 ?>
 <?php
+debugg('detail.php');
 $cityID = 399; // moskva
 if (!empty($_SESSION['city'])) {
     $cityID = $_SESSION['city'];
