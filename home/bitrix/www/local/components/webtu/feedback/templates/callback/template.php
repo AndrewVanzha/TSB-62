@@ -97,7 +97,8 @@
 		?>
 		
 		<label class="agreement check-box">
-			<input type="checkbox" name="" checked required="">
+			<?/*?><input type="checkbox" name="" checked required=""><?*/?>
+			<input type="checkbox" name="" required>
 			<span class="check-box_caption"><?=$politics_output?></span>
 		</label>
 
