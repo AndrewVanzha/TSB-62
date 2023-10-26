@@ -48,6 +48,7 @@ $this->setFrameMode(true);
         transform: rotate(0deg)
     }
 </style>
+<? debugg('detail'); ?>
 <?$ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
@@ -106,6 +107,7 @@ $this->setFrameMode(true);
 );?>
 
 <?
+debugg($ElementID);
 if($ElementID == 7497){
 	?>
 	<style>
