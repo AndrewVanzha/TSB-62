@@ -14,6 +14,7 @@ use Inkass\Service\General;
 use Inkass\Service\Logger;
 use Inkass\Service\Order;
 
+debugg('/views/init/manager.php');
 ?>
     <div class="vs-tabs">
         <?/*?>
