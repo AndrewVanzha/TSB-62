@@ -15,8 +15,8 @@ $(document).ready(function () {
             'input[name="check_question_4"]',
             'input[name="check_question_5"]',
             'input[name="check_question_6"]',
-            'input[name="check_question_7"]',
-            'input[name="check_question_8"]',
+            //'input[name="check_question_7"]',
+            //'input[name="check_question_8"]',
         ];
 
         let countErr = 0;
@@ -37,7 +37,7 @@ $(document).ready(function () {
             }
         });
 
-        if(badTimeString('input[name="check_start_time"]')) { // защита от часов > 24? минут > 60
+        if(badTimeString('input[name="check_start_time"]')) { // защита от часов > 24, минут > 60
             countErr += 1;
             $('input[name="check_start_time"]').parent().addClass("vs-form__error");
             error_list.push($('input[name="check_start_time"]'));
