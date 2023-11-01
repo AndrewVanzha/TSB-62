@@ -1,9 +1,9 @@
 <?
 use Bitrix\Main\Page\Asset;
 
-if (!$_GET['check_id']) {
-    define("NEED_AUTH", true);
-}
+//if (!$_GET['check_id']) {
+//    define("NEED_AUTH", true);
+//}
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Вход в чек-лист инкассатора");
@@ -35,12 +35,12 @@ if ($_GET['check_id']) : ?>
     <div class="v21-section">
         <div class="v21-container">
             <div class="verification">
-                <!--h1 class="verification-header">Вход в систему</h1>
-                <p class="verification-subheader">Введите логин и пароль</p-->
-                <!--div class="verification-wrap"-->
+                <h1 class="verification-header">Вход в систему</h1>
+                <p class="verification-subheader">Введите логин и пароль</p>
+                <div class="verification-wrap"-->
                     <? $app = $APPLICATION->IncludeComponent(
                         "bitrix:system.auth.form",
-                        "inkass",
+                        "",
                         //"system.auth.authorize",
                         //"inkass",
                         Array(
@@ -57,7 +57,7 @@ if ($_GET['check_id']) : ?>
                     <?php if(!$USER->IsAuthorized()) : ?>
                         <div class="verification-error verification-error-anim">Ошибка логина или пароля</div>
                     <? endif; ?>
-                <!--/div-->
+                </div>
             </div>
 
         </div>
