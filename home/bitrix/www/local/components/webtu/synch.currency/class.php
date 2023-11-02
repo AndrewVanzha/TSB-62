@@ -155,6 +155,13 @@ class SynchCurrency extends CBitrixComponent
                 'iso_n' => '124',
                 'iso_s' => 'CAD' ,
             ],
+            'CLP' => [
+                'name' => 'Чилийское песо',  // добавка с 2.11.23
+                'symbol' => '$',
+                'count' => 100,
+                'iso_n' => '152',
+                'iso_s' => 'CLP' ,
+            ],
             'CZK' => [
                 'name' => 'Чешская крона',  // добавка с 5.12.21
                 'symbol' => 'Kč',
@@ -1182,7 +1189,7 @@ class SynchCurrency extends CBitrixComponent
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682 && $template['iso_n'] !== 410) { // кроме ILS, AED, RSD, THB, SAR, KRW
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682) { // кроме ILS, AED, RSD, THB, SAR
 //if ($course[2] == $template['iso_n'] && $template['iso_n'] !== 376 && $template['iso_n'] !== 784 && $template['iso_n'] !== 941 && $template['iso_n'] !== 764 && $template['iso_n'] !== 818 && $template['iso_n'] !== 682 && $template['iso_n'] !== 634 && $template['iso_n'] !== 484) { // кроме ILS, AED, RSD, THB, SAR, QAR, MXN
-if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template['iso_n'] != '682' && $template['iso_n'] != '484' && $template['iso_n'] != '458' && $template['iso_n'] != '504' && $template['iso_n'] != '048' && $template['iso_n'] != '144' && $template['iso_n'] != '462' && $template['iso_n'] != '512' && $template['iso_n'] != '480') { // кроме ILS, SAR, MXN, MYR, MAD, BHD, LKR, MVR, OMR, MUR
+if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template['iso_n'] != '682' && $template['iso_n'] != '484' && $template['iso_n'] != '458' && $template['iso_n'] != '504' && $template['iso_n'] != '048' && $template['iso_n'] != '144' && $template['iso_n'] != '462' && $template['iso_n'] != '512' && $template['iso_n'] != '480' && $template['iso_n'] != '152') { // кроме ILS, SAR, MXN, MYR, MAD, BHD, LKR, MVR, OMR, MUR, CLP
                         $result[$template['iso_s']]['course'] = str_replace(",", ".", $course[4]);
                         $result[$template['iso_s']]['status'] = '>';
                     }
@@ -1313,7 +1320,7 @@ if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW'])) {
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK'])) {
 					//if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS'])) {
-					if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS', 'IDR', 'RON', 'KWD', 'MUR'])) {
+					if (in_array($key, ['KGS', 'ZAR' ,'BYN', 'TRY', 'ILS', 'CAD', 'SAR', 'INR', 'AZN', 'QAR', 'SGD', 'AUD', 'KZT', 'AED', 'EGP', 'KRW', 'DKK', 'QAR', 'MXN', 'MDL', 'CLP', 'CZK', 'THB', 'TJS', 'BGN', 'TJS', 'RSD', 'HKD', 'HUF', 'AMD', 'UZS', 'IDR', 'RON', 'KWD', 'MUR'])) {
                         //continue;  //  вывожу все валюты
 					} /* AUD TRY AZN BYN ILS QAR SAR AED EGP INR KZT CAD SGD */ /* KGS ZAR */
 
@@ -1591,6 +1598,12 @@ if ($course[2] == $template['iso_n'] && $template['iso_n'] != '376' && $template
         $courses['CAD']['count'] = 1;
         $courses['CAD']['iso_n'] = '124';
         $courses['CAD']['iso_s'] = 'CAD'; // **
+
+        $courses['CLP']['name'] = 'Чилийское песо';  // добавка с 2.11.23
+        $courses['CLP']['symbol'] = '$';
+        $courses['CLP']['count'] = 100;
+        $courses['CLP']['iso_n'] = '152';
+        $courses['CLP']['iso_s'] = 'CLP'; // **
 
         $courses['CZK']['name'] = 'Чешская крона';  // добавка с 5.12.21
         $courses['CZK']['symbol'] = 'Kč';
