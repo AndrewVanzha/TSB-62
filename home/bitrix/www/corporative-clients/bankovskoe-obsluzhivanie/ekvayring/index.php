@@ -146,7 +146,7 @@ Asset::getInstance()->addJs("/corporative-clients/bankovskoe-obsluzhivanie/ekvay
                             <div class="eq-offline-payments__item"><img src="images/mir.png" alt="МИР"></div>
                             <div class="eq-offline-payments__item"><img src="images/mastercard.png" alt="MasterCard">
                             </div>
-                            <div class="eq-offline-payments__item"><img src="images/unionpay.png" alt="UnionPay"></div>
+                            <?/*?><div class="eq-offline-payments__item"><img src="images/unionpay.png" alt="UnionPay"></div><?*/?>
                             <div class="eq-offline-payments__item"><img src="images/gpay.png" alt="GooglePay"></div>
                             <div class="eq-offline-payments__item"><img src="images/apay.png" alt="ApplePay"></div>
                             <div class="eq-offline-payments__item"><img src="images/spay.png" alt="SamsungPay"></div>
