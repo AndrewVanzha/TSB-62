@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS reservation_rate_orders (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  NUM_PAY varchar(255) NOT NULL,
+  SUMMCALL decimal(16,2) NOT NULL,
+  KURS decimal(9,6) NOT NULL,
+  SUMMTOCLIENT decimal(16,2) NOT NULL,
+  SUMSECPAY decimal(16,2) NOT NULL,
+  TIMEIN datetime NOT NULL,
+  TIMELIMIT datetime NOT NULL,
+  FNAME varchar(100) NOT NULL,
+  SNAME varchar(100) NOT NULL,
+  MNAME varchar(100) NOT NULL,
+  TEL varchar(30) NOT NULL,
+  EMAIL varchar(255) NOT NULL,
+  STATUS int(1) NOT NULL DEFAULT 0,
+  REQUEST_TYPE int(1) NOT NULL,
+  CURVAL varchar(3) NOT NULL,
+  IDCASH int(12) NOT NULL DEFAULT 10013,
+  PRIMARY KEY (ID)
+);
