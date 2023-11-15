@@ -1,0 +1,1 @@
+DROP TABLE if exists reservation_rate_orders;
