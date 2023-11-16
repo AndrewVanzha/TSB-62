@@ -585,7 +585,7 @@ use Bitrix\Main\Page\Asset; ?>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" async>
-  /*(function(d, w, c) {
+  /*(function(d, w, c) {  // установлен в header.php
     (w[c] = w[c] || []).push(function() {
       try {
         w.yaCounter49389685 = new Ya.Metrika2({
