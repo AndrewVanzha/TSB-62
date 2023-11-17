@@ -136,6 +136,7 @@ IncludeTemplateLangFile(__FILE__);
             webvisor:true,
             ecommerce:"dataLayer"
         });
+        window.dataLayer = window.dataLayer || [];
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/95589765" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
