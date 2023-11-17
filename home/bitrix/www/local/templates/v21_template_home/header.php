@@ -120,6 +120,26 @@ IncludeTemplateLangFile(__FILE__);
     <?*/?>
 	<?/*?><script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full" defer></script><?*/?>
     <?/*?><script src="//code.jivo.ru/widget/yoTspe9E1Z" async></script><?*/?>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(95589765, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+        });
+        window.dataLayer = window.dataLayer || [];
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/95589765" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 
 <body onload="document.getElementById('v21_preloader').style.opacity = '0'; document.getElementById('v21_preloader').style.visibility = 'hidden'; document.body.style.overflow = 'unset';" style="overflow: hidden;">
