@@ -2,6 +2,18 @@
     <? die(); ?>
 <? } ?>
 <? IncludeTemplateLangFile(__FILE__); ?>
+<?php
+//debugg($arParams['ADMIN_EVENT']);
+$postTemplateID = 0;
+$arFilter = Array("TYPE_ID" => array($arParams['ADMIN_EVENT']));
+$rs_mess = CEventMessage::GetList($by="id", $order="desc", $arFilter);
+while($arMess = $rs_mess->GetNext()) {
+    //debugg($arMess);
+    //$postTemplateID['ID'] = $arMess['ID'];
+    $postTemplateID = $arMess['ID'];
+}
+debugg($postTemplateID);
+?>
 
 <!--div class="v21-container"-->
     <?//debugg($arResult);?>
@@ -557,13 +569,19 @@
         //ym(95589765, 'reachGoal', 'applicationForm', formFields);
 
         let entry = {
-            'PRODUCT_ID': 100,
+            'PRODUCT_ID': 0,
             'NAME': 'form',
             'PRICE': 11,
-            'DETAIL_PAGE_URL': 'qq',
+            'DETAIL_PAGE_URL': '/corporative-clients/bankovskoe-obsluzhivanie/scheta-dlya-biznesa/',
             'QUANTITY': 1,
             'XML_ID': 'xml'
         };
+        let postTemplateID = <?= $postTemplateID; ?>
+        if(postTemplateID) {
+            entry.PRODUCT_ID = postTemplateID;
+        }
+        console.log('postTemplateID');
+        console.log(postTemplateID);
         let pos = 1;
         let ar_product = [];
         ar_product.push(
@@ -600,6 +618,10 @@
     }
 
     $('#applicationForm').submit(function (e) {
+        //let postTemplateID = <?= $postTemplateID; ?>
+        //let postTemplateID = <?= CUtil::PHPToJSObject($postTemplateID); ?>
+        //console.log('postTemplateID');
+        //console.log(postTemplateID);
         e.preventDefault();
         console.log('form');
         //if ($("#politics2").prop("checked")) {
