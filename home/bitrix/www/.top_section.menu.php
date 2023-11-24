@@ -134,6 +134,16 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Тарифы комиссионного вознаграждения за РКО",
+        "/corporative-clients/bankovskoe-obsluzhivanie/vneshneekonomicheskaya-deyatelnost/",
+        Array(),
+        Array(
+            'subheader' => false,
+            'subgroup' => 2,
+        ),
+        ""
+    ),
+    Array(
         "Магазин монет",
         "/https://coins.tsbnk.ru",
         Array(),
