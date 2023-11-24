@@ -1,13 +1,13 @@
 <?
 use Bitrix\Main\Page\Asset;
 
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Тарифы комиссионного вознаграждения за пакеты услуг расчетно-кассового обслуживания счетов юридических лиц (за исключением кредитных организаций), индивидуальных предпринимателей и физических лиц, занимающихся в установленном законодательством российской федерации порядке частной практикой, в АКБ «ТРАНССТРОЙБАНК» (АО)");
 $APPLICATION->SetPageProperty("keywords", "Тарифы комиссионного вознаграждения РКО, АКБ «ТрансСтройБанк»");
 $APPLICATION->SetPageProperty("title", "Тарифы комиссионного вознаграждения РКО | АКБ «ТрансСтройБанк»");
 $APPLICATION->SetTitle("Тарифы комиссионного вознаграждения РКО");
 Asset::getInstance()->addCss("/assets/css/style-broker-deposit.css?v=1.0.6");
 Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/style.css");
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
     <style>
         .v21 {
