@@ -2,7 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 //debugg($arParams['PARENT_SECTION']);
-//debugg($arParams["IBLOCK_ID"]);
+//debugg($arParams["SERVICES_BLOCK"]);
 
 $arSelect = array(
     'NAME',
@@ -27,26 +27,35 @@ while ($sectionProp = $secRes->GetNext()) {
 $arResult["DESCRIPTION"] = $arSection[0]['DESCRIPTION'];
 $arResult["~DESCRIPTION"] = $arSection[0]['~DESCRIPTION'];
 
+foreach ($arResult['ITEMS'] as $arItem) {
+    if ($arItem['ID'] == $arParams["SERVICES_BLOCK"][0]) {
+        $arResult["SUBHEADER"] = $arItem['NAME'];
+        $arResult["~SUBHEADER"] = $arItem['~NAME'];
+        $arResult["TOP_TEXT"] = $arItem['PREVIEW_TEXT'];
+        $arResult["~TOP_TEXT"] = $arItem['~PREVIEW_TEXT'];
+    }
+}
+
 $arResult["SECTION"]["PATH"] = [];
-for ($ii=0; $ii<count($arSection[0]['UF_VALUTNY_KONTROL_TOP']); $ii++) {
+for ($ii=0; $ii<count($arSection[0]['UF_KOMISSION_TARIFFS_IMG']); $ii++) {
     if ($ii == 0) {
-        $arResult["SECTION"]["PATH"]['320']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][0];
+        $arResult["SECTION"]["PATH"]['320']['PICTURE'] = $arSection[0]['UF_KOMISSION_TARIFFS_IMG'][0];
         $arResult["SECTION"]["PATH"]['320']['STYLE'] = '320';
     }
     if ($ii == 1) {
-        $arResult["SECTION"]["PATH"]['480']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][1];
+        $arResult["SECTION"]["PATH"]['480']['PICTURE'] = $arSection[0]['UF_KOMISSION_TARIFFS_IMG'][1];
         $arResult["SECTION"]["PATH"]['480']['STYLE'] = '480';
     }
     if ($ii == 2) {
-        $arResult["SECTION"]["PATH"]['768']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][2];
+        $arResult["SECTION"]["PATH"]['768']['PICTURE'] = $arSection[0]['UF_KOMISSION_TARIFFS_IMG'][2];
         $arResult["SECTION"]["PATH"]['768']['STYLE'] = '768';
     }
     if ($ii == 3) {
-        $arResult["SECTION"]["PATH"]['1024']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][3];
+        $arResult["SECTION"]["PATH"]['1024']['PICTURE'] = $arSection[0]['UF_KOMISSION_TARIFFS_IMG'][3];
         $arResult["SECTION"]["PATH"]['1024']['STYLE'] = '1024';
     }
     if ($ii == 4) {
-        $arResult["SECTION"]["PATH"]['1366']['PICTURE'] = $arSection[0]['UF_VALUTNY_KONTROL_TOP'][4];
+        $arResult["SECTION"]["PATH"]['1366']['PICTURE'] = $arSection[0]['UF_KOMISSION_TARIFFS_IMG'][4];
         $arResult["SECTION"]["PATH"]['1366']['STYLE'] = '1366';
     }
 }
@@ -62,11 +71,6 @@ $res = \Bitrix\Iblock\Elements\ElementValutnyKontrolTable::getList([
 debugg('$res');
 debugg($res);
 */
-//$arResult["SECTION"]["PATH"][0]["PICTURE_1"] = $arSection[0]['UF_SYMBOL_YUAN_903_677'];
-//$arResult["SECTION"]["PATH"][0]["PICTURE_2"] = $arSection[0]['UF_SYMBOL_YUAN_730_547'];
-//$arResult["SECTION"]["PATH"][0]["PICTURE_3"] = $arSection[0]['UF_SYMBOL_YUAN_611_458'];
-//$arResult["SECTION"]["PATH"][0]["PICTURE_4"] = $arSection[0]['UF_SYMBOL_YUAN_4'];
-//$arResult["SECTION"]["PATH"][0]["PICTURE_5"] = $arSection[0]['UF_SYMBOL_YUAN_5'];
 
 unset($arSection);
 
@@ -75,7 +79,6 @@ unset($arSection);
 //debugg($arResult["SECTION"]["PATH"][0]["~DESCRIPTION"]);
 //debugg($arResult["SECTION"]["PATH"][0]["PICTURE"]);
 
-//debugg($arParams["CREDIT_CARD_PARAMS"]);
-
 //debugg($arResult["ITEMS"]);
 //debugg($arResult);
+//debugg($arResult["DESCRIPTION"]);

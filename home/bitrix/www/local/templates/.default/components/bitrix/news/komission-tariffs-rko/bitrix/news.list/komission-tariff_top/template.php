@@ -22,10 +22,10 @@ $this->setFrameMode(true);
             <div class="template-tileblock__grid--verline verline-1"></div><?*/?>
             <div class="template-topblock__block">
                 <? if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]): ?>
-                    <h1 class="template-topblock__header"><?= $arResult["~NAME"] ?></h1>
+                    <h1 class="template-topblock__header"><?= $arResult["~DESCRIPTION"] ?></h1>
                 <? endif; ?>
 
-                <h3 class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></h3>
+                <h3 class="template-topblock__content"><?echo $arResult["~SUBHEADER"]; ?></h3>
                 <div class="template-topblock__buttons">
                     <a href="#fValutnyKontrolConsultForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
                         <span>Получить консультацию</span>
@@ -89,6 +89,7 @@ $this->setFrameMode(true);
                 <?*/?>
             <?endif?>
         <?/*?></section><?*/?>
+        <p class="template-topblock__content"><?echo $arResult["~TOP_TEXT"]; ?></p>
     </div>
 
     <script>
