@@ -8,7 +8,6 @@ $APPLICATION->SetPageProperty("title", "Валютный контроль | АК
 $APPLICATION->SetTitle("Валютный контроль");
 Asset::getInstance()->addCss("/assets/css/style-broker-deposit.css?v=1.0.6");
 Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/style.css");
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <style>
     .v21 {
