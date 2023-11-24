@@ -56,7 +56,7 @@ $this->setFrameMode(true);
 Включен API инфоблока Валютный контроль RkoTariffs
 */?>
 <?
-$parent_section = [601];  // Общая информация
+$parent_section = 601;  // Общая информация
 $services_block = [10716]; // Условия предоставления пакетов
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
@@ -65,7 +65,7 @@ $APPLICATION->IncludeComponent(
 		"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 		"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
 		"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
-		"PARENT_SECTION" => $parent_section,
+        "PARENT_SECTION" => $parent_section,
         "SERVICES_BLOCK" => $services_block,
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -116,7 +116,7 @@ $APPLICATION->IncludeComponent(
 	$component
 );?>
 <?
-$parent_section = [594, 595, 596];  // Пакеты
+$parent_sections = [594, 595, 596];  // Пакеты
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "komission-tariff_table",
@@ -124,7 +124,7 @@ $APPLICATION->IncludeComponent(
         "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
         "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
         "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
-        "PARENT_SECTION" => $parent_section,
+        "PARENT_SECTIONS" => $parent_sections,
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "NEWS_COUNT" => $arParams["NEWS_COUNT"],
