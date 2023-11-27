@@ -135,7 +135,8 @@ $aMenuLinks = Array(
     ),
     Array(
         "Тарифы комиссии за РКО",
-        "/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/",
+        //"/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/",
+        "/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/paket-start/",
         Array(),
         Array(
             'subheader' => false,

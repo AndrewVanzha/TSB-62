@@ -12,8 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
-<?if($arParams["USE_RSS"]=="Y"):?>
+section
+<?/*if($arParams["USE_RSS"]=="Y"):?>
 	<?
 	$rss_url = CComponentEngine::makePathFromTemplate($arResult["FOLDER"].$arResult["URL_TEMPLATES"]["rss_section"], array_map("urlencode", $arResult["VARIABLES"]));
 	if(method_exists($APPLICATION, 'addheadstring'))
@@ -52,7 +52,7 @@ $this->setFrameMode(true);
 );
 ?>
 <br />
-<?endif?>
+<?endif*/?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",

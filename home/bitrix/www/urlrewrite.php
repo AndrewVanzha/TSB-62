@@ -48,6 +48,14 @@ $arUrlRewrite=array (
     'PATH' => '/corporative-clients/bankovskoe-obsluzhivanie/bankovskie-karty/tamozhennye-karty/index.php',
     'SORT' => 100,
   ),
+  60 => 
+  array (
+    'CONDITION' => '#^/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/corporative-clients/bankovskoe-obsluzhivanie/komission-tariffs-rko/index.php',
+    'SORT' => 100,
+  ),
   58 => 
   array (
     'CONDITION' => '#^/corporative-clients/bankovskoe-obsluzhivanie/konversionnye-sdelki/#',
@@ -112,6 +120,14 @@ $arUrlRewrite=array (
     'PATH' => '/corporative-clients/kredity-i-garantii/kredity-business/index.php',
     'SORT' => '100',
   ),
+  13 => 
+  array (
+    'CONDITION' => '#^/chastnym-klientam/kredity/potrebitelskoe-kreditovanie/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/chastnym-klientam/kredity/potrebitelskoe-kreditovanie/index.php',
+    'SORT' => 100,
+  ),
   14 => 
   array (
     'CONDITION' => '#^/en/corporative-clients/razmeshchenie-sredstv/depozity/#',
@@ -126,14 +142,6 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:news',
     'PATH' => '/en/chastnym-klientam/vklady-i-investitsii/investitsii/index.php',
-    'SORT' => 100,
-  ),
-  13 => 
-  array (
-    'CONDITION' => '#^/chastnym-klientam/kredity/potrebitelskoe-kreditovanie/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/chastnym-klientam/kredity/potrebitelskoe-kreditovanie/index.php',
     'SORT' => 100,
   ),
   16 => 
@@ -288,14 +296,6 @@ $arUrlRewrite=array (
     'PATH' => '/desktop_app/router.php',
     'SORT' => 100,
   ),
-  35 => 
-  array (
-    'CONDITION' => '#^/en/chastnym-klientam/vklady/vklady/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/en/chastnym-klientam/vklady/vklady/index.php',
-    'SORT' => 100,
-  ),
   33 => 
   array (
     'CONDITION' => '#^/chastnym-klientam/bankovskie-karty/#',
@@ -310,6 +310,14 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:news',
     'PATH' => '/en/chastnym-klientam/arenda-seyfov/index.php',
+    'SORT' => 100,
+  ),
+  35 => 
+  array (
+    'CONDITION' => '#^/en/chastnym-klientam/vklady/vklady/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/en/chastnym-klientam/vklady/vklady/index.php',
     'SORT' => 100,
   ),
   36 => 
