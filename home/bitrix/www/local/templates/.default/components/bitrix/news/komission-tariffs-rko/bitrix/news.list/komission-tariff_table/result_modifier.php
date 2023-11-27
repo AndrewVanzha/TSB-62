@@ -26,6 +26,8 @@ $rs_section = \Bitrix\Iblock\SectionTable::getList([
     ],
 ]);
 while ($ar_section=$rs_section->fetch()) {
+    $url_str = \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S');
+    $url_str = str_replace('_', '-', $url_str);
     if ($ar_section['DEPTH_LEVEL'] == 1) {
         $topSectionList[] = [
             'ID' => $ar_section['ID'],
@@ -34,7 +36,7 @@ while ($ar_section=$rs_section->fetch()) {
             'DESCRIPTION' => $ar_section['DESCRIPTION'],
             'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
             'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
-            'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
+            'SECTION_PAGE_URL' => $url_str,
         ];
     } else {
         $sectionList[] = [
@@ -44,12 +46,12 @@ while ($ar_section=$rs_section->fetch()) {
             'DESCRIPTION' => $ar_section['DESCRIPTION'],
             'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
             'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
-            'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
+            'SECTION_PAGE_URL' => $url_str,
         ];
     }
 }
-debugg($topSectionList);
-debugg($sectionList);
+//debugg($topSectionList);
+//debugg($sectionList);
 /*
 debugg($arParams['PARENT_SECTION']);
 debugg($arParams["IBLOCK_ID"]);

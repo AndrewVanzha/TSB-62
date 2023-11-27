@@ -95,8 +95,10 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/komi
 		"SEF_MODE" => "Y",
 		"SEF_URL_TEMPLATES" => Array(
             "news"=>"",
-            "section"=>"#SECTION_CODE#/",
-            "detail"=>"detail/#ELEMENT_CODE#/",
+            //"section"=>"#SECTION_CODE#/",
+            "section" => "#SECTION_CODE_PATH#/",
+            //"detail"=>"detail/#ELEMENT_CODE#/",
+            "detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
         ),
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",

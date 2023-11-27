@@ -106,6 +106,7 @@ $this->setFrameMode(true);
 </script>
 
 <div>
+    <div>Пакет</div>
     <? foreach ($arResult['TOP_SECTION'] as $section) : ?>
         <a href="<?= $section['SECTION_PAGE_URL'] ?>"><?= $section['DESCRIPTION'] ?></a>
     <? endforeach; ?>
