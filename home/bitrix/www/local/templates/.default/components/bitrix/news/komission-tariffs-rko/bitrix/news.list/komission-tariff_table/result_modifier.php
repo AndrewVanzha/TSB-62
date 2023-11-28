@@ -27,8 +27,8 @@ $rs_section = \Bitrix\Iblock\SectionTable::getList([
 ]);
 while ($ar_section=$rs_section->fetch()) {
     $url_str = \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S');
-    $url_str = str_replace('_', '-', $url_str);
-    if ($ar_section['DEPTH_LEVEL'] == 1) {
+    //$url_str = str_replace('_', '-', $url_str);
+    if ($ar_section['DEPTH_LEVEL'] == 1 && $ar_section['CODE'] != 'obshchaya-informatsiya') {
         $topSectionList[] = [
             'ID' => $ar_section['ID'],
             'CODE' => $ar_section['CODE'],
@@ -39,6 +39,15 @@ while ($ar_section=$rs_section->fetch()) {
             'SECTION_PAGE_URL' => $url_str,
         ];
     } else {
+        $arResult['COMMON_INFO'] = [
+            'ID' => $ar_section['ID'],
+            'CODE' => $ar_section['CODE'],
+            'NAME' => $ar_section['NAME'],
+            'DESCRIPTION' => $ar_section['DESCRIPTION'],
+            'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
+        ];
+    }
+    if ($ar_section['DEPTH_LEVEL'] == 2) {
         $sectionList[] = [
             'ID' => $ar_section['ID'],
             'CODE' => $ar_section['CODE'],
@@ -97,10 +106,62 @@ for ($ii=0; $ii<count($sectionList); $ii++) {
         }
     }
 }
+//foreach ($arResult['ITEMS'] as $arItem) {
+//    debugg($arItem['ID']);
+//}
+
+// получаю раздел Общая информация
+$sectionCommon = [];
+$rs_section = \Bitrix\Iblock\SectionTable::getList([
+    'select' => [
+        'ID',
+        'CODE',
+        'NAME',
+        //'DESCRIPTION',
+        //'IBLOCK_SECTION_ID',
+    ],
+    'filter' => [
+        'IBLOCK_ID' => $arParams["IBLOCK_ID"],
+        'CODE' => 'obshchaya-informatsiya',  // Общая информация
+        'ACTIVE' => "Y",
+    ],
+    'order' => [
+        'IBLOCK_SECTION_ID' => 'ASC',
+    ],
+]);
+while ($ar_section=$rs_section->fetch()) {
+    //debugg($ar_section);
+    $sectionCommon[] = $ar_section;
+}
+
+// получаю все элементы раздела Общая информация
+$rs_elements = \Bitrix\Iblock\Elements\ElementRkoTariffsTable::getList([
+    'select' => [
+        'ID',
+        'NAME',
+        'CODE',
+        'IBLOCK_SECTION_ID',
+        'PREVIEW_TEXT',
+        'SUBHEADER' => 'ATT_SERVICE_POINT'
+    ],
+    'filter' => [
+        'IBLOCK_SECTION_ID' => $sectionCommon[0]['ID'],
+        '=ACTIVE' => 'Y'
+    ],
+])->fetchAll();
+foreach ($rs_elements as $item) {
+    //debugg($item);
+    $sectionCommon[0]['ITEMS'][$item['ID']] = $item;
+}
+//debugg($sectionCommon);
+
 //debugg($sectionList);
 $arResult['TABLE'] = $sectionList;
-$arResult['TOP_SECTION'] = $topSectionList;
+$arResult['SECTION_LEVEL_1'] = $topSectionList;
+$arResult['COMMON_SECTION'] = $sectionCommon[0];
 //debugg($arResult['TABLE']);
 //debugg($arResult);
 //debugg($arResult['ITEMS']);
+//debugg($arResult['COMMON_SECTION']);
 unset($sectionList);
+unset($sectionCommon);
