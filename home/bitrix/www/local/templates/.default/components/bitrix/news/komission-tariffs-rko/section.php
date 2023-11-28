@@ -54,9 +54,7 @@ section
 <br />
 <?endif*/?>
 <?
-// Включен API инфоблока Валютный контроль RkoTariffs
-$parent_section = 601;  // Общая информация
-$services_block = [10716]; // Условия предоставления пакетов
+// Включен API инфоблока Расчетно-кассовое обслуживание (Тарифы) RkoTariffs
 //debugg($arResult["VARIABLES"]);
 ?>
 <?/*$APPLICATION->IncludeComponent(

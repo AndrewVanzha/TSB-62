@@ -1,10 +1,85 @@
-.v21 .v21-section .consultations-tileblock {
-    padding: 32px 0;
-    /*font-family: Canela Deck LC;
+.v21 .v21-komission-tariffs-rko .template-table {
+    margin: 0 0 32px 0;
+}
+
+.template-table .table-choice {
+    display: flex;
+    justify-content: space-between;
+    width: 360px;
+    margin: 0 auto;
+    border-top: 1px solid #667a8e;
+    border-bottom: 1px solid #667a8e;
+}
+.template-table .table-choice--title,
+.template-table .table-choice--item {
+    margin: 0;
+    padding: 10px 5px;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.template-table .table-choice--item {
+    display: block;
+    color: #00345e;
+}
+.template-table .table-wrapper {}
+.template-table .table-top {
+    display: flex;
+    column-gap: 15px;
+    border-bottom: 1px solid #667a8e;
+}
+.template-table .table-cell-1 {
+    width: 3%;
+}
+.template-table .table-cell-2 {
+    width: 80%;
+}
+.template-table .table-cell-3 {
+    width: 15%;
+}
+.template-table .table-cell-4 {
+    width: 85%;
+}
+.template-table .table-cell-5 {}
+.template-table .table-top--title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 10px 0;
     font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0em;*/
-    /*outline: 1px solid darkred;*/
+    font-weight: 600;
+}
+.template-table .table-box {}
+.template-table .table-line {
+    display: flex;
+    column-gap: 15px;
+    width: 100%;
+    border-bottom: 1px solid #667a8e;
+}
+.template-table .table-line--cell {
+    font-size: 18px;
+}
+.template-table .table-cell--title {
+    font-weight: 600;
+}
+.template-table .table-subblock {}
+.template-table .table-subline {
+    display: flex;
+    flex-direction: row;
+}
+.template-table .table-point {
+    width: 100%;
+}
+
+.template-table .template-table--footnote {
+    margin: 32px 0 0 0;
+}
+
+
+/*.v21 .v21-section .consultations-tileblock {
+    padding: 32px 0;
 }
 .v21 .consultations-tileblock__header {
     margin: 0 0 32px 0;
@@ -17,10 +92,6 @@
     text-align: center;
 }
 .v21 .consultations-tileblock__grid {
-    /*display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 24px;*/
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: max-content;
@@ -29,8 +100,6 @@
     position: relative;
 }
 .v21 .consultations-tileblock__grid--item {
-    /*flex: 0 0 140px;
-    width: 100%;*/
     margin: 0 auto;
     min-width: 140px;
 }
@@ -47,32 +116,22 @@
     text-align: center;
 }
 .v21 .consultations-tileblock__grid--item-box.box-1 {
-    /*display: flex;
-    justify-content: space-between;*/
-    /*row-gap: 24px;*/
-}
-.v21 .consultations-tileblock__grid--img {
+}*/
+/*.v21 .consultations-tileblock__grid--img {
     width: 48px;
     margin-bottom: 16px;
 }
 .v21 .consultations-tileblock__grid--title {
-    /*flex: 1 0 100%;*/
     margin: 0 auto;
     width: 100%;
     font-weight: 300;
 }
 .v21 .consultations-tileblock__grid--subtitle {
-    /*flex: 1 0 100%;*/
     margin: 0 auto;
     font-weight: 300;
     text-align: center;
-    /*font-size: 16px;
-    font-weight: 300;
-    line-height: 24px;
-    letter-spacing: 0.01em;
-    color: #546770;*/
 }
-/*.v21 .base-account-tileblock__grid--horline {
+.v21 .base-account-tileblock__grid--horline {
     position: absolute;
     left: 0;
     right: 0;
@@ -88,7 +147,7 @@
 }*/
 
 @media screen and (min-width: 480px) {
-    .v21 .consultations-tileblock__header {
+    /*.v21 .consultations-tileblock__header {
         font-size: 36px;
         line-height: 50px;
     }
@@ -97,18 +156,16 @@
         grid-template-rows: max-content max-content;
     }
     .v21 .consultations-tileblock__grid--item {
-        /*flex-basis: 220px;*/
-        /*width: 220px;*/
-    }
+    }*/
 }
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-section .consultations-tileblock {
-        /*margin-top: 117px;*/
+    .template-table .table-choice {
+        width: 580px;
+    }
+    /*.v21 .v21-section .consultations-tileblock {
         padding-top: 64px;
         padding-bottom: 64px;
-        /*font-size: 24px;
-        line-height: 31px;*/
     }
     .v21 .consultations-tileblock__header {
         margin-bottom: 64px;
@@ -117,31 +174,23 @@
         grid-column-gap: 60px;
     }
     .v21 .consultations-tileblock__grid--item {
-        /*flex-basis: 364px;*/
-        /*width: 364px;*/
     }
     .v21 .consultations-tileblock__grid--img {
         width: 60px;
     }
     .v21 .consultations-tileblock__grid--subtitle {
-        /*flex-basis: 198px;
-        display: flex;
-        justify-content: flex-end;*/
-    }
+    }*/
 }
 
 @media screen and (min-width: 1024px) {
     /*.v21 .v21-section .consultations-tileblock {
         font-size: 30px;
         line-height: 39px;
-    }*/
+    }
     .v21 .consultations-tileblock__grid {
         grid-column-gap: 120px;
-        /*row-gap: 100px;*/
     }
     .v21 .consultations-tileblock__grid--item {
-        /*flex-basis: 480px;*/
-        /*width: 480px;*/
     }
     .v21 .consultations-tileblock__grid--img {
         width: 81px;
@@ -150,10 +199,16 @@
     .v21 .consultations-tileblock__grid--item-box {
         font-size: 22px;
         line-height: 31px;
-    }
+    }*/
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-section .consultations-tileblock {
+    .v21 .v21-komission-tariffs-rko .template-table {
+        margin-bottom: 120px;
+    }
+    /*.template-table .template-table--footnote {
+        margin-bottom: 120px;
+    }*/
+    /*.v21 .v21-section .consultations-tileblock {
         padding-top: 120px;
         padding-bottom: 120px;
     }
@@ -164,11 +219,8 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: max-content;
         grid-column-gap: 60px;
-        /*row-gap: 32px;*/
     }
     .v21 .consultations-tileblock__grid--item {
-        /*flex-basis: 300px;*/
-        /*width: 300px;*/
     }
     .v21 .consultations-tileblock__grid--item-box.item-box-0 {
         width: 232px;
@@ -185,7 +237,7 @@
     .v21 .consultations-tileblock__grid--img {
         margin-bottom: 30px;
     }
-    /*.v21 .base-account-tileblock__grid--verline {
+    .v21 .base-account-tileblock__grid--verline {
         display: block;
     }*/
 }

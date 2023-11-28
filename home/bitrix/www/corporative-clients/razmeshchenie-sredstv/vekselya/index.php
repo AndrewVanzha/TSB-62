@@ -40,7 +40,7 @@ $APPLICATION->SetTitle("Векселя");
 		"ELEMENT_ID" => "298",
 		"FIELD_CODE" => array("",""),
 		"IBLOCK_ID" => "89",
-		"IBLOCK_TYPE" => "corporative_clients",
+		"IBLOCK_TYPE" => "corporative-clients",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"MESSAGE_404" => "",

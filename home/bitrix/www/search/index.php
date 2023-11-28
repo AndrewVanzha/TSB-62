@@ -16,8 +16,9 @@ $APPLICATION->SetTitle("Поиск"); ?>
 			1 => "iblock_offices",
 			2 => "iblock_financial",
 			3 => "iblock_investors",
-			4 => "iblock_private_clients",
-			5 => "iblock_corporative_clients",
+			//4 => "iblock_private_clients",
+			4 => "iblock_chastnym-klientam",
+			5 => "iblock_corporative-clients",
 		),
 		"SHOW_WHERE" => "N",
 		"PAGE_RESULT_COUNT" => "10",
@@ -73,7 +74,8 @@ $APPLICATION->SetTitle("Поиск"); ?>
 			0 => "108",
 			1 => "109"
 		),
-		"arrFILTER_iblock_private_clients" => array(
+		//"arrFILTER_iblock_private_clients" => array(
+		"arrFILTER_iblock_chastnym-klientam" => array(
 			0 => "12",
 			1 => "21",
 			2 => "30",
@@ -84,7 +86,7 @@ $APPLICATION->SetTitle("Поиск"); ?>
 			7 => "52",
 			9 => "98"
 		),
-		"arrFILTER_iblock_corporative_clients" => array(
+		"arrFILTER_iblock_corporative-clients" => array(
 			0 => "24",
 			1 => "57",
 			2 => "60",

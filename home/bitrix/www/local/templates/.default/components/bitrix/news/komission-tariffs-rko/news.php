@@ -12,6 +12,37 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
+<?php
+$sectionTransfer = [];
+$rs_section = \Bitrix\Iblock\SectionTable::getList([
+    'select' => [
+        'ID',
+        'CODE',
+        'SECTION_PAGE_URL' => 'IBLOCK.SECTION_PAGE_URL',
+    ],
+    'filter' => [
+        'IBLOCK_ID' => $arParams["IBLOCK_ID"],
+        'ID' => 594,  // Пакет Старт
+        'ACTIVE' => "Y",
+    ],
+    'order' => [
+        'IBLOCK_SECTION_ID' => 'ASC',
+    ],
+]);
+while ($ar_section=$rs_section->fetch()) {
+    $sectionTransfer[] = [
+        'ID' => $ar_section['ID'],
+        'CODE' => $ar_section['CODE'],
+        'NAME' => $ar_section['NAME'],
+        'DESCRIPTION' => $ar_section['DESCRIPTION'],
+        'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
+        'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
+        'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
+    ];
+}
+//debugg($sectionTransfer);
+LocalRedirect($sectionTransfer[0]['SECTION_PAGE_URL']);
+?>
 <?/*?>
 <?if($arParams["USE_RSS"]=="Y"):?>
 	<?

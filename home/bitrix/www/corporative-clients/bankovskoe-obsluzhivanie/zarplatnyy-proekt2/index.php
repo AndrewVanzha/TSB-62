@@ -32,7 +32,7 @@ $APPLICATION->SetTitle("Title");
 			1 => "",
 		),
 		"IBLOCK_ID" => "67",
-		"IBLOCK_TYPE" => "corporative_clients",
+		"IBLOCK_TYPE" => "corporative-clients",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"MESSAGE_404" => "",
