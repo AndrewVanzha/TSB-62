@@ -1,6 +1,9 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
+//debugg($arParams['PARENT_SECTION']);
+//debugg($arParams['PARENT_SECTION_CODE']);
+
 $topSectionList = [];
 $sectionList = [];
 $rs_section = \Bitrix\Iblock\SectionTable::getList([
@@ -12,20 +15,23 @@ $rs_section = \Bitrix\Iblock\SectionTable::getList([
         //'IBLOCK_ID',
         'IBLOCK_SECTION_ID',
         'DEPTH_LEVEL',
+        'SORT',
         'SECTION_PAGE_URL' => 'IBLOCK.SECTION_PAGE_URL',
         //'IBLOCK_NAME' => 'IBLOCK.NAME',
     ],
     'filter' => [
         'IBLOCK_ID' => $arParams["IBLOCK_ID"],
         'DEPTH_LEVEL' => [1, 2],
+        //'IBLOCK_SECTION_ID' => $arParams['PARENT_SECTION'],
         'ACTIVE' => "Y",
         //'ID' => $arParams["PARENT_SECTION"]
     ],
     'order' => [
-        'IBLOCK_SECTION_ID' => 'ASC',
+        'SORT' => 'ASC',
     ],
 ]);
 while ($ar_section=$rs_section->fetch()) {
+    //debugg($ar_section);
     $url_str = \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S');
     //$url_str = str_replace('_', '-', $url_str);
     if ($ar_section['DEPTH_LEVEL'] == 1 && $ar_section['CODE'] != 'obshchaya-informatsiya') {
@@ -47,7 +53,7 @@ while ($ar_section=$rs_section->fetch()) {
             'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
         ];
     }
-    if ($ar_section['DEPTH_LEVEL'] == 2) {
+    if ($ar_section['DEPTH_LEVEL'] == 2 && $ar_section['IBLOCK_SECTION_ID'] == $arParams['PARENT_SECTION']) {
         $sectionList[] = [
             'ID' => $ar_section['ID'],
             'CODE' => $ar_section['CODE'],
@@ -62,9 +68,6 @@ while ($ar_section=$rs_section->fetch()) {
 //debugg($topSectionList);
 //debugg($sectionList);
 /*
-debugg($arParams['PARENT_SECTION']);
-debugg($arParams["IBLOCK_ID"]);
-
 $arSelect = array(
     'NAME',
     'DESCRIPTION',
@@ -83,7 +86,6 @@ $secRes = CIBlockSection::GetList(
 while ($sectionProp = $secRes->GetNext()) {
     $arSection[] = $sectionProp;
 }
-
 debugg($arSection);
 */
 // Получить массив подсекций
@@ -106,9 +108,6 @@ for ($ii=0; $ii<count($sectionList); $ii++) {
         }
     }
 }
-//foreach ($arResult['ITEMS'] as $arItem) {
-//    debugg($arItem['ID']);
-//}
 
 // получаю раздел Общая информация
 $sectionCommon = [];
