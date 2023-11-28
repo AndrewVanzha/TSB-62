@@ -18,76 +18,56 @@ $this->setFrameMode(true);
 
 <div class="template-topblock">
     <div class="template-topblock__block">
-        <h1 class="template-topblock__header">Тарифы комиссионного вознаграждения за пакеты услуг расчетно-кассового обслуживания счетов юридических лиц (за исключением кредитных организаций), индивидуальных предпринимателей и физических лиц, занимающихся в установленном законодательством российской федерации порядке частной практикой, в АКБ «ТРАНССТРОЙБАНК» (АО)</h1>
-
-        <h2>УТВЕРЖДЕНЫ<br>
+        <!--h1 class="template-topblock__header">Тарифы комиссионного вознаграждения за пакеты услуг расчетно-кассового обслуживания счетов юридических лиц (за исключением кредитных организаций), индивидуальных предпринимателей и физических лиц, занимающихся в установленном законодательством российской федерации порядке частной практикой, в АКБ «ТРАНССТРОЙБАНК» (АО)</h1-->
+        <h1 class="template-topblock__header"><?= $arResult['COMMON_SECTION']['ITEMS'][10758]['PREVIEW_TEXT']; ?></h1>
+        <h2 class="template-topblock__anno"><?= $arResult['COMMON_SECTION']['ITEMS'][10757]['PREVIEW_TEXT']; ?></h2>
+        <?/*?><h2 class="template-topblock__anno">УТВЕРЖДЕНЫ<br>
             Приказом<br>
             Председателя Правления<br>
             АКБ «Трансстройбанк» (АО)<br>
             № 422 от «12» августа 2021 г.<br>
-            Вступают в силу с «01» сентября 2021 г.</h2>
-        <h3 class="template-topblock__content">Условия предоставления пакетов</h3>
+            Вступают в силу с «01» сентября 2021 г.</h2><?*/?>
         <div class="template-topblock__buttons">
             <a href="#fTariffConsultForm" class="v21-button-2022 template-topblock__button button-1 js-tariff-table__button">
                 <span>Получить консультацию</span>
             </a>
         </div>
     </div>
-    <div class="template-topblock__image template-topblock__image--1366">
-        <img
-                src="<?=CFile::GetPath($arResult['PICTURE'])?>"
-                alt="картинка"
-                title="<?=$arResult["NAME"]?>"
-        />
+    <!--h3 class="template-topblock__subheader">Условия предоставления пакетов</h3-->
+    <h3 class="template-topblock__subheader"><?= $arResult['COMMON_SECTION']['ITEMS'][10716]['SUBHEADERVALUE']; ?></h3>
+
+    <div class="template-topblock__image">
+        <div class="template-topblock__image template-topblock__image--1366">
+            <img
+                    src="<?=CFile::GetPath($arResult['PICTURE'])?>"
+                    alt="картинка"
+                    title="<?=$arResult["NAME"]?>"
+            />
+        </div>
+        <div class="template-topblock__image template-topblock__image--1024">
+            <img
+                    src="<?=CFile::GetPath($arResult['PICTURE'])?>"
+                    alt="картинка"
+                    title="<?=$arResult["NAME"]?>"
+            />
+        </div>
+        <div class="template-topblock__image template-topblock__image--768">
+            <img
+                    src="<?=CFile::GetPath($arResult['PICTURE'])?>"
+                    alt="картинка"
+                    title="<?=$arResult["NAME"]?>"
+            />
+        </div>
+        <div class="template-topblock__image template-topblock__image--480">
+            <img
+                    src="<?=CFile::GetPath($arResult['PICTURE'])?>"
+                    alt="картинка"
+                    title="<?=$arResult["NAME"]?>"
+            />
+        </div>
     </div>
-    <?if($arParams["DISPLAY_PICTURE"]!="N" && $arResult['PICTURE']):?>
-        <? if ($arResult["SECTION"]["PATH"][1366]) : ?>
-            <div class="template-topblock__image template-topblock__image--1366">
-                <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1366]["PICTURE"])?>"
-                        alt="картинка"
-                        title="<?=$arResult["NAME"]?>"
-                />
-            </div>
-        <? endif; ?>
-        <? if ($arResult["SECTION"]["PATH"][1024]) : ?>
-            <div class="template-topblock__image template-topblock__image--1024">
-                <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][1024]["PICTURE"])?>"
-                        alt="картинка"
-                        title="<?=$arResult["NAME"]?>"
-                />
-            </div>
-        <? endif; ?>
-        <? if ($arResult["SECTION"]["PATH"][768]) : ?>
-            <div class="template-topblock__image template-topblock__image--768">
-                <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][768]["PICTURE"])?>"
-                        alt="картинка"
-                        title="<?=$arResult["NAME"]?>"
-                />
-            </div>
-        <? endif; ?>
-        <? if ($arResult["SECTION"]["PATH"][480]) : ?>
-            <div class="template-topblock__image template-topblock__image--480">
-                <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][480]["PICTURE"])?>"
-                        alt="картинка"
-                        title="<?=$arResult["NAME"]?>"
-                />
-            </div>
-        <? endif; ?>
-        <? if ($arResult["SECTION"]["PATH"][320]) : ?>
-            <div class="template-topblock__image template-topblock__image--320">
-                <img
-                        src="<?=CFile::GetPath($arResult["SECTION"]["PATH"][320]["PICTURE"])?>"
-                        alt="картинка"
-                        title="<?=$arResult["NAME"]?>"
-                />
-            </div>
-        <? endif; ?>
-    <?endif?>
-    <p class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></p>
+    <?/*?><p class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></p><?*/?>
+    <p class="template-topblock__content"><?echo $arResult['COMMON_SECTION']['ITEMS'][10716]['PREVIEW_TEXT']; ?></p>
 </div>
 
 <script>
@@ -107,7 +87,7 @@ $this->setFrameMode(true);
 
 <div>
     <div>Пакет</div>
-    <? foreach ($arResult['TOP_SECTION'] as $section) : ?>
+    <? foreach ($arResult['SECTION_LEVEL_1'] as $section) : ?>
         <a href="<?= $section['SECTION_PAGE_URL'] ?>"><?= $section['DESCRIPTION'] ?></a>
     <? endforeach; ?>
 </div>

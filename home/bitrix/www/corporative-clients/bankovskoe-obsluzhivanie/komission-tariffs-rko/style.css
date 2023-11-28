@@ -1,3 +1,4 @@
+/*
 .v21 .v21-account-services-container,
 .v21 .v21-fast-transactions-container,
 .v21 .v21-account-application-container,
@@ -26,37 +27,90 @@
 }
 .v21 .v21-questiones-answers-container {
     padding: 32px 0;
-    /*outline: 1px solid darkgoldenrod;*/
+}
+*/
+.v21 .v21-komission-tariffs-rko {}
+.v21 .v21-komission-tariffs-rko .template-topblock {
+    display: flex;
+    flex-direction: column;
+    column-gap: 30px;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__block {
+    display: flex;
+    flex-direction: column;
+    column-gap: 30px;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__header {
+    order: 3;
+    margin: 0 0 32px 0;
+    padding: 0 12px;
+    font-family: Canela Deck LC;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__anno {
+    order: 1;
+    margin: 0 0 32px 0;
+    /*padding: 0 12px;*/
+    font-family: Canela Deck LC;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__buttons {
+    order: 5;
+    margin: 0 0 32px 0;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__image {
+    display: none;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__button {
+    padding: 12px 45px;
+}
+.v21 .v21-komission-tariffs-rko .template-topblock__subheader {
+    margin: 0 0 32px 0;
+    /*padding: 0 12px;*/
+    font-family: Canela Deck LC;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-ved-consultation-header {
+    .v21 .v21-komission-tariffs-rko .template-topblock__header {
         margin-bottom: 64px;
-        font-size: 36px;
+        font-size: 42px;
         line-height: 50px;
     }
-    .v21 .v21-questiones-answers-container {
-        padding-top: 64px;
-        padding-bottom: 64px;
+    .v21 .v21-komission-tariffs-rko .template-topblock__subheader {
+        margin-bottom: 64px;
+        font-size: 24px;
     }
 }
 @media screen and (min-width: 1024px) {
-    .v21 .v21-ved-consultations-wrap {
+    /*.v21 .v21-ved-consultations-wrap {
         flex-wrap: nowrap;
     }
     .v21 .v21-consult-application {
         flex-basis: 57.4%;
-    }
+    }*/
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-ved-consultations-wrap {
-        column-gap: 30px;
-    }
-    .v21 .v21-ved-consultation-header {
+    .v21 .v21-komission-tariffs-rko .template-topblock__header {
         margin-bottom: 120px;
     }
-    .v21 .v21-questiones-answers-container {
-        padding: 120px 0;
+    .v21 .v21-komission-tariffs-rko .template-topblock__buttons {
+        margin-bottom: 64px;
+    }
+    .v21 .v21-komission-tariffs-rko .template-topblock__subheader {
+        margin-bottom: 120px;
     }
 }
 
