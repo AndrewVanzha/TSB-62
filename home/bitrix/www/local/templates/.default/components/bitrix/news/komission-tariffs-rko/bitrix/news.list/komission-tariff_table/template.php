@@ -120,6 +120,10 @@ $this->setFrameMode(true);
             </div>
         <? endforeach; ?>
     </div>
+
+    <div class="template-table--footnote">
+        <p class=""><?= $arResult['COMMON_SECTION']['ITEMS'][10718]['PREVIEW_TEXT']; ?></p>
+    </div>
 </div>
 
 <?/* foreach($arResult["ITEMS"] as $arItem):?>

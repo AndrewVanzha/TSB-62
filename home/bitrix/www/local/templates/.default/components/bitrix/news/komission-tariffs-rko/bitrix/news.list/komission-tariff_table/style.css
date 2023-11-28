@@ -28,6 +28,7 @@
 .template-table .table-top {
     display: flex;
     column-gap: 15px;
+    border-bottom: 1px solid #667a8e;
 }
 .template-table .table-cell-1 {
     width: 3%;
@@ -72,6 +73,9 @@
     width: 100%;
 }
 
+.template-table .template-table--footnote {
+    margin: 32px 0 0 0;
+}
 
 
 /*.v21 .v21-section .consultations-tileblock {
@@ -201,6 +205,9 @@
     .v21 .v21-komission-tariffs-rko .template-table {
         margin-bottom: 120px;
     }
+    /*.template-table .template-table--footnote {
+        margin-bottom: 120px;
+    }*/
     /*.v21 .v21-section .consultations-tileblock {
         padding-top: 120px;
         padding-bottom: 120px;
