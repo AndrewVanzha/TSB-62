@@ -464,6 +464,15 @@
     letter-spacing: 0em;
     /*outline: 1px solid darkmagenta;*/
 }
+.v21 .v21-card-application2 .card-application--header {
+    margin: 60px 0 57px 0;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 34px;
+    color: #202020;
+    transition: var(--time-stretch);
+}
+
 .v21 .v21-section .js-color-switch .card-application--form {
     color: #546770;
 }
@@ -503,12 +512,22 @@
 }
 
 @media screen and (min-width: 768px) {
+    .v21 .v21-card-application2 .card-application--header {
+        margin-top: 37px;
+        margin-bottom: 64px;
+        font-size: 40px;
+        line-height: 52px;
+    }
     /*.v21 .v21-card-application {
         padding-top: 64px;
         padding-bottom: 64px;
     }*/
 }
 @media screen and (min-width: 1024px) {
+    .v21 .v21-card-application2 .card-application--header {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
 }
 @media screen and (min-width: 1366px) {
     /*.v21 .v21-card-application {

@@ -133,7 +133,7 @@ section
 </div><!-- v21-section -->
 
 <div class="v21-section">
-    <div class="v21-card-application" id="fBusinessAccountForm">
+    <div class="v21-card-application2" id="fBusinessAccountForm">
         <div class="v21-container">
             <? $iblock_id = "215";  // Запрос на открытие счета ?>
             <?$APPLICATION->IncludeComponent(
