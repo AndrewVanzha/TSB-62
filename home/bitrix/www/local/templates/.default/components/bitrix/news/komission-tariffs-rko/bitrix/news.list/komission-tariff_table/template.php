@@ -28,6 +28,7 @@ $this->setFrameMode(true);
     </div>
     <h3 class="template-topblock__subheader"><?= $arResult['COMMON_SECTION']['ITEMS'][10716]['SUBHEADERVALUE']; ?></h3>
 
+    <?/*?>
     <div class="template-topblock__image">
         <div class="template-topblock__image template-topblock__image--1366">
             <img
@@ -58,6 +59,8 @@ $this->setFrameMode(true);
             />
         </div>
     </div>
+    <?*/?>
+
     <p class="template-topblock__content"><?echo $arResult['COMMON_SECTION']['ITEMS'][10716]['PREVIEW_TEXT']; ?></p>
 </div>
 
@@ -79,8 +82,8 @@ $this->setFrameMode(true);
 <div class="template-table">
     <div class="table-choice">
         <h4 class="table-choice--title">Пакет</h4>
-        <? foreach ($arResult['SECTION_LEVEL_1'] as $section) : ?>
-            <a class="table-choice--item" href="<?= $section['SECTION_PAGE_URL'] ?>"><?= $section['DESCRIPTION'] ?></a>
+        <? foreach ($arResult['SECTION_LEVEL_1'] as $key=>$section) : ?>
+            <a class="table-choice--item <?= ($section['CODE'] == $arParams['PARENT_SECTION_CODE'])? 'table-choice--item__tab' : ''; ?>" href="<?= $section['SECTION_PAGE_URL'] ?>"><?= $section['DESCRIPTION'] ?></a>
         <? endforeach; ?>
     </div>
     <div class="table-wrapper">

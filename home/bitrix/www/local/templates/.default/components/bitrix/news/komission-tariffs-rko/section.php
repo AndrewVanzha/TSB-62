@@ -158,7 +158,9 @@ section
             );?>
         </div>
     </div>
+<?/*?>
 </div><!-- v21-section -->
 
 <div class="v21-section">
     <div class="v21-container">
+<?*/?>

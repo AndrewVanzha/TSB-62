@@ -24,10 +24,10 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/komi
         position: relative;
         z-index: 0;
     }
-    .v21 .v21-wide-container {
+    /*.v21 .v21-wide-container {
         margin-top: 0;
         overflow: visible;
-    }
+    }*/
 </style>
 <section class="v21-section v21-komission-tariffs-rko">
     <?$iblock_id = "223";  // Расчетно-кассовое обслуживание (Тарифы) ?>
@@ -120,9 +120,7 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/komi
             "USE_SHARE" => "N"
         )
     );?>
-</section>
-    </div><!-- v21-container -->
-</div><!-- v21-section -->
+<!--/section-->
 
 <?/*?>
 <div class="v21-section">
@@ -506,8 +504,8 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/komi
     </div><!-- v21-container -->
 
 </div><!-- v21-section -->
-<?*/?>
 
 <div class="">
+<?*/?>
     <div class="">
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

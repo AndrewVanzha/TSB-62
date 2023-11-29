@@ -1,34 +1,49 @@
 .v21 .v21-komission-tariffs-rko .template-table {
-    margin: 0 0 32px 0;
+    /*margin: 0 0 32px 0;*/
 }
 
 .template-table .table-choice {
     display: flex;
-    justify-content: space-between;
-    width: 360px;
+    justify-content: center;
+    column-gap: 15px;
+    /*width: 360px;*/
+    width: 572px;
     margin: 0 auto;
-    border-top: 1px solid #667a8e;
-    border-bottom: 1px solid #667a8e;
+    border-top: 1px solid rgba(32, 32, 32, .1);
+    border-bottom: 1px solid rgba(32, 32, 32, .1);
+    font-weight: 600;
+    line-height: 24px;
 }
 .template-table .table-choice--title,
 .template-table .table-choice--item {
     margin: 0;
-    padding: 10px 5px;
-    font-size: 30px;
+    /*padding: 10px 5px;*/
+    /*font-size: 30px;
     font-weight: 300;
     line-height: 39px;
     letter-spacing: 0em;
-    text-align: center;
+    text-align: center;*/
+
+    flex: 0 0 175px;
+    width: fit-content;
+    padding: 22px 0;
+    color: #546770;
+    cursor: pointer;
 }
 .template-table .table-choice--item {
     display: block;
     color: #00345e;
+    text-align: center;
+}
+.template-table .table-choice--item.table-choice--item__tab {
+    color: #a58a57;
+    border-bottom: 3px solid #a58a57;
 }
 .template-table .table-wrapper {}
 .template-table .table-top {
     display: flex;
     column-gap: 15px;
-    border-bottom: 1px solid #667a8e;
+    border-bottom: 1px solid #bbc5cd;
 }
 .template-table .table-cell-1 {
     width: 3%;
@@ -56,9 +71,10 @@
     display: flex;
     column-gap: 15px;
     width: 100%;
-    border-bottom: 1px solid #667a8e;
+    border-bottom: 1px solid #bbc5cd;
 }
 .template-table .table-line--cell {
+    padding: 7px 0;
     font-size: 18px;
 }
 .template-table .table-cell--title {
@@ -79,41 +95,41 @@
 
 
 /*.v21 .v21-section .consultations-tileblock {
-    padding: 32px 0;
+padding: 32px 0;
 }
 .v21 .consultations-tileblock__header {
-    margin: 0 0 32px 0;
-	padding: 0 12px;
-    font-family: Canela Deck LC;
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 39px;
-    letter-spacing: 0em;
-    text-align: center;
+margin: 0 0 32px 0;
+padding: 0 12px;
+font-family: Canela Deck LC;
+font-size: 30px;
+font-weight: 300;
+line-height: 39px;
+letter-spacing: 0em;
+text-align: center;
 }
 .v21 .consultations-tileblock__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: max-content;
-    grid-column-gap: 0;
-    grid-row-gap: 50px;
-    position: relative;
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: max-content;
+grid-column-gap: 0;
+grid-row-gap: 50px;
+position: relative;
 }
 .v21 .consultations-tileblock__grid--item {
-    margin: 0 auto;
-    min-width: 140px;
+margin: 0 auto;
+min-width: 140px;
 }
 .v21 .consultations-tileblock__grid--item-box {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    color: #000000;
-    font-family: Canela Deck LC;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0em;
-    text-align: center;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+position: relative;
+color: #000000;
+font-family: Canela Deck LC;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: center;
 }
 .v21 .consultations-tileblock__grid--item-box.box-1 {
 }*/
@@ -161,7 +177,9 @@
 
 @media screen and (min-width: 768px) {
     .template-table .table-choice {
-        width: 580px;
+        column-gap: 35px;
+        width: 100%;
+        /*width: 580px;*/
     }
     /*.v21 .v21-section .consultations-tileblock {
         padding-top: 64px;
@@ -202,9 +220,9 @@
     }*/
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-komission-tariffs-rko .template-table {
+    /*.v21 .v21-komission-tariffs-rko .template-table {
         margin-bottom: 120px;
-    }
+    }*/
     /*.template-table .template-table--footnote {
         margin-bottom: 120px;
     }*/

@@ -121,10 +121,14 @@
     .v21 .v21-komission-tariffs-rko .template-topblock__subheader {
         margin-bottom: 120px;
     }
+    .v21 .v21-komission-tariffs-rko .template-topblock__content {
+        margin-bottom: 64px;
+    }
 }
 
 
 /* section-interests */
+/*
 .v21 .v21-valutny-kontrol--wrap {
     margin: 32px 0;
 }
@@ -154,7 +158,7 @@
     padding: 20px 20px 40px;
     column-gap: 17px;
     row-gap: 16px;
-    flex-wrap: wrap;/* не двигать окна */
+    flex-wrap: wrap;
 }
 .v21 .v21-section-interests--left,
 .v21 .v21-section-interests--right {
@@ -162,20 +166,11 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     position: relative;
-    /*flex: 0 0 298px; двигать окна*/
     flex: 1 1 50%;
-    /*height: 451px;*/
-    /*height: 288px;*/
-    /*border: 1px solid #a58a57;*/
     border-radius: 4px;
-
     background: linear-gradient(141.43deg, #12192F 5.76%, #0D1F5F 50.47%, #0C4B7E 91.97%);
     background-blend-mode: color;
     box-shadow: 2px 4px 16px 0px rgb(0 52 94 / 25%);
-
-    /*box-shadow: 0 12px 32px -5px rgb(2 15 62 / 50%);
-    background: linear-gradient(158.61deg, #131b36 5.76%, #101d4b 50.47%, #00345e 91.97%);*/
-    /*z-index: 10;*/
     overflow: hidden;
 }
 .v21 .v21-section-interests--left {
@@ -185,34 +180,13 @@
 .v21 .v21-section-interests--right {
     order: 2;
 }
-/*.v21 .v21-section-interests--left::after,
-.v21 .v21-section-interests--right::after {
-    content: '';
-    position: absolute;
-    left: 14.34%;
-    bottom: 0;
-    background: #023f71;
-    width: 72.27%;
-    padding-top: 72.27%;
-    margin-bottom: -34.29%;
-    border-radius: 50%;
-    -webkit-backdrop-filter: blur(131px);
-    filter: blur(131px);
-}*/
 .v21 .v21-section-interests--textbox {
     display: flex;
     justify-content: space-between;
-    /*flex-wrap: wrap;*/
     flex-direction: column;
     padding: 24px 16px 16px 16px;
     order: 3;
 }
-/*.v21 .v21-section-interests--textbox div {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    min-height: 133px;
-}*/
 .v21 .v21-section-interests--textbox .v21-section-interests--texts {
     display: flex;
     justify-content: space-between;
@@ -247,8 +221,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /*width: 53px;
-    height: 49px;*/
     min-height: 40px;
     width: 52px;
     height: 52px;
@@ -285,8 +257,6 @@
 }
 .v21 .v21-section-interests--textbox .v21-section-interests--button:hover{
     width: 203px;
-    /*background-color: #f8fdff;*/
-    /*color: #00345e;*/
     outline: none;
     visibility: visible;
     opacity: 1;
@@ -295,7 +265,6 @@
     display: none;
     visibility: hidden;
     opacity: 0;
-    /*color: #00345e;*/
     color: #ffffff;
     transition: visibility 2s, opacity 2s, width 1s linear;
 }
@@ -360,29 +329,17 @@
     }
     .v21 .v21-section-interests--header {
         margin-bottom: 48px;
-        /*font-size: 60px;
-        line-height: 78px;*/
     }
     .v21 .v21-section-interests--box {
         column-gap: 30px;
-        flex-wrap: nowrap;/* не двигать окна */
+        flex-wrap: nowrap;
     }
     .v21 .v21-section-interests--left,
     .v21 .v21-section-interests--right {
         flex-wrap: nowrap;
         column-gap: 20px;
-        /*height: 340px;*/
-        /*flex-basis: 647px; двигать окна*/
         overflow: hidden;
     }
-    /*.v21 .v21-section-interests--left .v21-section-interests--textbox {
-        flex: 1 0 323px;
-        padding-right: 0;
-    }
-    .v21 .v21-section-interests--right .v21-section-interests--textbox {
-        flex: 1 0 323px;
-        padding-right: 0;
-    }*/
     .v21 .v21-section-interests--textbox p {
         font-size: 16px;
         line-height: 22px;
@@ -391,9 +348,6 @@
         display: none;
         order: 5;
     }
-    /*.v21 .v21-section-interests--textbox {
-        padding: 50px 0 38px 50px;
-    }*/
     .v21 .v21-section-interests--imgbox-img1 {
         display: none;
     }
@@ -403,19 +357,11 @@
 @media screen and (min-width: 1024px) {
     .v21 .v21-section-interests--left,
     .v21 .v21-section-interests--right {
-        /*flex-basis: 716px; двигать окна*/
         padding: 25px 20px;
     }
     .v21 .v21-section-interests--textbox {
         padding: 0;
     }
-    /*.v21 .v21-section-interests--left::after,
-    .v21 .v21-section-interests--right::after {
-        left: 13%;
-        width: 60%;
-        padding-top: 60%;
-        margin-bottom: -28%;
-    }*/
     .v21 .v21-section-interests--textbox h4 {
         margin-bottom: 20px;
         font-size: 24px;
@@ -447,10 +393,6 @@
     .v21 .v21-section-interests--right {
         padding: 15px 30px;
     }
-    /*.v21 .v21-section-interests--right .v21-section-interests--textbox {
-        flex-basis: 328px;
-        flex-grow: 0;
-    }*/
     .v21 .v21-section-interests--textbox {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -481,10 +423,6 @@
     .v21 .v21-section-interests--right {
         column-gap: 40px;
     }
-    /*.v21 .v21-section-interests--left::after,
-    .v21 .v21-section-interests--right::after {
-        left: 18%;
-    }*/
 }
 @media screen and (min-width: 1920px) {
     .v21 .v21-section-interests--left,
@@ -519,46 +457,71 @@
 
 
 .v21 .v21-card-application {
-    padding: 32px 0;
+    /*padding: 32px 0;*/
     font-family: Canela Deck LC;
     font-size: 20px;
     line-height: 28px;
     letter-spacing: 0em;
     /*outline: 1px solid darkmagenta;*/
 }
+.v21 .v21-section .js-color-switch .card-application--form {
+    color: #546770;
+}
+.v21 .v21-section .js-color-switch .card-application--header {
+    color: #202020;
+}
+.v21 .v21-section .js-color-switch .input-group__field {
+    color: #546770;
+}
+.v21 .v21-section .js-color-switch .v21-checkbox__text {
+    color: #564770;
+}
+.v21 .v21-section .js-color-switch .v21-checkbox__text::before {
+    color: #546770;
+    border: 1px solid #667a8e;
+}
+.v21 .v21-section .js-color-switch .v21-checkbox__text a {
+    color: #546770;
+}
+.v21 .v21-section .js-color-switch .card-application--form__section .input-captcha {
+    color: #546770;
+}
+.v21 .v21-section .js-color-switch .grid__item-button {
+    color: #202020;
+    border: 1px solid #a58a57;
+}
+.v21 .v21-section .js-color-switch .grid__item-button svg path {
+    fill: #a58a57;
+}
+.v21 .v21-section .js-color-switch .grid__item-button:hover {
+    /*background-color: #ffffff;*/
+    color: #a58a57;
+    /*border: 1px solid #ffffff;*/
+}
+.v21 .v21-section .js-color-switch .grid__item-button:hover svg path {
+    fill: #a58a57;
+}
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-card-application {
+    /*.v21 .v21-card-application {
         padding-top: 64px;
         padding-bottom: 64px;
-    }
+    }*/
 }
 @media screen and (min-width: 1024px) {
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-card-application {
+    /*.v21 .v21-card-application {
         padding: 120px 0;
-    }
-}
-
-.v21 .v21-documents-vkontrol-tileblock {
-    padding: 32px 0;
-    /*outline: 1px solid darkblue;*/
+    }*/
 }
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-documents-vkontrol-tileblock {
-        padding-top: 64px;
-        padding-bottom: 64px;
-    }
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-documents-vkontrol-tileblock {
-        padding: 120px 0;
-    }
 }
 
-
+/*
 .v21 .v21-description-container {
     padding: 32px 0;
     font-family: RF Dewi;
@@ -568,7 +531,6 @@
     letter-spacing: 0em;
     color: #666666;
     background-color: #ffffff;
-    /*outline: 1px solid darkgreen;*/
 }
 
 @media screen and (min-width: 768px) {
@@ -582,9 +544,10 @@
         padding: 120px 0;
     }
 }
-
+*/
 
 .v21 .rko-doc {
+    margin-bottom: 64px;
     font-family: RF Dewi;
     background-color: transparent;
     font-size: 14px;
@@ -641,9 +604,6 @@
 .v21 .rko-doc__all--link-button {
     display: block;
     margin: 0;
-    /*font-size: 19px;
-    font-weight: 400;
-    line-height: 23px;*/
     font-family: RF Dewi;
     font-size: 14px;
     font-weight: 600;
@@ -737,6 +697,9 @@
     }
 }
 @media screen and (min-width: 1024px) {
+    .v21 .rko-doc {
+        margin-bottom: 120px;
+    }
     .v21 .eq-docs__list .ls-documents__item {
         width: 32%;
         /*flex: 1 1 calc((100% / 3) - (2 * 15px));*/
@@ -756,7 +719,7 @@
 @media all and (min-width: 580px) {
 }
 
-
+/*
 .v21 .v21-documents-vkontrol-tileblock .v21-section__subtitle {
     font-family: Canela Deck LC;
     font-size: 24px;
@@ -780,3 +743,4 @@
     line-height: 16px;
     letter-spacing: 0em;
 }
+*/
