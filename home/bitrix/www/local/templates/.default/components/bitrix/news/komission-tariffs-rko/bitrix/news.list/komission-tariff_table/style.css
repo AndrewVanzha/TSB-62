@@ -1,46 +1,53 @@
 .v21 .v21-komission-tariffs-rko .template-table {
-    margin: 0 0 32px 0;
 }
 
 .template-table .table-choice {
     display: flex;
-    justify-content: space-between;
-    width: 360px;
+    justify-content: center;
+    /*column-gap: 15px;*/
+    /*width: 360px;*/
+    width: 100%;
     margin: 0 auto;
-    border-top: 1px solid #667a8e;
-    border-bottom: 1px solid #667a8e;
+    border-top: 1px solid rgba(32, 32, 32, .1);
+    border-bottom: 1px solid rgba(32, 32, 32, .1);
+    font-weight: 600;
+    line-height: 24px;
 }
 .template-table .table-choice--title,
 .template-table .table-choice--item {
     margin: 0;
-    padding: 10px 5px;
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 39px;
-    letter-spacing: 0em;
-    text-align: center;
+    flex: 0 0 auto;
+    width: fit-content;
+    padding: 22px 10px;
+    color: #546770;
+    cursor: pointer;
 }
 .template-table .table-choice--item {
     display: block;
     color: #00345e;
+    text-align: center;
+}
+.template-table .table-choice--item.table-choice--item__tab {
+    color: #a58a57;
+    border-bottom: 3px solid #a58a57;
 }
 .template-table .table-wrapper {}
 .template-table .table-top {
     display: flex;
     column-gap: 15px;
-    border-bottom: 1px solid #667a8e;
+    border-bottom: 1px solid #bbc5cd;
 }
 .template-table .table-cell-1 {
     width: 3%;
 }
 .template-table .table-cell-2 {
-    width: 80%;
+    width: 75%;
 }
 .template-table .table-cell-3 {
-    width: 15%;
+    width: 22%;
 }
 .template-table .table-cell-4 {
-    width: 85%;
+    width: 80%;
 }
 .template-table .table-cell-5 {}
 .template-table .table-top--title {
@@ -48,18 +55,20 @@
     align-items: center;
     margin: 0;
     padding: 10px 0;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
 }
 .template-table .table-box {}
 .template-table .table-line {
     display: flex;
-    column-gap: 15px;
+    column-gap: 10px;
     width: 100%;
-    border-bottom: 1px solid #667a8e;
+    border-bottom: 1px solid #bbc5cd;
 }
 .template-table .table-line--cell {
-    font-size: 18px;
+    padding: 7px 0;
+    font-size: 14px;
+    overflow-wrap: break-word;
 }
 .template-table .table-cell--title {
     font-weight: 600;
@@ -77,13 +86,13 @@
     margin: 32px 0 0 0;
 }
 
-
-/*.v21 .v21-section .consultations-tileblock {
+/*
+.v21 .v21-section .consultations-tileblock {
     padding: 32px 0;
 }
 .v21 .consultations-tileblock__header {
     margin: 0 0 32px 0;
-	padding: 0 12px;
+    padding: 0 12px;
     font-family: Canela Deck LC;
     font-size: 30px;
     font-weight: 300;
@@ -161,28 +170,30 @@
 
 @media screen and (min-width: 768px) {
     .template-table .table-choice {
-        width: 580px;
+        width: 572px;
     }
-    /*.v21 .v21-section .consultations-tileblock {
-        padding-top: 64px;
-        padding-bottom: 64px;
+    .template-table .table-choice--title,
+    .template-table .table-choice--item {
+        flex-basis: 120px;
+        padding-left: 0;
+        padding-right: 0;
     }
-    .v21 .consultations-tileblock__header {
-        margin-bottom: 64px;
+    .template-table .table-line--cell {
+        font-size: 18px;
+        overflow-wrap: normal;
     }
-    .v21 .consultations-tileblock__grid {
-        grid-column-gap: 60px;
+    .template-table .table-top--title {
+        font-size: 20px;
     }
-    .v21 .consultations-tileblock__grid--item {
+    .template-table .table-line {
+        column-gap: 15px;
     }
-    .v21 .consultations-tileblock__grid--img {
-        width: 60px;
-    }
-    .v21 .consultations-tileblock__grid--subtitle {
-    }*/
 }
 
 @media screen and (min-width: 1024px) {
+    .template-table .table-choice {
+        /*column-gap: 35px;*/
+    }
     /*.v21 .v21-section .consultations-tileblock {
         font-size: 30px;
         line-height: 39px;
@@ -202,9 +213,9 @@
     }*/
 }
 @media screen and (min-width: 1366px) {
-    .v21 .v21-komission-tariffs-rko .template-table {
+    /*.v21 .v21-komission-tariffs-rko .template-table {
         margin-bottom: 120px;
-    }
+    }*/
     /*.template-table .template-table--footnote {
         margin-bottom: 120px;
     }*/

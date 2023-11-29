@@ -12,7 +12,7 @@ while($arMess = $rs_mess->GetNext()) {
     //$postTemplateID['ID'] = $arMess['ID'];
     $postTemplateID = $arMess['ID'];
 }
-debugg($postTemplateID);
+//debugg($postTemplateID);
 ?>
 
 <!--div class="v21-container"-->
