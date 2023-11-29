@@ -576,7 +576,7 @@ while($arMess = $rs_mess->GetNext()) {
             'QUANTITY': 1,
             'XML_ID': 'xml'
         };
-        let postTemplateID = <?= $postTemplateID; ?>
+        let postTemplateID = <?= $postTemplateID; ?>;
         if(postTemplateID) {
             entry.PRODUCT_ID = postTemplateID;
         }
