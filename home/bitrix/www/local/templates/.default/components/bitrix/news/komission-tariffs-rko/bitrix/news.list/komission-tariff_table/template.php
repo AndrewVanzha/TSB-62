@@ -22,7 +22,7 @@ $this->setFrameMode(true);
         <h2 class="template-topblock__anno"><?= $arResult['COMMON_SECTION']['ITEMS'][10757]['PREVIEW_TEXT']; ?></h2>
         <div class="template-topblock__buttons">
             <a href="#fBusinessAccountForm" class="v21-button-2022 template-topblock__button button-1 js-tariff-table__button">
-                <span>Получить консультацию</span>
+                <span>Открыть счет</span>
             </a>
         </div>
     </div>
