@@ -40,8 +40,39 @@ if(CModule::IncludeModule("iblock")) {
         //debugg($arList);
         $cityCode = $arList['CODE'];
     }
-    //debugg($cityCode);
+    debugg($cityCode);
 
+    $sectionTransfer = [];
+    $rs_section = \Bitrix\Iblock\SectionTable::getList([
+        'select' => [
+            'ID',
+            'CODE',
+            'SECTION_PAGE_URL' => 'IBLOCK.SECTION_PAGE_URL',
+        ],
+        'filter' => [
+            'IBLOCK_ID' => $arParams["IBLOCK_ID"],
+            'ID' => 584,  // Москва
+            'ACTIVE' => "Y",
+        ],
+        'order' => [
+            'IBLOCK_SECTION_ID' => 'ASC',
+        ],
+    ]);
+    while ($ar_section=$rs_section->fetch()) {
+        $sectionTransfer[] = [
+            'ID' => $ar_section['ID'],
+            'CODE' => $ar_section['CODE'],
+            'NAME' => $ar_section['NAME'],
+            'DESCRIPTION' => $ar_section['DESCRIPTION'],
+            'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
+            'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
+            'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
+        ];
+    }
+    debugg($sectionTransfer);
+    LocalRedirect($sectionTransfer[0]['SECTION_PAGE_URL']);
+
+/*
     //$parse = parse_url($_SERVER['HTTP_REFERER']);
     $parse = parse_url($_SERVER['REDIRECT_SCRIPT_URL']);
     //debugg($parse);
@@ -60,8 +91,9 @@ if(CModule::IncludeModule("iblock")) {
     {
         //debugg($arSect);
         //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_$arSect.json', json_encode($arSect));
-        LocalRedirect($arSect["SECTION_PAGE_URL"]);
+        //LocalRedirect($arSect["SECTION_PAGE_URL"]);
     }
+*/
 }
 /*
 if (CSite::InDir('/chastnym-klientam/currency-exchange/')) {
@@ -267,7 +299,8 @@ catalog.section
 <div>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"common-table",
+	".default",
+	//"common-table",
 	Array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],

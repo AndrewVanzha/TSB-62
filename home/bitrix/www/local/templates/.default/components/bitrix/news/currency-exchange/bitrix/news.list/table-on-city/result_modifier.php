@@ -281,11 +281,11 @@ foreach ($arActiveOffices as $ii=>$arItem) { // фильтрую по имени
         $arActiveOfficesCourse['tsb'][$arItem['code']]['currency'][$currency_code] = $arItem['currency'][$currency_code];
 
         $arActiveOfficesCourse['cbr'] = $json['cbr']['data']; // - беру все курсы ЦБ
-        /*if (array_key_exists($currency_code, $json['cbr']['data'])) {
-            $arActiveOfficesCourse['cbr'][$currency_code] = $json['cbr']['data'][$currency_code];
-        } else {
-            $arActiveOfficesCourse['cbr'][$currency_code] = '';
-        }*/
+        //if (array_key_exists($currency_code, $json['cbr']['data'])) {
+        //    $arActiveOfficesCourse['cbr'][$currency_code] = $json['cbr']['data'][$currency_code];
+        //} else {
+        //    $arActiveOfficesCourse['cbr'][$currency_code] = '';
+        //}
     }
 }
 //debugg('$arActiveOfficesCourse=');
