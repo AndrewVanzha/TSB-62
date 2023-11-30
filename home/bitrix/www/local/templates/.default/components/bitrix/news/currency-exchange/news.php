@@ -28,7 +28,39 @@ $cityCode = 'moskva';
 //debugg($cityID);
 
 if(CModule::IncludeModule("iblock")) {
-    $rsList = CIBlockElement::GetList(
+    $sectionTransfer = [];
+    $rs_section = \Bitrix\Iblock\SectionTable::getList([
+        'select' => [
+            'ID',
+            'CODE',
+            'SECTION_PAGE_URL' => 'IBLOCK.SECTION_PAGE_URL',
+        ],
+        'filter' => [
+            'IBLOCK_ID' => $arParams["IBLOCK_ID"],
+            'ID' => 584,  // Москва
+            //'ACTIVE' => "Y",
+        ],
+        'order' => [
+            'IBLOCK_SECTION_ID' => 'ASC',
+        ],
+    ]);
+    while ($ar_section=$rs_section->fetch()) {
+        $sectionTransfer[] = [
+            'ID' => $ar_section['ID'],
+            'CODE' => $ar_section['CODE'],
+            //'NAME' => $ar_section['NAME'],
+            //'DESCRIPTION' => $ar_section['DESCRIPTION'],
+            //'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
+            //'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
+            'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
+        ];
+    }
+    //debugg($sectionTransfer);
+    //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_$sectionTransfer.json', json_encode($sectionTransfer));
+    LocalRedirect($sectionTransfer[0]['SECTION_PAGE_URL']);
+
+/*
+    $rsList = CIBlockElement::GetList(  // ненужно сложный заход
         array("SORT" => "ASC"),
         array("IBLOCK_ID" => 114, "ID" => $cityID),
         false,
@@ -42,37 +74,6 @@ if(CModule::IncludeModule("iblock")) {
     }
     debugg($cityCode);
 
-    $sectionTransfer = [];
-    $rs_section = \Bitrix\Iblock\SectionTable::getList([
-        'select' => [
-            'ID',
-            'CODE',
-            'SECTION_PAGE_URL' => 'IBLOCK.SECTION_PAGE_URL',
-        ],
-        'filter' => [
-            'IBLOCK_ID' => $arParams["IBLOCK_ID"],
-            'ID' => 584,  // Москва
-            'ACTIVE' => "Y",
-        ],
-        'order' => [
-            'IBLOCK_SECTION_ID' => 'ASC',
-        ],
-    ]);
-    while ($ar_section=$rs_section->fetch()) {
-        $sectionTransfer[] = [
-            'ID' => $ar_section['ID'],
-            'CODE' => $ar_section['CODE'],
-            'NAME' => $ar_section['NAME'],
-            'DESCRIPTION' => $ar_section['DESCRIPTION'],
-            'IBLOCK_SECTION_ID' => $ar_section['IBLOCK_SECTION_ID'],
-            'DEPTH_LEVEL' => $ar_section['DEPTH_LEVEL'],
-            'SECTION_PAGE_URL' => \CIBlock::ReplaceDetailUrl($ar_section['SECTION_PAGE_URL'], $ar_section, true, 'S'),
-        ];
-    }
-    debugg($sectionTransfer);
-    LocalRedirect($sectionTransfer[0]['SECTION_PAGE_URL']);
-
-/*
     //$parse = parse_url($_SERVER['HTTP_REFERER']);
     $parse = parse_url($_SERVER['REDIRECT_SCRIPT_URL']);
     //debugg($parse);
