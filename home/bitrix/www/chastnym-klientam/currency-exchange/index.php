@@ -24,8 +24,9 @@ $currencyCode = 'USD';
 //debugg($cityID);
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news", 
-	"currency-exchange", 
+	"bitrix:news",
+    "currency-exchange",
+    //".default",
 	array(
         "ADD_ELEMENT_CHAIN" => "Y",	// Включать название элемента в цепочку навигации
         "ADD_SECTIONS_CHAIN" => "Y",	// Включать раздел в цепочку навигации
@@ -52,16 +53,15 @@ $currencyCode = 'USD';
         "DETAIL_PAGER_TITLE" => "Страница",	// Название категорий
         "DETAIL_PROPERTY_CODE" => array(	// Свойства
             0 => "ATT_OFFICE",
-            1 => "ATT_CURRENCY_RATED",
-            2 => "ATT_CODE",
-            3 => "",
+            1 => "ATT_CODE",
+            2 => "",
         ),
         "DETAIL_SET_CANONICAL_URL" => "N",	// Устанавливать канонический URL
         "DISPLAY_BOTTOM_PAGER" => "Y",	// Выводить под списком
         "DISPLAY_DATE" => "N",	// Выводить дату элемента
         "DISPLAY_NAME" => "Y",	// Выводить название элемента
-        "DISPLAY_PICTURE" => "Y",	// Выводить изображение для анонса
-        "DISPLAY_PREVIEW_TEXT" => "Y",	// Выводить текст анонса
+        "DISPLAY_PICTURE" => "N",	// Выводить изображение для анонса
+        "DISPLAY_PREVIEW_TEXT" => "N",	// Выводить текст анонса
         "DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
         "FILE_404" => "",	// Страница для показа (по умолчанию /404.php)
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",	// Скрывать ссылку, если нет детального описания
@@ -75,14 +75,13 @@ $currencyCode = 'USD';
         ),
         "LIST_PROPERTY_CODE" => array(	// Свойства
             0 => "ATT_OFFICE",
-            1 => "ATT_CURRENCY_RATED",
-            2 => "ATT_CODE",
-            3 => "",
+            1 => "ATT_CODE",
+            2 => "",
         ),
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",	// Установить описание страницы из свойства
         "META_KEYWORDS" => "-",	// Установить ключевые слова страницы из свойства
-        "NEWS_COUNT" => "20",	// Количество новостей на странице
+        "NEWS_COUNT" => "50",	// Количество новостей на странице
         "PAGER_BASE_LINK_ENABLE" => "N",	// Включить обработку ссылок
         "PAGER_DESC_NUMBERING" => "N",	// Использовать обратную навигацию
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",	// Время кеширования страниц для обратной навигации
@@ -103,7 +102,7 @@ $currencyCode = 'USD';
         "SORT_ORDER2" => "DESC",	// Направление для второй сортировки новостей
         "STRICT_SECTION_CHECK" => "N",	// Строгая проверка раздела
         "USE_CATEGORIES" => "N",	// Выводить материалы по теме
-        "USE_FILTER" => "Y",	// Показывать фильтр
+        "USE_FILTER" => "N",	// Показывать фильтр
         //"FILTER_NAME" => "arrFilter",
         "USE_PERMISSIONS" => "N",	// Использовать дополнительное ограничение доступа
         "USE_RATING" => "N",	// Разрешить голосование
