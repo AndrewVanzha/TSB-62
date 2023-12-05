@@ -13,6 +13,7 @@ while($arMess = $rs_mess->GetNext()) {
     $postTemplateID = $arMess['ID'];
 }
 //debugg($postTemplateID);
+//debugg($_SERVER['SCRIPT_URL']);
 ?>
 
 <!--div class="v21-container"-->
@@ -545,59 +546,20 @@ while($arMess = $rs_mess->GetNext()) {
     function yandexMetrikaForm() {
         //yaCounter49389685
         //yaCounter315345643.reachGoal('applicationForm'); // ошика
-        //ym(315345643, 'reachGoal', 'applicationForm');
 
-        var formFields = {
-            'Отправка формы':
+        let formFields = {
+            'Поля формы':
                 {
-                    //'Имя получателя': {{Поле JS - Имя получателя}},
-                    'Имя получателя': 'Имя получателя',
-                    //'Email получателя': {{Поле JS - Email получателя}},
-                    'Email получателя': 'Email получателя',
-                    //'Ваше имя': {{Поле JS - Ваше имя}},
-                    'Ваше имя': 'Ваше имя',
-                    //'Ваш Email': {{Поле JS - Ваш email}},
-                    'Ваш Email': 'Поле JS - Ваш email',
-                    //'Тема подарочного сертификата': {{Поле JS - Тема подарочного сертификат}},
-                    'Тема подарочного сертификата': 'Поле JS - Тема подарочного сертификат',
-                    //'Сообщение': {{Поле JS - Сообщение}},
-                    'Сообщение': 'Поле JS - Сообщение',
-                    //'Сумма': {{Поле JS - Сумма}},
-                    'Сумма': 'Поле JS - Сумма',
+                    'COMPANY_NAME': $('input[name="COMPANY_NAME"]').val(),
+                    'COMPANY_INN': $('input[name="COMPANY_INN"]').val(),
+                    'FIO': $('input[name="FIO"]').val(),
+                    'PHONE': $('input[name="PHONE"]').val(),
+                    'EMAIL': $('input[name="EMAIL"]').val(),
+                    'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                    'CITY': $('select[name="CITY"] option:selected').val(),
                 }
         };
-        //ym(95589765, 'reachGoal', 'applicationForm', formFields);
-
-        let entry = {
-            'PRODUCT_ID': 0,
-            'NAME': 'form',
-            'PRICE': 11,
-            'DETAIL_PAGE_URL': '/corporative-clients/bankovskoe-obsluzhivanie/scheta-dlya-biznesa/',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };
-        let postTemplateID = <?= $postTemplateID; ?>;
-        if(postTemplateID) {
-            entry.PRODUCT_ID = postTemplateID;
-        }
-        console.log('postTemplateID');
-        console.log(postTemplateID);
-        let pos = 1;
-        let ar_product = [];
-        ar_product.push(
-            {
-                "id": entry.PRODUCT_ID,
-                "name": entry.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        makeDataLayer(1, ar_product);
-        //console.log(local_dataLayer);
-        console.log(window.dataLayer);
+        ym(315345643, 'reachGoal', 'applicationForm', formFields);
 
         return true;
     }
@@ -618,12 +580,119 @@ while($arMess = $rs_mess->GetNext()) {
     }
 
     $('#applicationForm').submit(function (e) {
-        //let postTemplateID = <?= $postTemplateID; ?>
-        //let postTemplateID = <?= CUtil::PHPToJSObject($postTemplateID); ?>
-        //console.log('postTemplateID');
-        //console.log(postTemplateID);
         e.preventDefault();
         console.log('form');
+
+        let entry = {
+            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'PRICE': 1,
+            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+            'QUANTITY': 1,
+            'XML_ID': 'xml'
+        };
+        let ar_product = [];
+        let postTemplateID = <?= $postTemplateID; ?>; // ID почтового шаблона
+        //let postTemplateID = <?//= CUtil::PHPToJSObject($postTemplateID); ?>
+        //console.log('postTemplateID');
+        //console.log(postTemplateID);
+        /*if(postTemplateID) {
+            entry.PRODUCT_ID = postTemplateID;
+        }*/
+        /*ar_product.push(
+            {
+                "id": entry.PRODUCT_ID,
+                "name": entry.NAME,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                //"position": pos++,
+                "position": 1,
+                "xml": entry.XML_ID,
+            },
+        );*/
+        //let form_data = $('input');
+        //console.log(form_data);
+        //form_data.forEach(function (elem) {
+        let pos = 0;
+        let form_data = document.querySelector('#applicationForm');
+        form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
+            //console.log(elem);
+            //console.log(elem.name);
+            //console.log(elem.value);
+            if(elem.name != "CAPTCHA_WORD") {
+                ar_product.push(
+                    {
+                        "id": elem.name,
+                        "name": elem.value,
+                        "price": entry.PRICE,
+                        "category": entry.DETAIL_PAGE_URL,
+                        "quantity": entry.QUANTITY,
+                        "position": pos++,
+                        //"position": 1,
+                        "xml": entry.XML_ID,
+                    },
+                );
+            }
+        });
+        form_data.querySelectorAll('input[name="PHONE"]').forEach(function (elem) {
+            //console.log(elem);
+            //console.log(elem.name);
+            //console.log(elem.value);
+            ar_product.push(
+                {
+                    "id": elem.name,
+                    "name": elem.value,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+        });
+        form_data.querySelectorAll('input[name="EMAIL"]').forEach(function (elem) {
+            //console.log(elem);
+            //console.log(elem.name);
+            //console.log(elem.value);
+            ar_product.push(
+                {
+                    "id": elem.name,
+                    "name": elem.value,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+        });
+        form_data.querySelectorAll('select').forEach(function (elem) {
+            //console.log(elem);
+            //console.log(elem.name);
+            //console.log(elem.value);
+            ar_product.push(
+                {
+                    "id": elem.name,
+                    "name": elem.value,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+        });
+        console.log('ar_product');
+        console.log(ar_product);
+
+        makeDataLayer(postTemplateID, ar_product);
+        console.log(window.dataLayer);
+        yandexMetrikaForm();
+
         //if ($("#politics2").prop("checked")) {
             //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
