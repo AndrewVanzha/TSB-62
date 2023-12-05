@@ -235,10 +235,8 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             //ym(315345643, 'reachGoal', 'applicationForm');
 
             let formFields = {
-                'Отправка формы':
+                'Поля формы':
                     {
-                        //'Имя получателя': {{Поле JS - Имя получателя}},
-                        //'LAST_NAME': 'Имя получателя',
                         'LAST_NAME': $('input[name="LAST_NAME"]').val(),
                         'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
                         'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
@@ -248,22 +246,10 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
                         'SUM': $('input[name="SUM"]').val(),
                         'CITY': $('select[name="CITY"] option:selected').val(),
-                        //'Email получателя': {{Поле JS - Email получателя}},
-                        //'Email получателя': 'Email получателя',
-                        //'Ваше имя': {{Поле JS - Ваше имя}},
-                        //'Ваше имя': 'Ваше имя',
-                        //'Ваш Email': {{Поле JS - Ваш email}},
-                        //'Ваш Email': 'Поле JS - Ваш email',
-                        //'Тема подарочного сертификата': {{Поле JS - Тема подарочного сертификат}},
-                        //'Тема подарочного сертификата': 'Поле JS - Тема подарочного сертификат',
-                        //'Сообщение': {{Поле JS - Сообщение}},
-                        //'Сообщение': 'Поле JS - Сообщение',
-                        //'Сумма': {{Поле JS - Сумма}},
-                        //'Сумма': 'Поле JS - Сумма',
                     }
             };
             console.log(formFields);
-            ym(316212751, 'reachGoal', 'depositOrder', formFields);
+            //ym(316212751, 'reachGoal', 'depositOrder', formFields);
 
             return true;
         }
@@ -313,12 +299,14 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return (countErr > 0) ? false : true;
         }
 
-        let pos = 1;
+        //let pos = 0;
         $('#depositOrder').submit(function (e) {
             e.preventDefault();
+            console.log('form');
+
             let entry = {
-                'PRODUCT_ID': 0,
-                'NAME': 'form',
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
                 'PRICE': 1,
                 'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
                 'QUANTITY': 1,
@@ -326,31 +314,105 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             };
             let ar_product = [];
             let postTemplateID = <?= $postTemplateID; ?>;
-            if(postTemplateID) {
-                entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-            }
+            console.log('postTemplateID');
+            console.log(postTemplateID);
+            //if(postTemplateID) {
+            //    entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
+            //}
             //console.log('postTemplateID');
             //console.log(postTemplateID);
-            ar_product.push(
+            /*ar_product.push(
                 {
                     "id": entry.PRODUCT_ID,
                     "name": entry.NAME,
                     "price": entry.PRICE,
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
+                    //"position": pos++,
                     "position": 1,
                     "xml": entry.XML_ID,
                 },
-            );
-            //console.log('ar_product');
-            //console.log(ar_product);
-            makeDataLayer(pos++, ar_product);
-            //console.log('window.dataLayer');
+            );*/
+            let pos = 0;
+            let form_data = document.querySelector('#v21_depositOrder');
+            form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
+                //console.log(elem);
+                //console.log(elem.name);
+                //console.log(elem.value);
+                if(elem.name != "CAPTCHA_WORD") {
+                    ar_product.push(
+                        {
+                            "id": elem.name,
+                            "name": elem.value,
+                            "price": entry.PRICE,
+                            "category": entry.DETAIL_PAGE_URL,
+                            "quantity": entry.QUANTITY,
+                            "position": pos++,
+                            //"position": 1,
+                            "xml": entry.XML_ID,
+                        },
+                    );
+                }
+            });
+            form_data.querySelectorAll('input[name="PHONE"]').forEach(function (elem) {
+                //console.log(elem);
+                //console.log(elem.name);
+                //console.log(elem.value);
+                ar_product.push(
+                    {
+                        "id": elem.name,
+                        "name": elem.value,
+                        "price": entry.PRICE,
+                        "category": entry.DETAIL_PAGE_URL,
+                        "quantity": entry.QUANTITY,
+                        "position": pos++,
+                        //"position": 1,
+                        "xml": entry.XML_ID,
+                    },
+                );
+            });
+            form_data.querySelectorAll('input[name="EMAIL"]').forEach(function (elem) {
+                //console.log(elem);
+                //console.log(elem.name);
+                //console.log(elem.value);
+                ar_product.push(
+                    {
+                        "id": elem.name,
+                        "name": elem.value,
+                        "price": entry.PRICE,
+                        "category": entry.DETAIL_PAGE_URL,
+                        "quantity": entry.QUANTITY,
+                        "position": pos++,
+                        //"position": 1,
+                        "xml": entry.XML_ID,
+                    },
+                );
+            });
+            form_data.querySelectorAll('select').forEach(function (elem) {
+                //console.log(elem);
+                //console.log(elem.name);
+                //console.log(elem.value);
+                ar_product.push(
+                    {
+                        "id": elem.name,
+                        "name": elem.value,
+                        "price": entry.PRICE,
+                        "category": entry.DETAIL_PAGE_URL,
+                        "quantity": entry.QUANTITY,
+                        "position": pos++,
+                        //"position": 1,
+                        "xml": entry.XML_ID,
+                    },
+                );
+            });
+            console.log('ar_product');
+            console.log(ar_product);
+            makeDataLayer(postTemplateID, ar_product);
+            console.log('window.dataLayer');
             console.log(window.dataLayer);
-            yandexMetrikaForm();
+            //yandexMetrikaForm();
 
             if ($("#politics").prop("checked")) {
-                console.log('form');
                 $('#politics').parent().parent().removeClass("is-error");
                 if (requiredFields()) {
                     $.ajax({
