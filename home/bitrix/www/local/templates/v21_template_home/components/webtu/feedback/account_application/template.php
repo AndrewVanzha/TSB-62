@@ -731,14 +731,6 @@ while($arMess = $rs_mess->GetNext()) {
         e.preventDefault();
         console.log('form');
 
-        let entry = {
-            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'PRICE': 1,
-            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };
         let ar_product = [];
         let postTemplateID = <?= $postTemplateID; ?>; // ID почтового шаблона
         //let postTemplateID = <?//= CUtil::PHPToJSObject($postTemplateID); ?>
@@ -853,9 +845,7 @@ while($arMess = $rs_mess->GetNext()) {
                         if (data.status) {
                             let response = data.message[0];
                             console.log('data.message');
-                            //console.log(data.message);
                             //console.log(response);
-                            //console.log(response['data']);
 
                             if(response.type) {
                                 //console.log(response.data);
