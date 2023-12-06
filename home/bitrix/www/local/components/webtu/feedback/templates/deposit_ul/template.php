@@ -635,28 +635,6 @@ while ($ar_section=$rsSection->fetch()) {
 
         ar_product.push(
             {
-                "id": 'FIO',
-                "name": data.FIO,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'COMPANY_NAME',
-                "name": data.COMPANY_NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
                 "id": 'DEPOSIT_SUM',
                 "name": data.DEPOSIT_SUM,
                 "price": entry.PRICE,

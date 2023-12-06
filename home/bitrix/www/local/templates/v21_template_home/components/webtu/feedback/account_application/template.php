@@ -593,39 +593,6 @@ while($arMess = $rs_mess->GetNext()) {
 
         ar_product.push(
             {
-                "id": 'FIO',
-                "name": data.FIO,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'NAME',
-                "name": data.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'COMPANY_INN',
-                "name": data.COMPANY_INN,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
                 "id": 'CITY',
                 "name": data.CITY,
                 "price": entry.PRICE,

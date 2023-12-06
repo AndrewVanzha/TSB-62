@@ -752,17 +752,6 @@ IncludeTemplateLangFile(__FILE__);
 
         ar_product.push(
             {
-                "id": 'NAME',
-                "name": data.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
                 "id": 'TYPE',
                 "name": data.TYPE,
                 "price": entry.PRICE,
@@ -882,7 +871,7 @@ IncludeTemplateLangFile(__FILE__);
 
                         if (data.message && data.message.length > 0) {
                             let response = data.message[0];
-                            console.log('data.message');
+                            //console.log('data.message');
                             if(response.type) {
                                 //console.log(response.data);
                                 console.log(response.data.APPLICATION_ID);
@@ -890,6 +879,7 @@ IncludeTemplateLangFile(__FILE__);
                                 //console.log(ar_product);
                                 makeDataLayer(response.data.APPLICATION_ID, ar_product);
                                 console.log(window.dataLayer);
+                                //yandexMetrikaForm();
                             }
 
                             $(".v21_alert_orderCard_item").remove()

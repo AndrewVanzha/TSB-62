@@ -313,17 +313,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
             ar_product.push(
                 {
-                    "id": 'NAME',
-                    "name": data.NAME,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    "xml": entry.XML_ID,
-                },
-            );
-            ar_product.push(
-                {
                     "id": 'CREDIT_NAME',
                     "name": data.CREDIT_NAME,
                     "price": entry.PRICE,
@@ -465,11 +454,10 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                                     //console.log(response.data);
                                     console.log(response.data.APPLICATION_ID);
                                     ar_product = makeArProduct(response.data);
-                                    console.log('ar_product');
-                                    console.log(ar_product);
+                                    //console.log(ar_product);
                                     makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                    console.log('window.dataLayer');
                                     console.log(window.dataLayer);
+                                    //yandexMetrikaForm();
                                 }
 
                                 $(".v21_alert_depositOrder_item").remove()
