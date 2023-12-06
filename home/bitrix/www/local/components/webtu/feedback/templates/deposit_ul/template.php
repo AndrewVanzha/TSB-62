@@ -778,7 +778,7 @@ while ($ar_section=$rsSection->fetch()) {
                         //console.log('**');
                         if (data.status) {
                             let response = data.message[0];
-                            console.log('data.message');
+                            //console.log('data.message');
                             //console.log(response);
 
                             if(response.type) {
