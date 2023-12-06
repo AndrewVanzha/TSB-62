@@ -254,21 +254,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return true;
         }
 
-        function makeDataLayer(id, ar_product) {
-            window.dataLayer.push({
-                //local_dataLayer.push({
-                "ecommerce": {
-                    "currencyCode": "RUB",
-                    "purchase": {
-                        "actionField": {
-                            "id" : id
-                        },
-                        "products": ar_product,
-                    }
-                }
-            });
-        }
-
         function requiredFields() {
             let arFields = [
                 'input[name="PHONE"]',
@@ -299,11 +284,24 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return (countErr > 0) ? false : true;
         }
 
-        //let pos = 0;
-        $('#depositOrder').submit(function (e) {
-            e.preventDefault();
-            console.log('form');
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                //local_dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
 
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
             let entry = {
                 'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
                 'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
@@ -312,7 +310,148 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 'QUANTITY': 1,
                 'XML_ID': 'xml'
             };
-            let ar_product = [];
+
+            ar_product.push(
+                {
+                    "id": 'NAME',
+                    "name": data.NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'CREDIT_NAME',
+                    "name": data.CREDIT_NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'SUM',
+                    "name": data.SUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'CITY',
+                    "name": data.CITY,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'FROM_WHERE',
+                    "name": data.FROM_WHERE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    //"position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        //let pos = 0;
+        $('#depositOrder').submit(function (e) {
+            e.preventDefault();
+            console.log('form');
+
             let postTemplateID = <?= $postTemplateID; ?>;
             console.log('postTemplateID');
             console.log(postTemplateID);
@@ -335,7 +474,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             );*/
             let pos = 0;
             let form_data = document.querySelector('#v21_depositOrder');
-            form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
+            /*form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
                 //console.log(elem);
                 //console.log(elem.name);
                 //console.log(elem.value);
@@ -404,15 +543,11 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         "xml": entry.XML_ID,
                     },
                 );
-            });
-            console.log('ar_product');
-            console.log(ar_product);
-            makeDataLayer(postTemplateID, ar_product);
-            console.log('window.dataLayer');
-            console.log(window.dataLayer);
+            });*/
             //yandexMetrikaForm();
 
             if ($("#politics").prop("checked")) {
+                let ar_product = [];
                 $('#politics').parent().parent().removeClass("is-error");
                 if (requiredFields()) {
                     $.ajax({
@@ -426,6 +561,22 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             $('#reloadCaptcha').click();
 
                             if (data.message && data.message.length > 0) {
+                                let response = data.message[0];
+                                //console.log('data.message');
+                                //console.log(data.message);
+                                //console.log(response);
+                                //console.log(response['data']);
+                                if(response.type) {
+                                    //console.log(response.data);
+                                    console.log(response.data.APPLICATION_ID);
+                                    ar_product = makeArProduct(response.data);
+                                    console.log('ar_product');
+                                    console.log(ar_product);
+                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                    console.log('window.dataLayer');
+                                    console.log(window.dataLayer);
+                                }
+
                                 $(".v21_alert_depositOrder_item").remove()
                                 $.each(data.message, function (key, field) {
                                     $('#v21_alert_depositOrder .v21-modal__window').append(

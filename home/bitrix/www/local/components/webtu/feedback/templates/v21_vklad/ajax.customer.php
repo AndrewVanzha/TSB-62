@@ -129,11 +129,6 @@ $elementFields['FORM'] = 100;  //  Заявка на открытие вклад
 //file_put_contents("/home/bitrix/www".'/currency/a_$elementFields.json', json_encode($elementFields));
 
 if ($id = $element->Add($elementFields)) {
-    $arResult["message"][] = [
-        "text" => "Заявка успешно отправлена",
-        "type" => true,
-    ];
-
     $postFields = array_merge($fields, $propertiesPost);
     $postFields['APPLICATION_ID'] = $id;
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
@@ -141,6 +136,12 @@ if ($id = $element->Add($elementFields)) {
     $postFields = getSex($postFields);
     //file_put_contents("/home/bitrix/www".'/currency/a_$postFields.json', json_encode($postFields));
     file_put_contents("/home/bitrix/www".'/currency/a_$arParams.json', json_encode($arParams));
+
+    $arResult["message"][] = [
+        "data" => $postFields,
+        "text" => "Заявка успешно отправлена",
+        "type" => true,
+    ];
 
     //if ($arParams->ADMIN_EVENT != 'NONE') {
     if ($arParams["ADMIN_EVENT"] != 'NONE') {
