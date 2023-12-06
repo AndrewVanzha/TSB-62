@@ -461,7 +461,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                                 //console.log('data.message');
                                 //console.log(data.message);
                                 //console.log(response);
-                                //console.log(response['data']);
                                 if(response.type) {
                                     //console.log(response.data);
                                     console.log(response.data.APPLICATION_ID);

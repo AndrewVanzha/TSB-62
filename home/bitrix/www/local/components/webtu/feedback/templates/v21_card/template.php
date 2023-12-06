@@ -15,7 +15,7 @@ IncludeTemplateLangFile(__FILE__);
     <input type="hidden" id="CARD_NAME" name="CARD_NAME" value="">
     <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
     <?/*?><input type="hidden" name="email2" value=""><?*/?>
-    <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+    <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
     <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
     <??><input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'><??>
 
@@ -618,4 +618,362 @@ IncludeTemplateLangFile(__FILE__);
         document.location.href = "/thanks/";
     }
     */
+
+    function requiredFields() {
+        var fields = [
+            {
+                nameField: 'input[name="PHONE"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="EMAIL"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="LAST_NAME"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="FIRST_NAME"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="TRANSLIT"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="FROM_WHERE"]',
+                firstPage: true,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_SERIYA"]',
+                firstPage: false,
+                activePage: false,
+            },
+            {
+                nameField: 'input[name="PASS_NUMBER"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_DATA"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_KEM"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_COD"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_MESTO"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="BIRTHDATE"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_ADDR_R"]',
+                firstPage: false,
+                activePage: false
+            },
+            {
+                nameField: 'input[name="PASS_ADDR_F"]',
+                firstPage: false,
+                activePage: false
+            },
+
+        ];
+
+        fields.forEach(function (value) {
+            if ($(value.nameField).val() == '') {
+                $(value.nameField).parent().addClass("is-error");
+                value.activePage = true;
+            } else {
+                $(value.nameField).parent().removeClass("is-error");
+                value.activePage = false;
+            }
+        });
+
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].activePage == true) {
+                if (fields[i].firstPage == true) {
+                    if ($('#v21_plasticOrder2').hasClass("is-active")) {
+                        tsb21.modal.toggleModal('v21_plasticOrder1');
+                    }
+                }
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function makeDataLayer(id, ar_product) {
+        window.dataLayer.push({
+            //local_dataLayer.push({
+            "ecommerce": {
+                "currencyCode": "RUB",
+                "purchase": {
+                    "actionField": {
+                        "id" : id
+                    },
+                    "products": ar_product,
+                }
+            }
+        });
+    }
+
+    function makeArProduct(data) {
+        let pos = 0;
+        let ar_product = [];
+        let entry = {
+            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'PRICE': 1,
+            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+            'QUANTITY': 1,
+            'XML_ID': 'xml'
+        };
+
+        ar_product.push(
+            {
+                "id": 'NAME',
+                "name": data.NAME,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'TYPE',
+                "name": data.TYPE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'CITY',
+                "name": data.CITY,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'FROM_WHERE',
+                "name": data.FROM_WHERE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'REQ_URI',
+                "name": data.REQ_URI,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CAMPAIGN',
+                "name": data.UTM_CAMPAIGN,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CONTENT',
+                "name": data.UTM_CONTENT,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_MEDIUM',
+                "name": data.UTM_MEDIUM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_SOURCE',
+                "name": data.UTM_SOURCE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_TERM',
+                "name": data.UTM_TERM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+
+        return ar_product;
+    }
+
+    $('#orderCard').submit(function (e) {
+        e.preventDefault();
+        let ar_product = [];
+        if ($("#politics").prop("checked")) {
+            $('#politics').parent().parent().removeClass("is-error");
+            if (requiredFields()) {
+                $.ajax({
+                    type: "POST",
+                    url: '/local/components/webtu/feedback/templates/v21_card/ajax.customer.php',
+                    data: {
+                        'fields': $(this).serialize(),
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        $('#reloadCaptcha').click();
+
+                        if (data.message && data.message.length > 0) {
+                            let response = data.message[0];
+                            console.log('data.message');
+                            if(response.type) {
+                                //console.log(response.data);
+                                console.log(response.data.APPLICATION_ID);
+                                ar_product = makeArProduct(response.data);
+                                //console.log(ar_product);
+                                makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                console.log(window.dataLayer);
+                            }
+
+                            $(".v21_alert_orderCard_item").remove()
+                            $.each(data.message, function (key, field) {
+                                $('#v21_alert_orderCard .v21-modal__window').append(
+                                    '<div class="v21-grid__item v21_alert_orderCard_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
+                                );
+
+                                if (!field.type) {
+                                    $('.v21_alert_orderCard_item').css("color", "red");
+                                }
+                            });
+                        }
+                        if (data.status) {
+                            $("#orderCard")[0].reset();
+                        }
+
+                        if (!data.captcha) {
+                            $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                        } else {
+                            $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                            tsb21.modal.toggleModal('v21_alert_orderCard');
+                        }
+                    }
+                });
+            }
+        } else {
+            $('#politics').parent().parent().addClass("is-error");
+        }
+    });
+
+    function checkDeliveryCard() {
+        let city = $('select[name="CITY"]').val();
+        let typeCard = $('select[name="TYPE"]').val();
+
+        if (city === 'Москва' && typeCard !== '') {
+            $('.block_deliveryHome').show();
+            $('input#v21_deliveryHome').prop("disabled", false).prop("checked", false);
+
+        } else {
+            $('.block_deliveryHome').hide();
+            $('input#v21_deliveryHome').prop("disabled", true).prop("checked", false);
+        }
+
+        /*if (typeCard === 'Visa Gold' || typeCard === 'Visa Platinum') {
+            $('.v21-grid__item .translit').show();
+        } else {
+            $('.v21-grid__item .translit').hide();
+            $('input[name="TRANSLIT"]').val('');
+        }*/
+
+        $('input#v21_deliveryHome').change();
+    }
+
+    // Доставка карты
+    $('.block_deliveryHome').hide();
+    checkDeliveryCard();
+
+    $('select[name="CITY"]').on('change', function () {
+        checkDeliveryCard();
+    });
+
+    const newSelect = new tsb21.choices('select[name="TYPE"]', {
+        searchEnabled: false,
+        itemSelectText: '',
+        shouldSort: false,
+    });
+    console.log('tsb21');
+    console.log(tsb21);
+
+    $('a[href="#v21_plasticOrder1"].open').on('click', function () {
+        let cardName = $(this).data('name');
+        newSelect.setChoiceByValue([cardName]);
+        tsb21.tabs.showTab(cardName);
+        console.log('v21_plasticOrder1');
+        console.log(newSelect);
+        console.log(tsb21);
+    });
+
+    $('#reloadCaptcha').click(function () {
+        $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function (data) {
+            $('#captchaImg').attr('src', '/bitrix/tools/captcha.php?captcha_sid=' + data);
+            $('#captchaSid').val(data);
+        });
+        return false;
+    });
 </script>
