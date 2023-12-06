@@ -30,7 +30,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
             <?/*?><input type="hidden" id="PARAMS" name="PARAMS" value='<?= json_encode($arParams["PROPERTIES"]) ?>'><?*/?>
             <?/*?><input type="hidden" name="email2" value=""><?*/?>
-            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
             <??><input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'><??>
 
@@ -319,7 +319,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -331,7 +330,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -343,7 +341,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -355,7 +352,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -367,7 +363,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -379,7 +374,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -391,7 +385,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -403,7 +396,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -415,7 +407,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -427,7 +418,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -439,7 +429,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "category": entry.DETAIL_PAGE_URL,
                     "quantity": entry.QUANTITY,
                     "position": pos++,
-                    //"position": 1,
                     "xml": entry.XML_ID,
                 },
             );
@@ -451,103 +440,10 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         $('#depositOrder').submit(function (e) {
             e.preventDefault();
             console.log('form');
-
+            let ar_product = [];
             let postTemplateID = <?= $postTemplateID; ?>;
-            console.log('postTemplateID');
-            console.log(postTemplateID);
-            //if(postTemplateID) {
-            //    entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-            //}
-            //console.log('postTemplateID');
-            //console.log(postTemplateID);
-            /*ar_product.push(
-                {
-                    "id": entry.PRODUCT_ID,
-                    "name": entry.NAME,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    //"position": pos++,
-                    "position": 1,
-                    "xml": entry.XML_ID,
-                },
-            );*/
-            let pos = 0;
-            let form_data = document.querySelector('#v21_depositOrder');
-            /*form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
-                //console.log(elem);
-                //console.log(elem.name);
-                //console.log(elem.value);
-                if(elem.name != "CAPTCHA_WORD") {
-                    ar_product.push(
-                        {
-                            "id": elem.name,
-                            "name": elem.value,
-                            "price": entry.PRICE,
-                            "category": entry.DETAIL_PAGE_URL,
-                            "quantity": entry.QUANTITY,
-                            "position": pos++,
-                            //"position": 1,
-                            "xml": entry.XML_ID,
-                        },
-                    );
-                }
-            });
-            form_data.querySelectorAll('input[name="PHONE"]').forEach(function (elem) {
-                //console.log(elem);
-                //console.log(elem.name);
-                //console.log(elem.value);
-                ar_product.push(
-                    {
-                        "id": elem.name,
-                        "name": elem.value,
-                        "price": entry.PRICE,
-                        "category": entry.DETAIL_PAGE_URL,
-                        "quantity": entry.QUANTITY,
-                        "position": pos++,
-                        //"position": 1,
-                        "xml": entry.XML_ID,
-                    },
-                );
-            });
-            form_data.querySelectorAll('input[name="EMAIL"]').forEach(function (elem) {
-                //console.log(elem);
-                //console.log(elem.name);
-                //console.log(elem.value);
-                ar_product.push(
-                    {
-                        "id": elem.name,
-                        "name": elem.value,
-                        "price": entry.PRICE,
-                        "category": entry.DETAIL_PAGE_URL,
-                        "quantity": entry.QUANTITY,
-                        "position": pos++,
-                        //"position": 1,
-                        "xml": entry.XML_ID,
-                    },
-                );
-            });
-            form_data.querySelectorAll('select').forEach(function (elem) {
-                //console.log(elem);
-                //console.log(elem.name);
-                //console.log(elem.value);
-                ar_product.push(
-                    {
-                        "id": elem.name,
-                        "name": elem.value,
-                        "price": entry.PRICE,
-                        "category": entry.DETAIL_PAGE_URL,
-                        "quantity": entry.QUANTITY,
-                        "position": pos++,
-                        //"position": 1,
-                        "xml": entry.XML_ID,
-                    },
-                );
-            });*/
-            //yandexMetrikaForm();
 
             if ($("#politics").prop("checked")) {
-                let ar_product = [];
                 $('#politics').parent().parent().removeClass("is-error");
                 if (requiredFields()) {
                     $.ajax({
