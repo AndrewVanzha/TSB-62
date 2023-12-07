@@ -216,6 +216,29 @@
        return (countErr > 0) ? false : true;
    }
 
+   // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
+   // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
+   // https://www.yandex.ru/video/preview/17446571467160561628
+   function yandexMetrikaForm2() {
+       //yaCounter49389685
+       //yaCounter315345643.reachGoal('applicationForm'); // ошика
+       //ym(315345643, 'reachGoal', 'applicationForm');
+
+       let formFields = {
+           'Поля формы':
+               {
+                   'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                   'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
+                   'SUM': $('input[name="SUM"]').val(),
+                   'CITY': $('select[name="CITY"] option:selected').val(),
+               }
+       };
+       //console.log(formFields);
+       //ym(316212751, 'reachGoal', 'depositOrder', formFields);
+
+       return true;
+   }
+
    function makeDataLayer2(id, ar_product) {
        window.dataLayer.push({
            "ecommerce": {
@@ -361,7 +384,7 @@
                            makeDataLayer2(response.data.APPLICATION_ID, ar_product);
                            //console.log('window.dataLayer');
                            console.log(window.dataLayer);
-                           //yandexMetrikaForm();
+                           //yandexMetrikaForm2();
                        }
 
                        clearFields ();
