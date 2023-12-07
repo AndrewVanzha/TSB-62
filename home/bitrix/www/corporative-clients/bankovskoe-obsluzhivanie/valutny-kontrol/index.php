@@ -120,7 +120,7 @@ $APPLICATION->IncludeComponent(
         "USE_RSS" => "N",	// Разрешить RSS
         "USE_SEARCH" => "N",	// Разрешить поиск
         "USE_SHARE" => "N",	// Отображать панель соц. закладок
-        "COMPONENT_TEMPLATE" => "account-in-yuans",
+        "COMPONENT_TEMPLATE" => "valutny-kontrol",
         //"COMPONENT_TEMPLATE" => ".default",
         "VARIABLE_ALIASES" => array(
             "SECTION_ID" => "SECTION_ID",

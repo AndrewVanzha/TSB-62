@@ -29,7 +29,7 @@
             <input type="hidden" name="SESSION_ID" value="<?= bitrix_sessid() ?>">
             <input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'>
             <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
-            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle()?> ">
             <?//file_put_contents("/home/bitrix/www".'/currency/a_$_SERVER.json', json_encode($_SERVER));?>
 
@@ -219,100 +219,208 @@
         });
         return false;
       });
+
+       $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
+
+       function clearFields () {
+           $('textarea').val('').css('box-shadow', 'none');
+           $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+           $('textarea').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+           $('input').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+       }
+
+       if ($('.alert-success').length > 0) {
+           clearFields ();
+           //document.location.href = "/thanks/";
+       }
+
+       /*$('.feedback_form .button').click(function () {
+           $(".alert").remove();
+       });*/
+
+       function requiredFields2() {
+           let arCheckFields = [
+               '.input_name', //'input[name="NAME"]',
+               '.input_phone', //'input[name="PHONE"]',
+           ];
+           let countErr = 0;
+
+           arCheckFields.forEach(function (value) {
+               if ($(value).val() == '') {
+                   $(value).parent().addClass("is-error");
+                   countErr += 1;
+               } else {
+                   $(value).parent().removeClass("is-error");
+               }
+           });
+           if($('#politics3').is(':checked')) {
+               $('#politics3').parent().parent().removeClass("is-error");
+           } else {
+               countErr += 1;
+               $('#politics3').parent().parent().addClass("is-error");
+           }
+
+           return (countErr > 0) ? false : true;
+       }
+
+       function makeDataLayer2(id, ar_product) {
+           window.dataLayer.push({
+               //local_dataLayer.push({
+               "ecommerce": {
+                   "currencyCode": "RUB",
+                   "purchase": {
+                       "actionField": {
+                           "id" : id
+                       },
+                       "products": ar_product,
+                   }
+               }
+           });
+       }
+
+       function makeArProduct2(data) {
+           let pos = 0;
+           let ar_product = [];
+           let entry = {
+               'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+               'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+               'PRICE': 1,
+               'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+               'QUANTITY': 1,
+               'XML_ID': 'xml'
+           };
+
+           ar_product.push(
+               {
+                   "id": 'REQ_URI',
+                   "name": data.REQ_URI,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CAMPAIGN',
+                   "name": data.UTM_CAMPAIGN,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CONTENT',
+                   "name": data.UTM_CONTENT,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_MEDIUM',
+                   "name": data.UTM_MEDIUM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_SOURCE',
+                   "name": data.UTM_SOURCE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_TERM',
+                   "name": data.UTM_TERM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+
+           return ar_product;
+       }
+
+       $('#fValutnyKontrolConsultForm').submit(function (e) {
+           e.preventDefault();
+           console.log('ConsultForm');
+           let ar_product = [];
+           //if ($("#politics3").prop("checked")) {
+           //$('#politics3').parent().parent().removeClass("is-error");
+           //console.log('2');
+           if (requiredFields2()) {
+               //console.log('3');
+               $.ajax({
+                   type: "POST",
+                   //url: '/local/components/webtu/feedback/templates/safes_fl/ajax.customer.php',
+                   url: '/ajax_scripts/ajax.customer.php',
+                   data: {
+                       'fields': $(this).serialize(),
+                   },
+                   dataType: "json",
+                   success: function (data) {
+                       //console.log(data);
+                       if (data.status) {
+                           let response = data.message[0];
+                           //console.log(response);
+
+                           if(response.type) {
+                               //console.log(response.data);
+                               console.log(response.data.APPLICATION_ID);
+                               ar_product = makeArProduct2(response.data);
+                               makeDataLayer2(response.data.APPLICATION_ID, ar_product);
+                               //console.log(window.dataLayer);
+                               //yandexMetrikaForm();
+                           }
+
+                           clearFields ();
+                           $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                           document.location.href = "/thanks/";
+                       } else {
+                           console.log('not OK');
+                           if (!data.captcha){
+                               $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                           } else {
+                               $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                           }
+                       }
+                   }
+               });
+           }
+           //} else {
+           //    $('#politics3').parent().parent().addClass("is-error");
+           //}
+       });
+
+       /*$('.input-group input[required]').change(function () {
+           if ( $(this).is(':checked') ) {
+               $(this).closest('.input-group').css('box-shadow', '');
+           } else {
+               $(this).closest('.input-group').css('box-shadow', '0 0 2px 1px red');
+           }
+       });*/
    });
-</script>
-
-<script>
-    $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-        //document.location.href = "/thanks/";
-    }
-
-    /*$('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });*/
-
-    function requiredFields2() {
-		let arCheckFields = [
-			'.input_name', //'input[name="NAME"]',
-			'.input_phone', //'input[name="PHONE"]',
-		];
-        let countErr = 0;
-
-        arCheckFields.forEach(function (value) {
-            if ($(value).val() == '') {
-                $(value).parent().addClass("is-error");
-                countErr += 1;
-            } else {
-                $(value).parent().removeClass("is-error");
-            }
-        });
-        if($('#politics3').is(':checked')) {
-            $('#politics3').parent().parent().removeClass("is-error");
-        } else {
-            countErr += 1;
-            $('#politics3').parent().parent().addClass("is-error");
-        }
-
-        return (countErr > 0) ? false : true;
-    }
-
-    $('#fValutnyKontrolConsultForm').submit(function (e) {
-        e.preventDefault();
-        console.log('ConsultForm');
-        //if ($("#politics3").prop("checked")) {
-            //$('#politics3').parent().parent().removeClass("is-error");
-            //console.log('2');
-            if (requiredFields2()) {
-                //console.log('3');
-                $.ajax({
-                    type: "POST",
-                    //url: '/local/components/webtu/feedback/templates/safes_fl/ajax.customer.php',
-                    url: '/ajax_scripts/ajax.customer.php',
-                    data: {
-                        'fields': $(this).serialize(),
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        //console.log('**');
-                        if (data.status) {
-                            clearFields ();
-                            $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            document.location.href = "/thanks/";
-                        } else {
-                            //console.log('not OK');
-                            if (!data.captcha){
-                                $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
-                            } else {
-                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            }
-                        }
-                    }
-                });
-            }
-        //} else {
-        //    $('#politics3').parent().parent().addClass("is-error");
-        //}
-    });
-
-    /*$('.input-group input[required]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $(this).closest('.input-group').css('box-shadow', '');
-        } else {
-            $(this).closest('.input-group').css('box-shadow', '0 0 2px 1px red');
-        }
-    });*/
 </script>
