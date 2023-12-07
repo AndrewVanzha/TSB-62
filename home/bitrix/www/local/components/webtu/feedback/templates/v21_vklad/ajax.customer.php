@@ -42,6 +42,7 @@ $fields = [];
 if ($_POST["fields"]) {
     parse_str($_POST['fields'], $fields);
 }
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post_$fields.json', json_encode($fields));
 
 if (count($fields)  < 1) {
     $arResult["status"] = false;
@@ -59,10 +60,9 @@ if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID
 
     finish($arResult);
 }
-//file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/chastnym-klientam/vklady/post.json', json_encode($fields));
 
 $fields = sanitizePost($fields);
-//file_put_contents("/home/bitrix/www".'/currency/a_fields.json', json_encode($fields));
+//file_put_contents("/home/bitrix/www".'/logs/a_fields.json', json_encode($fields));
 
 $arParamsProperties = json_decode($fields["PROPERTIES"]);
 //$arParams = json_decode($fields["PARAMS"]);
@@ -126,7 +126,7 @@ $elementFields['UTM_CONTENT'] = isset($fields['UTM_CONTENT'])? $fields['UTM_CONT
 $elementFields['FORM'] = 100;  //  Заявка на открытие вклада/депозита: администратор
 
 //$propertiesPost["DATE_CREATE"] = date('d.m.Y H:i:s', time());
-//file_put_contents("/home/bitrix/www".'/currency/a_$elementFields.json', json_encode($elementFields));
+//file_put_contents("/home/bitrix/www".'/logs/a_$elementFields.json', json_encode($elementFields));
 
 if ($id = $element->Add($elementFields)) {
     $postFields = array_merge($fields, $propertiesPost);
@@ -134,8 +134,8 @@ if ($id = $element->Add($elementFields)) {
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
 
     $postFields = getSex($postFields);
-    //file_put_contents("/home/bitrix/www".'/currency/a_$postFields.json', json_encode($postFields));
-    file_put_contents("/home/bitrix/www".'/currency/a_$arParams.json', json_encode($arParams));
+    //file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    file_put_contents("/home/bitrix/www".'/logs/a_$arParams.json', json_encode($arParams));
 
     $arResult["message"][] = [
         "data" => $postFields,

@@ -444,8 +444,21 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         dataType: "json",
                         success: function (data) {
                             $('#reloadCaptcha').click();
+                            console.log(data);
 
                             if (data.message && data.message.length > 0) {
+                                $(".v21_alert_depositOrder_item").remove()
+                                $.each(data.message, function (key, field) {
+                                    $('#v21_alert_depositOrder .v21-modal__window').append(
+                                        '<div class="v21-grid__item v21_alert_depositOrder_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
+                                    );
+
+                                    if (!field.type) {
+                                        $('.v21_alert_depositOrder_item').css("color", "red");
+                                    }
+                                });
+                            }
+                            if (data.status) {
                                 let response = data.message[0];
                                 //console.log('data.message');
                                 //console.log(data.message);
@@ -460,18 +473,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                                     //yandexMetrikaForm();
                                 }
 
-                                $(".v21_alert_depositOrder_item").remove()
-                                $.each(data.message, function (key, field) {
-                                    $('#v21_alert_depositOrder .v21-modal__window').append(
-                                        '<div class="v21-grid__item v21_alert_depositOrder_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
-                                    );
-
-                                    if (!field.type) {
-                                        $('.v21_alert_depositOrder_item').css("color", "red");
-                                    }
-                                });
-                            }
-                            if (data.status) {
                                 $("#depositOrder")[0].reset();
                             }
 
