@@ -825,7 +825,6 @@
                         //console.log(data);
                         if (data.status) {
                             let response = data.message[0];
-
                             if(response.type) {
                                 //console.log(response.data);
                                 console.log(response.data.APPLICATION_ID);
