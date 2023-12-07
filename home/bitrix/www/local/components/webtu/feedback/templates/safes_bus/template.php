@@ -24,7 +24,7 @@
             <??><input type="hidden" id="safes_name" name="NAME_SAFES" value="Сейф для частного клиента"><??>
             <input type="hidden" id="safes_options" name="OPTIONS" value="">
 
-            <??><input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>"><??>
+            <??><input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>"><??>
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
             <div class="card-application--content">
@@ -676,9 +676,139 @@
         return (countErr > 0) ? false : true;
     }
 
+    function makeDataLayer(id, ar_product) {
+        window.dataLayer.push({
+            "ecommerce": {
+                "currencyCode": "RUB",
+                "purchase": {
+                    "actionField": {
+                        "id" : id
+                    },
+                    "products": ar_product,
+                }
+            }
+        });
+    }
+
+    function makeArProduct(data) {
+        let pos = 0;
+        let ar_product = [];
+        let entry = {
+            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'PRICE': 1,
+            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+            'QUANTITY': 1,
+            'XML_ID': 'xml'
+        };
+
+        ar_product.push(
+            {
+                "id": 'TYPE',
+                "name": data.TYPE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'TIME',
+                "name": data.TIME,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'FROM_WHERE',
+                "name": data.FROM_WHERE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'REQ_URI',
+                "name": data.REQ_URI,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CAMPAIGN',
+                "name": data.UTM_CAMPAIGN,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CONTENT',
+                "name": data.UTM_CONTENT,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_MEDIUM',
+                "name": data.UTM_MEDIUM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_SOURCE',
+                "name": data.UTM_SOURCE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_TERM',
+                "name": data.UTM_TERM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+
+        return ar_product;
+    }
+
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        console.log('rorm');
+        console.log('form');
+        let ar_product = [];
         //if ($("#politics2").prop("checked")) {
             //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
@@ -692,8 +822,20 @@
                     },
                     dataType: "json",
                     success: function (data) {
-                        //console.log('**');
+                        //console.log(data);
                         if (data.status) {
+                            let response = data.message[0];
+
+                            if(response.type) {
+                                //console.log(response.data);
+                                console.log(response.data.APPLICATION_ID);
+                                ar_product = makeArProduct(response.data);
+                                makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                //console.log('window.dataLayer');
+                                console.log(window.dataLayer);
+                                //yandexMetrikaForm();
+                            }
+
                             clearFields ();
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
