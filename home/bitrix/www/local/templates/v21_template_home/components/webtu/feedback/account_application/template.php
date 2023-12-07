@@ -593,49 +593,12 @@ while($arMess = $rs_mess->GetNext()) {
 
         ar_product.push(
             {
-                "id": 'FIO',
-                "name": data.FIO,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                //"position": 1,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'NAME',
-                "name": data.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                //"position": 1,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'COMPANY_INN',
-                "name": data.COMPANY_INN,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                //"position": 1,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
                 "id": 'CITY',
                 "name": data.CITY,
                 "price": entry.PRICE,
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -647,7 +610,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -659,7 +621,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -671,7 +632,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -683,7 +643,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -695,7 +654,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -707,7 +665,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -719,7 +676,6 @@ while($arMess = $rs_mess->GetNext()) {
                 "category": entry.DETAIL_PAGE_URL,
                 "quantity": entry.QUANTITY,
                 "position": pos++,
-                //"position": 1,
                 "xml": entry.XML_ID,
             },
         );
@@ -731,109 +687,9 @@ while($arMess = $rs_mess->GetNext()) {
         e.preventDefault();
         console.log('form');
 
-        let entry = {
-            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'PRICE': 1,
-            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };
         let ar_product = [];
         let postTemplateID = <?= $postTemplateID; ?>; // ID почтового шаблона
         //let postTemplateID = <?//= CUtil::PHPToJSObject($postTemplateID); ?>
-        //console.log('postTemplateID');
-        //console.log(postTemplateID);
-        /*if(postTemplateID) {
-            entry.PRODUCT_ID = postTemplateID;
-        }*/
-        /*ar_product.push(
-            {
-                "id": entry.PRODUCT_ID,
-                "name": entry.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                //"position": pos++,
-                "position": 1,
-                "xml": entry.XML_ID,
-            },
-        );*/
-        //let form_data = $('input');
-        //console.log(form_data);
-        //form_data.forEach(function (elem) {
-        //let pos = 0;
-        let form_data = document.querySelector('#applicationForm');
-        /*form_data.querySelectorAll('input[type="text"]').forEach(function (elem) {
-            //console.log(elem);
-            //console.log(elem.name);
-            //console.log(elem.value);
-            if(elem.name != "CAPTCHA_WORD") {
-                ar_product.push(
-                    {
-                        "id": elem.name,
-                        "name": elem.value,
-                        "price": entry.PRICE,
-                        "category": entry.DETAIL_PAGE_URL,
-                        "quantity": entry.QUANTITY,
-                        "position": pos++,
-                        //"position": 1,
-                        "xml": entry.XML_ID,
-                    },
-                );
-            }
-        });
-        form_data.querySelectorAll('input[name="PHONE"]').forEach(function (elem) {
-            //console.log(elem);
-            //console.log(elem.name);
-            //console.log(elem.value);
-            ar_product.push(
-                {
-                    "id": elem.name,
-                    "name": elem.value,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    //"position": 1,
-                    "xml": entry.XML_ID,
-                },
-            );
-        });
-        form_data.querySelectorAll('input[name="EMAIL"]').forEach(function (elem) {
-            //console.log(elem);
-            //console.log(elem.name);
-            //console.log(elem.value);
-            ar_product.push(
-                {
-                    "id": elem.name,
-                    "name": elem.value,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    //"position": 1,
-                    "xml": entry.XML_ID,
-                },
-            );
-        });
-        form_data.querySelectorAll('select').forEach(function (elem) {
-            //console.log(elem);
-            //console.log(elem.name);
-            //console.log(elem.value);
-            ar_product.push(
-                {
-                    "id": elem.name,
-                    "name": elem.value,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    //"position": 1,
-                    "xml": entry.XML_ID,
-                },
-            );
-        });*/
 
         //if ($("#politics2").prop("checked")) {
             //$('#politics2').parent().parent().removeClass("is-error");
@@ -849,13 +705,11 @@ while($arMess = $rs_mess->GetNext()) {
                     },
                     dataType: "json",
                     success: function (data) {
-                        //console.log('**');
+                        //console.log(data);
                         if (data.status) {
                             let response = data.message[0];
                             console.log('data.message');
-                            //console.log(data.message);
                             //console.log(response);
-                            //console.log(response['data']);
 
                             if(response.type) {
                                 //console.log(response.data);

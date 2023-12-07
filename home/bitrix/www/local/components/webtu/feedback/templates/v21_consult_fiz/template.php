@@ -22,7 +22,7 @@
             <input type="hidden" name="SESSION_ID" value="<?= bitrix_sessid() ?>">
             <input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'>
             <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
-            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle()?> ">
             <?//file_put_contents("/home/bitrix/www".'/currency/a_$_SERVER.json', json_encode($_SERVER));?>
 
@@ -165,101 +165,252 @@
         return false;
       });
    });
-</script>
 
-<script>
-    $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
+   $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
 
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
+   function clearFields () {
+       $('textarea').val('').css('box-shadow', 'none');
+       $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+       $('textarea').focusout(function () {
+           $(this).css('box-shadow', '');
+       });
+       $('input').focusout(function () {
+           $(this).css('box-shadow', '');
+       });
+   }
 
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-        //document.location.href = "/thanks/";
-    }
+   if ($('.alert-success').length > 0) {
+       clearFields ();
+       //document.location.href = "/thanks/";
+   }
 
-    /*$('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });*/
+   /*$('.feedback_form .button').click(function () {
+       $(".alert").remove();
+   });*/
 
-    function requiredFields2() {
-        let arFields = [
-            '.input_NAME', // 'input[name="NAME"]',
-            '.input_PHONE', // 'input[name="PHONE2"]',
-            '.input_EMAIL', // 'input[name="EMAIL2"]',
-            '.input_PREVIEW_TEXT', // 'textarea[name="PREVIEW_TEXT"]',
-        ];
+   function requiredFields2() {
+       let arFields = [
+           '.input_NAME', // 'input[name="NAME"]',
+           '.input_PHONE', // 'input[name="PHONE2"]',
+           '.input_EMAIL', // 'input[name="EMAIL2"]',
+           '.input_PREVIEW_TEXT', // 'textarea[name="PREVIEW_TEXT"]',
+       ];
 
-        let countErr = 0;
+       let countErr = 0;
 
-        arFields.forEach(function (value) {
-            if ($(value).val() == '') {
-                $(value).parent().addClass("is-error");
-                countErr += 1;
-            } else {
-                $(value).parent().removeClass("is-error");
-            }
-        });
-        if($('#politics3').is(':checked')) {
-            $('#politics3').parent().parent().removeClass("is-error");
-        } else {
-            countErr += 1;
-            $('#politics3').parent().parent().addClass("is-error");
-        }
+       arFields.forEach(function (value) {
+           if ($(value).val() == '') {
+               $(value).parent().addClass("is-error");
+               countErr += 1;
+           } else {
+               $(value).parent().removeClass("is-error");
+           }
+       });
+       if($('#politics3').is(':checked')) {
+           $('#politics3').parent().parent().removeClass("is-error");
+       } else {
+           countErr += 1;
+           $('#politics3').parent().parent().addClass("is-error");
+       }
 
-        return (countErr > 0) ? false : true;
-    }
+       return (countErr > 0) ? false : true;
+   }
 
-    $('#consultForm').submit(function (e) {
-        e.preventDefault();
-        console.log('form2');
-        //if ($("#politics3").prop("checked")) {
-            //$('#politics3').parent().parent().removeClass("is-error");
-            //console.log('2');
-            if (requiredFields2()) {
-                //console.log('3');
-                $.ajax({
-                    type: "POST",
-                    url: '/ajax_scripts/ajax.customer.php',
-                    data: {
-                        'fields': $(this).serialize(),
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        //console.log('**');
-                        if (data.status) {
-                            clearFields ();
-                            $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            document.location.href = "/thanks/";
-                        } else {
-                            console.log('not OK');
-                            if (!data.captcha){
-                                $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
-                            } else {
-                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            }
-                        }
-                    }
-                });
-            }
-        //} else {
-        //    $('#politics3').parent().parent().addClass("is-error");
-        //}
-    });
+   // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
+   // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
+   // https://www.yandex.ru/video/preview/17446571467160561628
+   function yandexMetrikaForm2() {
+       //yaCounter49389685
+       //yaCounter315345643.reachGoal('applicationForm'); // ошика
+       //ym(315345643, 'reachGoal', 'applicationForm');
 
-    /*$('.input-box input[required]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $(this).closest('.input-box').css('box-shadow', '');
-        } else {
-            $(this).closest('.input-box').css('box-shadow', '0 0 2px 1px red');
-        }
-    });*/
+       let formFields = {
+           'Поля формы':
+               {
+                   'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                   'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
+                   'SUM': $('input[name="SUM"]').val(),
+                   'CITY': $('select[name="CITY"] option:selected').val(),
+               }
+       };
+       //console.log(formFields);
+       //ym(316212751, 'reachGoal', 'depositOrder', formFields);
+
+       return true;
+   }
+
+   function makeDataLayer2(id, ar_product) {
+       window.dataLayer.push({
+           "ecommerce": {
+               "currencyCode": "RUB",
+               "purchase": {
+                   "actionField": {
+                       "id" : id
+                   },
+                   "products": ar_product,
+               }
+           }
+       });
+   }
+
+   function makeArProduct2(data) {
+       let pos = 0;
+       let ar_product = [];
+       let entry = {
+           'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+           'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+           'PRICE': 1,
+           'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+           'QUANTITY': 1,
+           'XML_ID': 'xml'
+       };
+
+       ar_product.push(
+           {
+               "id": 'PREVIEW_TEXT',
+               "name": data.PREVIEW_TEXT,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'FROM_WHERE',
+               "name": data.FROM_WHERE,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'REQ_URI',
+               "name": data.REQ_URI,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'UTM_CAMPAIGN',
+               "name": data.UTM_CAMPAIGN,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'UTM_CONTENT',
+               "name": data.UTM_CONTENT,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'UTM_MEDIUM',
+               "name": data.UTM_MEDIUM,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'UTM_SOURCE',
+               "name": data.UTM_SOURCE,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+       ar_product.push(
+           {
+               "id": 'UTM_TERM',
+               "name": data.UTM_TERM,
+               "price": entry.PRICE,
+               "category": entry.DETAIL_PAGE_URL,
+               "quantity": entry.QUANTITY,
+               "position": pos++,
+               "xml": entry.XML_ID,
+           },
+       );
+
+       return ar_product;
+   }
+
+   $('#consultForm').submit(function (e) {
+       e.preventDefault();
+       let ar_product = [];
+       console.log('form2');
+       //if ($("#politics3").prop("checked")) {
+       //$('#politics3').parent().parent().removeClass("is-error");
+       //console.log('2');
+       if (requiredFields2()) {
+           //console.log('3');
+           $.ajax({
+               type: "POST",
+               url: '/ajax_scripts/ajax.customer.php',
+               data: {
+                   'fields': $(this).serialize(),
+               },
+               dataType: "json",
+               success: function (data) {
+                   //console.log(data);
+                   if (data.status) {
+                       let response = data.message[0];
+                       if(response.type) {
+                           //console.log(response.data);
+                           console.log(response.data.APPLICATION_ID);
+                           ar_product = makeArProduct2(response.data);
+                           makeDataLayer2(response.data.APPLICATION_ID, ar_product);
+                           //console.log('window.dataLayer');
+                           console.log(window.dataLayer);
+                           //yandexMetrikaForm2();
+                       }
+
+                       clearFields ();
+                       $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                       document.location.href = "/thanks/";
+                   } else {
+                       console.log('not OK');
+                       if (!data.captcha){
+                           $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                       } else {
+                           $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                       }
+                   }
+               }
+           });
+       }
+       //} else {
+       //    $('#politics3').parent().parent().addClass("is-error");
+       //}
+   });
+
+   /*$('.input-box input[required]').change(function () {
+       if ( $(this).is(':checked') ) {
+           $(this).closest('.input-box').css('box-shadow', '');
+       } else {
+           $(this).closest('.input-box').css('box-shadow', '0 0 2px 1px red');
+       }
+   });*/
 </script>
