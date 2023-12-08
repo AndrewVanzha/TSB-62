@@ -146,7 +146,6 @@
        });
        function makeDataLayer(id, ar_product) {
            window.dataLayer.push({
-               //local_dataLayer.push({
                "ecommerce": {
                    "currencyCode": "RUB",
                    "purchase": {
@@ -279,7 +278,7 @@
                    console.log(window.dataLayer);
                }
                else {
-                   console.log('Ошибка заполнения массива POST');
+                   console.log('В массиве $POST нет коммерции');
                }
            }
        }
