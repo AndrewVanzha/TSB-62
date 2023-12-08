@@ -84,6 +84,7 @@ class WebtuFeedback extends CBitrixComponent
         //debugg($_POST);
         //debugg($post);
         file_put_contents("/home/bitrix/www".'/logs/a_feedback_post.json', json_encode($post));
+        file_put_contents("/home/bitrix/www".'/logs/a_feedback_post_arResult.json', json_encode($this->arResult));
 
         if ($post['FORM_ID'] !== $this->arResult['FORM_ID']) {
             file_put_contents("/home/bitrix/www".'/logs/a_feedback_1.json', json_encode($this->arResult['FORM_ID']));
@@ -98,7 +99,7 @@ class WebtuFeedback extends CBitrixComponent
         if (!$APPLICATION->CaptchaCheckCode($post["CAPTCHA_WORD"], $post["CAPTCHA_ID"])) {
             $this->addError(GetMessage("WEBTU_FEEDBACK_WRONG_CAPTCHA"));
             $this->arResult['POST'] = $this->post;
-            //file_put_contents("/home/bitrix/www".'/logs/a_feedback_error_class.json', json_encode($this->arResult['ERRORS']));
+            file_put_contents("/home/bitrix/www".'/logs/a_feedback_error.json', json_encode($this->arResult['ERRORS']));
 
             return false;
         }
@@ -182,6 +183,12 @@ class WebtuFeedback extends CBitrixComponent
 
             $this->arResult['POST'] = $this->post;
 
+            $this->arResult["COMMERCE"] = [
+                "data" => $postFields,
+                "text" => "Заявка успешно отправлена",
+                "type" => true,
+            ];
+
             if ($this->arParams['ADMIN_EVENT'] != 'NONE') {
                 CEvent::Send($this->arParams['ADMIN_EVENT'], $this->arParams['SITES'], $postFields);
             }
@@ -196,6 +203,11 @@ class WebtuFeedback extends CBitrixComponent
             //debugg($element->LAST_ERROR);
             $this->addError($element->LAST_ERROR);
             $this->arResult['POST'] = $this->post;
+
+            $this->arResult["COMMERCE"] = [
+                "text" => "Заявка не отправлена",
+                "type" => false,
+            ];
 
             return false;
         }
