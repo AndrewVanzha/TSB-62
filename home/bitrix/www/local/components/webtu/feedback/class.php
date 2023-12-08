@@ -222,6 +222,9 @@ class WebtuFeedback extends CBitrixComponent
         $this->arResult['FORM_ID'] = $this->arParams['AJAX_ID'];
         file_put_contents("/home/bitrix/www".'/logs/a_feedback_ex_post.json', json_encode($_POST));
 
+        $this->arResult["COMMERCE"] = [
+            "type" => false,
+        ];
         if (isset($_POST['WEBTU_FEEDBACK'])) {
             $this->post();
         }
