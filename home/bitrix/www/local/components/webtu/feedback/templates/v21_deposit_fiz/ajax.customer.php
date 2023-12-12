@@ -57,8 +57,8 @@ if (count($fields)  < 1) {
 if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID"])) {
     $arResult["status"] = false;
     $arResult["captcha"] = false;
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_$arResult_depozit.json', json_encode($arResult));
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_id_.json', json_encode($fields["CAPTCHA_ID"]));
+    //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_$arResult_depozit.json', json_encode($arResult));
+    //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_id_.json', json_encode($fields["CAPTCHA_ID"]));
 
     finish($arResult);
 }
