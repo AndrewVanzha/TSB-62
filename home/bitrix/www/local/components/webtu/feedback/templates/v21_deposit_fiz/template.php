@@ -18,7 +18,7 @@
 
             <input type="hidden" id="CREDIT_NAME" name="CREDIT_NAME" value="">
             <input type="hidden" id="PARAMS" name="PARAMS" value='<?= json_encode($arParams["OPTIONS"]) ?>'>
-            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
             <div class="v21-service-form__section">
@@ -202,3 +202,269 @@
         </a>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        function requiredFields() {
+            var arFields = [
+                'input[name="PHONE"]',
+                'input[name="EMAIL"]',
+                'input[name="LAST_NAME"]',
+                'input[name="FIRST_NAME"]',
+                'input[name="BIRTHDATE"]'
+            ];
+
+            var countErr = 0;
+
+            arFields.forEach(function (value) {
+                if ($(value).val() == '') {
+                    $(value).parent().addClass("is-error");
+                    countErr++;
+                } else {
+                    $(value).parent().removeClass("is-error");
+                }
+            });
+
+            if ($('input[name="SUM"]').val() == '') {
+                $('input[name="SUM"]').parent().parent().addClass("is-error");
+                countErr++;
+            } else {
+                $('input[name="SUM"]').parent().parent().removeClass("is-error");
+            }
+
+            return (countErr > 0) ? false : true;
+        }
+
+        function yandexMetrikaForm() {
+            let formFields = {
+                'Отправка формы':
+                    {
+                        'LAST_NAME': $('input[name="LAST_NAME"]').val(),
+                        'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
+                        'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
+                        'PHONE': $('input[name="PHONE"]').val(),
+                        'EMAIL': $('input[name="EMAIL"]').val(),
+                        'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                        'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
+                        'SUM': $('input[name="SUM"]').val(),
+                        'CITY': $('select[name="CITY"] option:selected').val(),
+                    }
+            };
+            //console.log(formFields);
+            //ym(316212751, 'reachGoal', 'depositOrder', formFields);
+
+            return true;
+        }
+
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
+
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
+            let entry = {
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };
+
+            ar_product.push(
+                {
+                    "id": 'CREDIT_NAME',
+                    "name": data.CREDIT_NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'SUM',
+                    "name": data.SUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'CITY',
+                    "name": data.CITY,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'FROM_WHERE',
+                    "name": data.FROM_WHERE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        $('#investOrder').submit(function (e) {
+            e.preventDefault();
+            let ar_product = [];
+            console.log('captcha id');
+            console.log($('#captchaSid').val());
+            if ($("#politics").prop("checked")) {
+                $('#politics').parent().parent().removeClass("is-error");
+                if (requiredFields()) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/local/components/webtu/feedback/templates/v21_deposit_fiz/ajax.customer.php',
+                        data: {
+                            'fields': $(this).serialize(),
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            if (data.message) {
+                                let response = data.message[0];
+                                if(response.type) {
+                                    //console.log(response.data.APPLICATION_ID);
+                                    ar_product = makeArProduct(response.data);
+                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                    console.log(window.dataLayer);
+                                    //yandexMetrikaForm();
+                                }
+                            }
+
+                            //$('#reloadCaptcha').click();
+                            if (data.message && data.message.length > 0) {
+                                $(".v21_alert_investOrder_item").remove()
+                                $.each(data.message, function (key, field) {
+                                    $('#v21_alert_investOrder .v21-modal__window').append(
+                                        '<div class="v21-grid__item v21_alert_investOrder_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
+                                    );
+
+                                    if (!field.type) {
+                                        $('.v21_alert_investOrder_item').css("color", "red");
+                                    }
+                                });
+                            }
+                            if (data.status) {
+                                $("#investOrder")[0].reset();
+                            }
+
+                            if (!data.captcha){
+                                $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                            } else {
+                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                tsb21.modal.toggleModal('v21_alert_investOrder');
+                            }
+                        }
+                    });
+                }
+            } else {
+                $('#politics').parent().parent().addClass("is-error");
+            }
+        });
+
+        $('a[href="#v21_investOrder"].open').click(function () {
+            $('input#CREDIT_NAME').val($(this).data('name'));
+        });
+
+        $('#reloadCaptcha').click(function () {
+            $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function (data) {
+                $('#captchaImg').attr('src', '/bitrix/tools/captcha.php?captcha_sid=' + data);
+                $('#captchaSid').val(data);
+            });
+            return false;
+        });
+    });
+</script>
