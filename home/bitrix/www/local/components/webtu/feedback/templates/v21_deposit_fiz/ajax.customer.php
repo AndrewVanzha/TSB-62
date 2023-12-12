@@ -118,6 +118,7 @@ if ($id = $element->Add($elementFields)) {
     $postFields['APPLICATION_ID'] = $id;
 
     $postFields = getSex($postFields);
+    file_put_contents("/home/bitrix/www".'/logs/a_ajax_$postFields.json', json_encode($postFields));
 
     $arResult["message"][] = [
         "data" => $postFields,
