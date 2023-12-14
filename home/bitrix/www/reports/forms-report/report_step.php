@@ -12,8 +12,8 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 use Bitrix\Main\Loader;
-use Bitrix\Sale;
-Loader::includeModule("sale");
+//use Bitrix\Sale;
+//Loader::includeModule("sale");
 Loader::includeModule('iblock');
 //$generated_xls_php = $_SERVER["DOCUMENT_ROOT"] . '/reports/sale_report/generated.xls.php';
 $generated_xls_php = $_SERVER["DOCUMENT_ROOT"] . '/reports/sale_report/generated.xls';
@@ -21,6 +21,28 @@ $generated_xls_php = $_SERVER["DOCUMENT_ROOT"] . '/reports/sale_report/generated
 ?>
 <?
 debugg($_POST);
+$has_checkbox = false;
+$arFormList = [];
+foreach ($_POST as $key=>$item) {
+    if (stripos($key, 'CHECKBOX_') !== false) {
+        //debugg($key);
+        //debugg($item);
+        $has_checkbox = true;
+        if ($item == 'on') {
+            $arFormList[] = str_replace('CHECKBOX_', '', $key);
+        }
+    }
+}
+if (!$has_checkbox) {
+    ?>
+        <p><b>Не выбраны формы</b></p>
+        <a href="admin_step.php" class="adm-btn adm-btn-save">Создать новый отчет</a>
+    <?php
+} else {
+    debugg($arFormList);
+    ;
+}
+
 if (!empty($_POST['lastOrderId'])) {
     $arFilter = array(
         ">=DATE_INSERT" => $_POST['dateFrom'],
@@ -98,7 +120,8 @@ Header("Content-Transfer-Encoding: binary");
     $vfile = file_put_contents($generated_xls_php, $fileHeader, FILE_APPEND);
 }
 $ii = 0;
-
+$arOrders = [];
+/*
 $arSaleStatus = [];
 $statusResult = \Bitrix\Sale\Internals\StatusLangTable::getList(array(
     'order' => array('STATUS.SORT'=>'ASC'),
@@ -110,7 +133,6 @@ while($status = $statusResult->fetch()) {
 }
 //echo '<pre>';print_r($arSaleStatus);echo '</pre>';
 
-$arOrders = [];
 $db_res_orders = \Bitrix\Sale\Order::getList([ // получаю список заказов с полями
     'select' => ['ID', 'PRICE', 'CURRENCY', 'STATUS_ID', 'DELIVERY_ID', 'PRICE_DELIVERY', 'USER_ID', 'PAY_SYSTEM_ID'],
     'filter' => $arFilter,
@@ -163,12 +185,13 @@ foreach ($arOrders as $kk=>$order) {
     }
 }
 //echo '<pre>';print_r($arOrders);echo '</pre>';
-
+*/
 //file_put_contents("/home/bitrix/www" . '/reports/a_$arOrders.json', json_encode($arOrders));
 $className = \Bitrix\Iblock\Iblock::wakeUp(6)->getEntityDataClass(); // Каталог монет
 //echo '<pre>';print_r($className);echo '</pre>';
 \Bitrix\Iblock\Iblock::wakeUp(6)->getEntityDataClass(); // Каталог монет
 
+/*
 //$arProducts = [];
 //$arProds = [];
 foreach ($arOrders as $kk=>$order) {
@@ -209,7 +232,7 @@ foreach ($arOrders as $kk=>$order) {
 
 }
 //echo '<pre>';print_r($arOrders);echo '</pre>';
-
+*/
 /*
 $arOrder = []; // старый вариант
 $arSelect = [
