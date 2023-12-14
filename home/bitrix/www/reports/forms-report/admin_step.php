@@ -64,7 +64,7 @@ foreach ($iBlockList as $item) {
 }
 //debugg($iblockID_list);
 $elements = CIBlockElement::GetList (
-//Array('TIMESTAMP_X'=>'DESC'),
+    //Array('TIMESTAMP_X'=>'DESC'),
     Array("IBLOCK_ID" => "ASC"),
     Array("IBLOCK_ID" => $iblockID_list, '>=DATE_CREATE' => $dateFrom),
     //Array("IBLOCK_ID" => '15', '>=DATE_CREATE' => '01.03.2023'),
@@ -74,20 +74,18 @@ $elements = CIBlockElement::GetList (
     //Array(),
     Array('IBLOCK_ID', 'ID', 'NAME', 'DATE_CREATE_UNIX', 'IBLOCK_NAME'),
 );
-while($ar_fields = $elements->GetNext()) {
+while ($ar_fields = $elements->GetNext()) {
     $arFormElements[] = $ar_fields;
 }
 //debugg($arFormElements);
 
 $arBlockList = [];
 for ($ii=0; $ii<count($iblockID_list); $ii++) {
-    //$el_count = 0;
     foreach ($arFormElements as $item) {
         if ($iblockID_list[$ii] == $item['IBLOCK_ID']) {
             $i_block_list['ID'] = $item['IBLOCK_ID'];
-            $i_block_list['TIMESTAMP_X'] = $item['DATE_CREATE_UNIX'];
+            $i_block_list['DATE_CREATE'] = $item['DATE_CREATE_UNIX'];
             $i_block_list['NAME'] = $item['IBLOCK_NAME'];
-            //$i_block_list['ELEMENT_CNT'] = $el_count++;
             //$arBlockList[$ii][] = $i_block_list;
             $arBlockList[$item['IBLOCK_ID']][] = $i_block_list;
         }
@@ -100,7 +98,7 @@ $ii = 0;
 $iBlockList_mdfd = [];
 foreach ($arBlockList as $item) {
     $iBlockList[$ii]['ID'] = $item[0]['ID'];
-    //$iBlockList_mdfd[$ii]['TIMESTAMP_X'] = $item[0]['TIMESTAMP_X'];
+    //$iBlockList_mdfd[$ii]['DATE_CREATE'] = $item[0]['DATE_CREATE'];
     $iBlockList[$ii]['NAME'] = $item[0]['NAME'];
     $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
     $ii += 1;
