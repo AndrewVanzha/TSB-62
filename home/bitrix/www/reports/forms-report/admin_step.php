@@ -118,13 +118,22 @@ if (!empty($_POST['dateFrom'])) {
     }
 </style>
 <div class="adm-block-wrapper">
-    <form action="admin_step.php" method="post" style="margin-bottom: 15px;">
+    <form action="admin_step.php" method="post" style="margin-bottom: 15px;" id="period-form">
         <input type="hidden" name="CHECK_PERIOD" value="Y">
-        <input type="text" placeholder="Дата с" onclick="BX.calendar({node: this, field: this, bTime: false});" name="dateFrom">
-        <input type="text" placeholder="Дата по" onclick="BX.calendar({node: this, field: this, bTime: false});" name="dateTo">
+        <input type="text" placeholder="Дата с"
+               onclick="BX.calendar({node: this, field: this, bTime: false});"
+               name="dateFrom" class="period-form-input"
+               <? if (isset($_POST['dateFrom'])) { ?>value="<?=$_POST['dateFrom']?>"<? } ?>
+        >
+        <input type="text" placeholder="Дата по"
+               onclick="BX.calendar({node: this, field: this, bTime: false});"
+               name="dateTo" class="period-form-input"
+               <? if (isset($_POST['dateTo'])) { ?>value="<?=$_POST['dateTo']?>"<? } ?>
+        >
         <button type="submit" class="adm-btn adm-btn-save" name="ADMIN_STEP">Задать период наблюдения</button>
+        <button type="button" class="adm-btn adm-btn-save" onclick="$('#period-form .period-form-input').val('');">Сбросить</button>
     </form>
-    <form action="report_step.php" method="post" style="margin-bottom: 15px;">
+    <form action="report_step.php" method="post" style="margin-bottom: 15px;" id="report-form">
         <input type="hidden" name="CHECK_BLOCKS" value="Y">
         <div class="iblock-list--wrapper">
             <table class="iblock-list--table">
@@ -177,7 +186,7 @@ if (!empty($_POST['dateFrom'])) {
     $(document).ready(function() {
         let flag = true;
         let checkboxes = document.querySelectorAll('.iblock-table--body__checkbox');
-        $('.iblock-table--head__input').on('click', function () { //
+        $('.iblock-table--head__input').on('click', function () { // ставить/снимать все check
             if(flag) {
                 checkboxes.forEach(function (value) {
                     $(value).prop('checked', true);
