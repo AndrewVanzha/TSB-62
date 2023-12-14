@@ -11,7 +11,6 @@ CJSCore::Init(array("jquery"));
 \Bitrix\Main\Loader::includeModule('iblock');
 ?>
 <?php
-//$type_list = \Bitrix\Iblock\TypeTable::getList();
 //debugg($_POST);
 $iBlockList = [];
 $arFilter = ['SITE_ID'=>'s1', 'ACTIVE'=>'Y', 'CNT_ACTIVE'=>'Y', 'TYPE'=>'feedback'];
@@ -43,57 +42,70 @@ if (!empty($_POST['dateFrom'])) {
     //debugg($dateTo);
     //$timeFrom = new \Bitrix\Main\Type\Date($dateFrom);
     //$timeTo = new \Bitrix\Main\Type\Date($dateTo);
-
-    $arFormElements = [];
-    $iblockID_list = [];
-    foreach ($iBlockList as $item) {
-        //debugg($item['ID']);
-        $iblockID_list[] = $item['ID'];
+} else {
+    $objDateTime = new DateTime("2023-01-01 00:00:00", "Y-m-d H:i:s");
+    $dateFrom = $objDateTime->format('d.m.Y');
+    if (empty($_POST['dateTo'])) {
+        $objDateTime = new DateTime();
+        $dateTo = $objDateTime->format('d.m.Y');
+        //debugg($dateTo);
+    } else {
+        $dateTo = $_POST['dateTo'];
     }
-    //debugg($iblockID_list);
-    $elements = CIBlockElement::GetList (
-        //Array('TIMESTAMP_X'=>'DESC'),
-        Array("IBLOCK_ID" => "ASC"),
-        Array("IBLOCK_ID" => $iblockID_list, '>=DATE_CREATE' => $dateFrom),
-        //Array("IBLOCK_ID" => '15', '>=DATE_CREATE' => '01.03.2023'),
-        //Array("IBLOCK_ID" => '15', '>=DATE_CREATE' => $dateFrom),
-        false,
-        false,
-        //Array(),
-        Array('IBLOCK_ID', 'ID', 'NAME', 'DATE_CREATE_UNIX', 'IBLOCK_NAME'),
-    );
-    while($ar_fields = $elements->GetNext()) {
-        $arFormElements[] = $ar_fields;
-    }
-    //debugg($arFormElements);
+    //debugg($dateFrom);
+    //debugg($dateTo);
+}
 
-    $arBlockList = [];
-    for ($ii=0; $ii<count($iblockID_list); $ii++) {
-        //$el_count = 0;
-        foreach ($arFormElements as $item) {
-            if ($iblockID_list[$ii] == $item['IBLOCK_ID']) {
-                $i_block_list['ID'] = $item['IBLOCK_ID'];
-                $i_block_list['TIMESTAMP_X'] = $item['DATE_CREATE_UNIX'];
-                $i_block_list['NAME'] = $item['IBLOCK_NAME'];
-                //$i_block_list['ELEMENT_CNT'] = $el_count++;
-                $arBlockList[$ii][] = $i_block_list;
-            }
+$arFormElements = [];
+$iblockID_list = [];
+foreach ($iBlockList as $item) {
+    //debugg($item['ID']);
+    $iblockID_list[] = $item['ID'];
+}
+//debugg($iblockID_list);
+$elements = CIBlockElement::GetList (
+//Array('TIMESTAMP_X'=>'DESC'),
+    Array("IBLOCK_ID" => "ASC"),
+    Array("IBLOCK_ID" => $iblockID_list, '>=DATE_CREATE' => $dateFrom),
+    //Array("IBLOCK_ID" => '15', '>=DATE_CREATE' => '01.03.2023'),
+    //Array("IBLOCK_ID" => '15', '>=DATE_CREATE' => $dateFrom),
+    false,
+    false,
+    //Array(),
+    Array('IBLOCK_ID', 'ID', 'NAME', 'DATE_CREATE_UNIX', 'IBLOCK_NAME'),
+);
+while($ar_fields = $elements->GetNext()) {
+    $arFormElements[] = $ar_fields;
+}
+//debugg($arFormElements);
+
+$arBlockList = [];
+for ($ii=0; $ii<count($iblockID_list); $ii++) {
+    //$el_count = 0;
+    foreach ($arFormElements as $item) {
+        if ($iblockID_list[$ii] == $item['IBLOCK_ID']) {
+            $i_block_list['ID'] = $item['IBLOCK_ID'];
+            $i_block_list['TIMESTAMP_X'] = $item['DATE_CREATE_UNIX'];
+            $i_block_list['NAME'] = $item['IBLOCK_NAME'];
+            //$i_block_list['ELEMENT_CNT'] = $el_count++;
+            //$arBlockList[$ii][] = $i_block_list;
+            $arBlockList[$item['IBLOCK_ID']][] = $i_block_list;
         }
     }
-    //debugg($arBlockList);
-    unset($iBlockList);
-    $iBlockList = [];
-    $ii = 0;
-    $iBlockList_mdfd = [];
-    foreach ($arBlockList as $item) {
-        $iBlockList[$ii]['ID'] = $item[0]['ID'];
-        //$iBlockList_mdfd[$ii]['TIMESTAMP_X'] = $item[0]['TIMESTAMP_X'];
-        $iBlockList[$ii]['NAME'] = $item[0]['NAME'];
-        $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
-        $ii += 1;
-    }
-    //debugg($iBlockList);
 }
+//debugg($arBlockList);
+unset($iBlockList);
+$iBlockList = [];
+$ii = 0;
+$iBlockList_mdfd = [];
+foreach ($arBlockList as $item) {
+    $iBlockList[$ii]['ID'] = $item[0]['ID'];
+    //$iBlockList_mdfd[$ii]['TIMESTAMP_X'] = $item[0]['TIMESTAMP_X'];
+    $iBlockList[$ii]['NAME'] = $item[0]['NAME'];
+    $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
+    $ii += 1;
+}
+//debugg($iBlockList);
 ?>
 <style>
     .adm-block-wrapper .iblock-table--header {
@@ -128,13 +140,17 @@ if (!empty($_POST['dateFrom'])) {
         <input type="text" placeholder="Дата по"
                onclick="BX.calendar({node: this, field: this, bTime: false});"
                name="dateTo" class="period-form-input"
-               <? if (isset($_POST['dateTo'])) { ?>value="<?=$_POST['dateTo']?>"<? } ?>
+               <? if (isset($dateTo)) { ?>value="<?=$dateTo?>"<? } ?>
         >
         <button type="submit" class="adm-btn adm-btn-save" name="ADMIN_STEP">Задать период наблюдения</button>
         <button type="button" class="adm-btn adm-btn-save" onclick="$('#period-form .period-form-input').val('');">Сбросить</button>
     </form>
+    <? if (isset($dateFrom)) { ?><p>Начиная с <?=$dateFrom?></p><? } ?>
+
     <form action="report_step.php" method="post" style="margin-bottom: 15px;" id="report-form">
         <input type="hidden" name="CHECK_BLOCKS" value="Y">
+        <input type="hidden" name="dateFrom" <? if (isset($_POST['dateFrom'])) { ?>value="<?=$_POST['dateFrom']?>"<? } ?>>
+        <input type="hidden" name="dateTo" <? if (isset($_POST['dateTo'])) { ?>value="<?=$_POST['dateTo']?>"<? } ?>>
         <div class="iblock-list--wrapper">
             <table class="iblock-list--table">
                 <thead class="iblock-table--header">
