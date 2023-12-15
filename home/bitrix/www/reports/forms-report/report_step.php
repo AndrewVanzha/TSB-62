@@ -89,7 +89,8 @@ if (!$has_checkbox) {
     for ($ii=0; $ii<count($iblockID_list); $ii++) {
         foreach ($arFormElements as $item) {
             if ($iblockID_list[$ii] == $item['IBLOCK_ID']) {
-                $i_block_list['ID'] = $item['IBLOCK_ID'];
+                $i_block_list['IBLOCK_ID'] = $item['IBLOCK_ID'];
+                $i_block_list['ID'] = $item['ID'];
                 $i_block_list['DATE_CREATE'] = $item['DATE_CREATE'];
                 $i_block_list['NAME'] = $item['NAME'];
                 $i_block_list['IBLOCK_NAME'] = $item['IBLOCK_NAME'];
@@ -130,6 +131,7 @@ if (!$has_checkbox) {
         $fileBody .= '<h2>' . $arForm[0]['IBLOCK_NAME'] . ' (' . $key . ')</h2>';
         $fileBody .= '<table border="1">';
         $fileBody .= '<tr>';
+        $fileBody .= '<th>№</th>';
         $fileBody .= '<th>Актор</th>';
         $fileBody .= '<th>Дата</th>';
         foreach ($arForm[0]['PROPERTIES'] as $prop) {
@@ -138,6 +140,7 @@ if (!$has_checkbox) {
         $fileBody .= '</tr>';
         foreach ($arForm as $zayavka) {
             $fileBody .= '<tr>';
+            $fileBody .= '<td>' . $zayavka['ID'] . '</td>';
             $fileBody .= '<td>' . $zayavka['NAME'] . '</td>';
             $fileBody .= '<td>' . $zayavka['DATE_CREATE'] . '</td>';
             foreach ($zayavka['PROPERTIES'] as $prop) {
