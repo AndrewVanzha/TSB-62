@@ -5,13 +5,14 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 
 //use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
+use Debugg\Oop\My;
 
 CJSCore::Init(array("jquery"));
 //Asset::getInstance()->addCss("/reports/forms-report/style.css");
 \Bitrix\Main\Loader::includeModule('iblock');
 ?>
 <?php
-//debugg($_POST);
+//My::debug($_POST);
 $iBlockList = [];
 $arFilter = ['SITE_ID'=>'s1', 'ACTIVE'=>'Y', 'CNT_ACTIVE'=>'Y', 'TYPE'=>'feedback'];
 $res = CIBlock::GetList(
@@ -20,7 +21,7 @@ $res = CIBlock::GetList(
     true
 );
 while($ar_res = $res->Fetch())  {
-    //debugg($ar_res);
+    //My::debug($ar_res);
     $i_block_list['ID'] = $ar_res['ID'];
     //$i_block_list['TIMESTAMP_X'] = $ar_res['TIMESTAMP_X'];
     //$i_block_list['CODE'] = $ar_res['CODE'];
@@ -34,12 +35,9 @@ if (!empty($_POST['dateFrom'])) {
     if (empty($_POST['dateTo'])) {
         $objDateTime = new DateTime();
         $dateTo = $objDateTime->format('d.m.Y');
-        //debugg($dateTo);
     } else {
         $dateTo = $_POST['dateTo'];
     }
-    //debugg($dateFrom);
-    //debugg($dateTo);
     //$timeFrom = new \Bitrix\Main\Type\Date($dateFrom);
     //$timeTo = new \Bitrix\Main\Type\Date($dateTo);
 } else {
@@ -48,21 +46,20 @@ if (!empty($_POST['dateFrom'])) {
     if (empty($_POST['dateTo'])) {
         $objDateTime = new DateTime();
         $dateTo = $objDateTime->format('d.m.Y');
-        //debugg($dateTo);
     } else {
         $dateTo = $_POST['dateTo'];
     }
-    //debugg($dateFrom);
-    //debugg($dateTo);
 }
+//My::debug($dateFrom);
+//My::debug($dateTo);
 
 $arFormElements = [];
 $iblockID_list = [];
 foreach ($iBlockList as $item) {
-    //debugg($item['ID']);
+    //My::debug($item['ID']);
     $iblockID_list[] = $item['ID'];
 }
-//debugg($iblockID_list);
+//My::debug($iblockID_list);
 $elements = CIBlockElement::GetList (
     //Array('TIMESTAMP_X'=>'DESC'),
     Array("IBLOCK_ID" => "ASC"),
@@ -77,7 +74,8 @@ $elements = CIBlockElement::GetList (
 while ($ar_fields = $elements->GetNext()) {
     $arFormElements[] = $ar_fields;
 }
-//debugg($arFormElements);
+//My::debug($arFormElements);
+//My::logger('arFormElements', $arFormElements);
 
 $arBlockList = [];
 for ($ii=0; $ii<count($iblockID_list); $ii++) {
@@ -91,7 +89,7 @@ for ($ii=0; $ii<count($iblockID_list); $ii++) {
         }
     }
 }
-//debugg($arBlockList);
+//My::debug($arBlockList);
 unset($iBlockList);
 $iBlockList = [];
 $ii = 0;
@@ -103,7 +101,7 @@ foreach ($arBlockList as $item) {
     $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
     $ii += 1;
 }
-//debugg($iBlockList);
+//My::debug($iBlockList);
 ?>
 <style>
     .adm-block-wrapper .iblock-table--header {
@@ -216,7 +214,7 @@ foreach ($arBlockList as $item) {
     });
 </script>
 <?php
-//debugg($iBlockList);
+//My::debug($iBlockList);
 ?>
 <?
 require($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/modules/main/include/epilog_admin.php"); ?>

@@ -105,6 +105,13 @@ function loadSessionCheck()
     return "loadSessionCheck();";
 }
 */
+CModule::AddAutoloadClasses(
+    '', // не указываем имя модуля
+    array(
+        // ключ - имя класса, значение - путь относительно корня сайта к файлу с классом
+        '\debugg\oop\my' => "/local/php_interface/debugg.oop/my.php",
+    )
+);
 function debugg($data)
 {
 	global $USER;
