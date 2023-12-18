@@ -19,15 +19,6 @@ $reportFile = '/reports/forms-report/report.xls';
 //print_r($generated_xls_php);
 ?>
 <?
-function logger($type, $message)
-{
-    file_put_contents(
-        $_SERVER['DOCUMENT_ROOT'] . '/logs/' . $type . '.log',
-        $message,
-        FILE_APPEND
-    );
-}
-
 //My::debugg($_POST);
 $has_checkbox = false;
 $iblockID_list = [];
@@ -160,7 +151,7 @@ if (!$has_checkbox) {
         //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/reports/forms-report/tlup.xls', $fileHeader . $fileBody . $fileFooter);
         $vtfile = file_put_contents($_SERVER["DOCUMENT_ROOT"] . $reportFile, $fileHeader . $fileBody . $fileFooter);
     }  catch (Exception $e) {
-        logger('report-error', $e->getMessage()); //
+        My::logger('report-error', $e->getMessage()); //
     }
     print_r('Записано ' . $vtfile . '<br>' . '<br>');
     ?>
