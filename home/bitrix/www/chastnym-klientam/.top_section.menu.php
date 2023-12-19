@@ -254,6 +254,16 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Тарифы и документы",
+        "/chastnym-klientam/tarify-i-dokumenty/",
+        Array(),
+        Array(
+            'subheader' => false,
+            'subgroup' => 4,
+        ),
+        ""
+    ),
+    Array(
         "Платежи и переводы",
         "/chastnym-klientam/platezhi-i-perevody/",
         Array(),
