@@ -135,10 +135,10 @@ Asset::getInstance()->addCss("/chastnym-klientam/tarify-i-dokumenty/style.css");
 
         </div>
         <div class="rko-doc__all">
-            <a href="/arkhiv-tarifov-i-dokumentov/" class="rko-doc__all--link-button">
+            <a href="/chastnym-klientam/arkhiv-tarifov-i-dokumentov-individual/" class="rko-doc__all--link-button">
                 <span>Архив тарифов и документов</span>
             </a>
-            <a href="/arkhiv-tarifov-i-dokumentov/" target="_blank" class="rko-doc__all--link-details">
+            <a href="/chastnym-klientam/arkhiv-tarifov-i-dokumentov-individual/" target="_blank" class="rko-doc__all--link-details">
                 <!--span>Подробнее </span-->
                 <svg class="rko-doc__all--link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
                     <path d="M13.2371 0.989515C13.2371 0.492459 12.8342 0.0895151 12.3371 0.0895145L4.23715 0.0895146C3.74009 0.0895146 3.33714 0.492459 3.33714 0.989515C3.33714 1.48657 3.74009 1.88952 4.23714 1.88951L11.4371 1.88951L11.4371 9.08952C11.4371 9.58657 11.8401 9.98952 12.3371 9.98952C12.8342 9.98952 13.2371 9.58657 13.2371 9.08951L13.2371 0.989515ZM1.65983 12.9396L12.9735 1.62591L11.7007 0.353119L0.387041 11.6668L1.65983 12.9396Z" fill="#00345E"/>
