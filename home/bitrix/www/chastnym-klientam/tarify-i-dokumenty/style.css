@@ -1,9 +1,14 @@
 .v21 .v21-tarifdok {}
-.v21 .v21-tarifdok--header {
+.v21 .v21-tarifdok-page--header {
     margin: 0 0 28px 0;
-    max-width: 640px;
+    /*max-width: 640px;*/
+    font-family: Canela Deck LC;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #00345e;
 }
-.v21 .v21-tarifdok--subheader {
+.v21 .v21-tarifdok-page--subheader {
     margin: 0 0 20px 0;
     color: #00345e;
     font-family: RF Dewi;
@@ -12,20 +17,16 @@
     line-height: 42px;
     letter-spacing: 0;
 }
-.v21 .js-color-switch .v21-tarifdok--subheader {
-    color: #ffffff;
-}
-.v21 .v21-intro-card {
-    column-gap: 30px;
-}
 
 @media screen and (min-width: 768px) {
-    .v21 .v21-tarifdok--header {
+    .v21 .v21-tarifdok-page--header {
         margin-bottom: 45px;
+        font-size: 58px;
+        line-height: 46px;
     }
 }
 @media screen and (min-width: 1024px) {
-    .v21 .v21-tarifdok--subheader {
+    .v21 .v21-tarifdok-page--subheader {
         text-align: center;
         font-size: 40px;
         line-height: 52px;
@@ -114,9 +115,7 @@
 }
 .v21 .rko-doc__all--link-arrow {
     position: relative;
-    /*right: -4px;*/
     right: -7px;
-    /*top: 7px;*/
     top: 1px;
 }
 

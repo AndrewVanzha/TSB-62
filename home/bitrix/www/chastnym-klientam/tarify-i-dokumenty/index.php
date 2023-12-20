@@ -9,7 +9,7 @@ Asset::getInstance()->addCss("/chastnym-klientam/tarify-i-dokumenty/style.css");
 ?>
 <section class="v21-section v21-tarifdok">
     <div class="v21-container">
-        <h1 class="v21-h1-new v21-tarifdok-page--header">Тарифы и документы для физических лиц</h1>
+        <h1 class="v21-tarifdok-page--header">Тарифы и документы для физических лиц</h1>
         <div class="row">
             <div class="rko-doc__block rko-doc__rate col-md-4">
                 <header class="rko-doc__header">
