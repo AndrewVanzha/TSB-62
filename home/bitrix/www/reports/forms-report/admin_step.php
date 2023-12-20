@@ -5,14 +5,14 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 
 //use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
-use Debugg\Oop\My;
+use Debugg\Oop\Dvlp;
 
 CJSCore::Init(array("jquery"));
 //Asset::getInstance()->addCss("/reports/forms-report/style.css");
 \Bitrix\Main\Loader::includeModule('iblock');
 ?>
 <?php
-//My::debug($_POST);
+//Dvlp::debug($_POST);
 $iBlockList = [];
 $arFilter = ['SITE_ID'=>'s1', 'ACTIVE'=>'Y', 'CNT_ACTIVE'=>'Y', 'TYPE'=>'feedback'];
 $res = CIBlock::GetList(
@@ -21,7 +21,7 @@ $res = CIBlock::GetList(
     true
 );
 while($ar_res = $res->Fetch())  {
-    //My::debug($ar_res);
+    //Dvlp::debug($ar_res);
     $i_block_list['ID'] = $ar_res['ID'];
     //$i_block_list['TIMESTAMP_X'] = $ar_res['TIMESTAMP_X'];
     //$i_block_list['CODE'] = $ar_res['CODE'];
@@ -50,16 +50,16 @@ if (!empty($_POST['dateFrom'])) {
         $dateTo = $_POST['dateTo'];
     }
 }
-//My::debug($dateFrom);
-//My::debug($dateTo);
+//Dvlp::debug($dateFrom);
+//Dvlp::debug($dateTo);
 
 $arFormElements = [];
 $iblockID_list = [];
 foreach ($iBlockList as $item) {
-    //My::debug($item['ID']);
+    //Dvlp::debug($item['ID']);
     $iblockID_list[] = $item['ID'];
 }
-//My::debug($iblockID_list);
+//Dvlp::debug($iblockID_list);
 $elements = CIBlockElement::GetList (
     //Array('TIMESTAMP_X'=>'DESC'),
     Array("IBLOCK_ID" => "ASC"),
@@ -74,8 +74,8 @@ $elements = CIBlockElement::GetList (
 while ($ar_fields = $elements->GetNext()) {
     $arFormElements[] = $ar_fields;
 }
-//My::debug($arFormElements);
-//My::logger('arFormElements', $arFormElements);
+//Dvlp::debug($arFormElements);
+//Dvlp::logger('arFormElements', $arFormElements);
 
 $arBlockList = [];
 for ($ii=0; $ii<count($iblockID_list); $ii++) {
@@ -89,7 +89,7 @@ for ($ii=0; $ii<count($iblockID_list); $ii++) {
         }
     }
 }
-//My::debug($arBlockList);
+//Dvlp::debug($arBlockList);
 unset($iBlockList);
 $iBlockList = [];
 $ii = 0;
@@ -101,7 +101,7 @@ foreach ($arBlockList as $item) {
     $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
     $ii += 1;
 }
-//My::debug($iBlockList);
+//Dvlp::debug($iBlockList);
 ?>
 <style>
     .adm-block-wrapper .iblock-table--header {
@@ -214,7 +214,7 @@ foreach ($arBlockList as $item) {
     });
 </script>
 <?php
-//My::debug($iBlockList);
+//Dvlp::debug($iBlockList);
 ?>
 <?
 require($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/modules/main/include/epilog_admin.php"); ?>

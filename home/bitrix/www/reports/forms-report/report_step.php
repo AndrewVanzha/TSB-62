@@ -12,20 +12,19 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 use Bitrix\Main\Loader;
-use Debugg\Oop\My;
+use Debugg\Oop\Dvlp;
 
 Loader::includeModule('iblock');
 $reportFile = '/reports/forms-report/report.xls';
-//print_r($generated_xls_php);
 ?>
 <?
-//My::debugg($_POST);
+//Dvlp::debugg($_POST);
 $has_checkbox = false;
 $iblockID_list = [];
 foreach ($_POST as $key=>$item) {
     if (stripos($key, 'CHECKBOX_') !== false) { // список выбранных инфоблоков-форм
-        //My::debugg($key);
-        //My::debugg($item);
+        //Dvlp::debugg($key);
+        //Dvlp::debugg($item);
         $has_checkbox = true;
         if ($item == 'on') {
             $iblockID_list[] = str_replace('CHECKBOX_', '', $key);
@@ -38,8 +37,8 @@ if (!$has_checkbox) {
         <a href="admin_step.php" class="adm-btn adm-btn-save">Создать новый отчет</a>
     <?php
 } else {
-    //My::debugg($iblockID_list);
-    print_r('Отработаны формы:' . '<br>');
+    //Dvlp::debugg($iblockID_list);
+    print_r('Обработаны формы:' . '<br>');
     foreach ($iblockID_list as $value) {
         print_r($value . '<br>');
     }
@@ -70,13 +69,13 @@ if (!$has_checkbox) {
             $ar_props[$key]['VALUE'] = $property['VALUE'];
         }
         $ar_element['PROPERTIES'] = $ar_props;
-        //My::debugg($ar_element);
-        //My::debugg($ar_fields->GetProperties());
-        //My::debugg($ar_props);
+        //Dvlp::debugg($ar_element);
+        //Dvlp::debugg($ar_fields->GetProperties());
+        //Dvlp::debugg($ar_props);
         $arFormElements[] = $ar_element;
         unset($ar_props);
     }
-    //My::debugg($arFormElements);
+    //Dvlp::debugg($arFormElements);
 
     $arResultList = [];
     for ($ii=0; $ii<count($iblockID_list); $ii++) {
@@ -92,9 +91,9 @@ if (!$has_checkbox) {
             }
         }
     }
-    //My::debugg($arResultList);
+    //Dvlp::debugg($arResultList);
     //file_put_contents("/home/bitrix/www".'/logs/a_$arResultList.json', json_encode($arResultList));
-    My::logger('arResultList', $arResultList);
+    Dvlp::logger('arResultList', $arResultList);
 
     //header('Content-Type: application/vnd.ms-excel; charset=utf-8');
     //header("Content-Disposition: attachment;filename=".date("d-m-Y")."-export.xls");
@@ -151,7 +150,7 @@ if (!$has_checkbox) {
         //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/reports/forms-report/tlup.xls', $fileHeader . $fileBody . $fileFooter);
         $vtfile = file_put_contents($_SERVER["DOCUMENT_ROOT"] . $reportFile, $fileHeader . $fileBody . $fileFooter);
     }  catch (Exception $e) {
-        My::logger('report-error', $e->getMessage()); //
+        Dvlp::logger('report-error', $e->getMessage()); //
     }
     print_r('Записано ' . $vtfile . '<br>' . '<br>');
     ?>
