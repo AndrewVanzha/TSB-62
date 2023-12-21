@@ -37,7 +37,7 @@
                 ?>
                 <??><input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'><??>
                 <??><input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'><??>
-                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
                 <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
                 <div class="v21-tariff-agree--content">
@@ -523,7 +523,7 @@
                                 clearFields ();
                                 $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                                 document.location.href = "/thanks/";
-                            }  else {
+                            } else {
                                 console.log('not OK');
                                 if (!data.captcha){
                                     $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
