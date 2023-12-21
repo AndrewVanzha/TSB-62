@@ -1,4 +1,5 @@
 <?php
+use Debugg\Oop\Dvlp;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
@@ -80,14 +81,12 @@ class WebtuFeedback extends CBitrixComponent
         global $APPLICATION;
 
         $post = $this->sanitizePost();
-        //debugg('$_POST');
         //debugg($_POST);
-        //debugg($post);
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_post.json', json_encode($post));
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_post_arResult.json', json_encode($this->arResult));
+        Dvlp::logger('feedback_class_post', $post);
+        Dvlp::logger('feedback_class_arResult', $this->arResult);
 
         if ($post['FORM_ID'] !== $this->arResult['FORM_ID']) {
-            file_put_contents("/home/bitrix/www".'/logs/a_feedback_1.json', json_encode($this->arResult['FORM_ID']));
+            Dvlp::logger('feedback_class_arResult_FORM_ID', $this->arResult['FORM_ID']);
             return false;
         }
 
@@ -99,7 +98,7 @@ class WebtuFeedback extends CBitrixComponent
         if (!$APPLICATION->CaptchaCheckCode($post["CAPTCHA_WORD"], $post["CAPTCHA_ID"])) {
             $this->addError(GetMessage("WEBTU_FEEDBACK_WRONG_CAPTCHA"));
             $this->arResult['POST'] = $this->post;
-            file_put_contents("/home/bitrix/www".'/logs/a_feedback_error.json', json_encode($this->arResult['ERRORS']));
+            Dvlp::logger('feedback_class_arResult_ERRORS', $this->arResult['ERRORS']);
 
             return false;
         }
@@ -131,7 +130,7 @@ class WebtuFeedback extends CBitrixComponent
         //debugg($properties);
         //debugg('$propertiesPost=');
         //debugg($propertiesPost);
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_$properties.json', json_encode($properties));
+        Dvlp::logger('feedback_class_$properties', $properties);
         //file_put_contents("/home/bitrix/www".'/logs/a_feedback_$propertiesPost.json', json_encode($propertiesPost));
 
         $fields = array(
@@ -220,7 +219,7 @@ class WebtuFeedback extends CBitrixComponent
         CModule::IncludeModule('iblock');
 
         $this->arResult['FORM_ID'] = $this->arParams['AJAX_ID'];
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_ex_post.json', json_encode($_POST));
+        Dvlp::logger('feedback_class_executeComponent_$POST', $_POST);
 
         $this->arResult["COMMERCE"] = [
             "type" => false,
@@ -242,7 +241,7 @@ class WebtuFeedback extends CBitrixComponent
         $this->arResult['ERRORS']  = $this->getErrors();
         $this->arResult['SUCCESS'] = $this->getSuccess();
         $this->arResult['CAPTCHA'] = htmlspecialchars($APPLICATION->CaptchaGetCode());
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_error_class.json', json_encode($this->arResult['ERRORS']));
+        Dvlp::logger('feedback_class_executeComponent_arResult_ERRORS', $this->arResult['ERRORS']);
 
         $this->includeComponentTemplate();
     }
@@ -357,6 +356,6 @@ class WebtuFeedback extends CBitrixComponent
                 ];
             }
         }
-        file_put_contents("/home/bitrix/www".'/logs/a_feedback_$arResult.json', json_encode($arResult["UTM"]));
+        Dvlp::logger('feedback_class_arResult_UTM', $arResult["UTM"]);
     }
 }
