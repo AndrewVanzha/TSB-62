@@ -29,7 +29,7 @@
         <?*/?>
         <div class="form-block--right">
             <?/*?><form action="<?=$_SERVER['REQUEST_URI']?>" method="POST" class="v21-card-application--form" id="fMirCreditCardForm"><?*/?>
-            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST" class="v21-tariff-agree--form" id="fNewTariffsForm_">
+            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST" class="v21-tariff-agree--form" id="applicationForm">
                 <input type="hidden" name="FORM_ID" value="<?=$arResult['FORM_ID']?>">
                 <input type="hidden" name="SESSION_ID" value="<?=bitrix_sessid()?>">
                 <?
@@ -37,7 +37,7 @@
                 ?>
                 <??><input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'><??>
                 <??><input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'><??>
-                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
                 <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
                 <div class="v21-tariff-agree--content">
@@ -82,7 +82,7 @@
                                 <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_3_NAME")?></span><?*/?>
                                 <input type="text" name="NAME" placeholder="ФИО" class="input-group__field"
                                     <? if (isset($arResult['POST']['NAME'])) { ?> value="<?=$arResult['POST']['NAME']?>" <? } ?>
-                                required >
+                                >
                                 <span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_3_NAME")?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
                             </label>
@@ -117,7 +117,7 @@
                                 ><?*/?>
                                 <input type="tel" name="PHONE" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field"
                                     <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
-                                required >
+                                >
                                 <span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE") ?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
                                 <?/*?><span class="v21-input-group__note"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE_LINE") ?></span><?*/?>
@@ -148,7 +148,8 @@
                         <div class="grid__item-1">
                             <div class="v21-checkbox">
                                 <label class="v21-checkbox__content">
-                                    <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics">
+                                    <!--input type="checkbox" checked name="" class="v21-checkbox__input" id="politics"-->
+                                    <input type="checkbox" name="" class="v21-checkbox__input" id="politics">
                                     <div class="v21-checkbox__text"><?= $politics_output ?></div>
                                 </label>
                                 <span class="v21-checkbox__warn">Для отправки сообщения необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -171,11 +172,14 @@
                             </div>
 
                             <div class="grid__item-2">
-                                <div class="captcha_input input-group">
+                                <?/*?><div class="captcha_input v21-input-group"><?*/?>
+                                <div class="v21-input-group">
                                     <input type="text" name="CAPTCHA_WORD" placeholder="<?= GetMessage('WEBTU_FEEDBACK_CAPTCHA') ?>" class="input-group__field input-captcha" id="CAPTCHA_WORD">
-                                    <? if (in_array("Неверно введен код с картинки", $arResult['ERRORS'])) : ?>
+                                    <span class="v21-input-group__warn">Неверно введен код с картинки</span>
+                                    <?/* if (in_array("Неверно введен код с картинки", $arResult['ERRORS'])) : ?>
                                         <span class="v21-input-group__warn" style="display: block;">Неверно введен код с картинки</span>
-                                    <? endif; ?>
+                                    <? endif; */?>
+                                    <!--span class="v21-input-group__warn">Обязательное поле к заполнению</span-->
                                 </div>
                             </div>
                         </div>
@@ -192,9 +196,9 @@
                         </div>
                     </div>
 
-                    <? if (!empty($arResult['SUCCESS'])) {
+                    <?/* if (!empty($arResult['SUCCESS'])) {
                         LocalRedirect('/thanks/');
-                    } ?>
+                    } */?>
 
                 </div>
             </form>
@@ -203,6 +207,7 @@
 
 <!--/div-->
 
+    <?/*?>
     <div data-overlay="v21_overlay" class="v21-modal v21-fade js-v21-modal" id="v21_alert_fNewTariffsForm">
         <div class="v21-modal__window js-v21-modal-window">
             <a href="#v21_alert_fNewTariffsForm" class="v21-modal__close js-v21-modal-toggle">
@@ -212,6 +217,7 @@
             </a>
         </div>
     </div>
+    <?*/?>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -287,66 +293,253 @@
             return false;
         });
 
-    });
-</script>
+        function clearFields () {
+            $('textarea').val('').css('box-shadow', 'none');
+            $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
 
-<script>
-    function requiredContacts () {
-        if ($('input[name="NAME"]').val() !== '') {
-            //$('input[name="EMAIL"]').attr('required', true);
-            $('input[name="PHONE"]').attr('required', false);
-        } else {
-            $('input[name="PHONE"]').attr('required', true);
-            //$('input[name="EMAIL"]').attr('required', false);
+            $('textarea').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
+            $('input').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
         }
-    }
 
-    /*$('input[name="EMAIL"]').on('focusout', function () {
-        requiredContacts ();
-    });*/
+        //$('input[name="EMAIL"]').on('focusout', function () {
+        //    requiredContacts ();
+        //});
 
-    $('input[name="PHONE"]').on('focusout', function () {
-        requiredContacts ();
-    });
+        //$('input[name="PHONE"]').on('focusout', function () {
+        //    requiredContacts ();
+        //});
 
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-        //document.location.href = "/thanks/";
-    }
-
-    $('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });
-
-
-    $('.agreement input[required]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $(this).closest('.agreement').css('box-shadow', '');
-        } else {
-            $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
+        function requiredContacts () {
+            if ($('input[name="NAME"]').val() !== '') {
+                //$('input[name="EMAIL"]').attr('required', true);
+                $('input[name="PHONE"]').attr('required', false);
+            } else {
+                $('input[name="PHONE"]').attr('required', true);
+                //$('input[name="EMAIL"]').attr('required', false);
+            }
         }
-    });
 
-    $('.js-calculator-operation--disagree').click(function () {
-        $('.v21-tariff-agree--content').addClass('v21-tariff-agree--form__disagree');
-    });
-    $('.js-calculator-operation--agree').click(function () {
-        $('.v21-tariff-agree--content').removeClass('v21-tariff-agree--form__disagree');
-    });
+        $('.agreement input[required]').change(function () {
+            if ( $(this).is(':checked') ) {
+                $(this).closest('.agreement').css('box-shadow', '');
+            } else {
+                $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
+            }
+        });
 
+        $('.js-calculator-operation--disagree').click(function () {
+            $('.v21-tariff-agree--content').addClass('v21-tariff-agree--form__disagree');
+        });
+        $('.js-calculator-operation--agree').click(function () {
+            $('.v21-tariff-agree--content').removeClass('v21-tariff-agree--form__disagree');
+        });
+
+        if ($('.alert-success').length > 0) {
+            clearFields ();
+            //document.location.href = "/thanks/";
+        }
+
+        $('.feedback_form .button').click(function () {
+            $(".alert").remove();
+        });
+
+        function requiredFields() {
+            var arFields = [
+                'input[name="NAME"]',
+                'input[name="PHONE"]',
+                'input[name="CAPTCHA_WORD"]',
+                //'input[name="EMAIL"]',
+            ];
+
+            var countErr = 0;
+
+            arFields.forEach(function (value) {
+                if ($(value).val() == '') {
+                    $(value).parent().addClass("is-error");
+                    countErr++;
+                } else {
+                    $(value).parent().removeClass("is-error");
+                }
+            });
+
+            return (countErr > 0) ? false : true;
+        }
+
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
+
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
+            let entry = {
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };
+
+            ar_product.push(
+                {
+                    "id": 'AGREE',
+                    "name": data.AGREE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        $('#applicationForm').submit(function (e) {
+            e.preventDefault();
+            console.log('form');
+            let ar_product = [];
+            //console.log('submit='+$("#politics").prop("checked"));
+
+            if ($("#politics").prop("checked")) {
+                $('#politics').parent().parent().removeClass("is-error");
+                if (requiredFields()) {
+                    $.ajax({
+                        type: "POST",
+                        //url: '/local/templates/v21_template_home/components/webtu/feedback/accept_new_tariffs/ajax.customer.php',
+                        url: '/ajax_scripts/ajax.customer.php',
+                        data: {
+                            'fields': $(this).serialize(),
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            //$('#reloadCaptcha').click();
+                            //console.log(data);
+                            if (data.status) {
+                                let response = data.message[0];
+                                //console.log(response);
+                                if(response.type) {
+                                    console.log(response.data.APPLICATION_ID);
+                                    ar_product = makeArProduct(response.data);
+                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                    console.log(window.dataLayer);
+                                    //yandexMetrikaForm();
+                                }
+
+                                /*if (data.message && data.message.length > 0) {
+                                    $(".v21_alert_fNewTariffsForm_item").remove()
+                                    $.each(data.message, function (key, field) {
+                                        $('#v21_alert_fNewTariffsForm .v21-modal__window').append(
+                                            '<div class="v21-grid__item v21_alert_fNewTariffsForm_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
+                                        );
+
+                                        if (!field.type) {
+                                            $('.v21_alert_fNewTariffsForm_item').css("color", "red");
+                                        }
+                                    });
+                                }*/
+                                //$("#fNewTariffsForm")[0].reset();
+                                clearFields ();
+                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                document.location.href = "/thanks/";
+                            } else {
+                                console.log('not OK');
+                                if (!data.captcha){
+                                    $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                                } else {
+                                    $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                    //tsb21.modal.toggleModal('v21_alert_fNewTariffsForm');
+                                }
+                            }
+                        }
+                    });
+                }
+            } else {
+                $('#politics').parent().parent().addClass("is-error");
+            }
+        });
+    });
 </script>
 
 <? if (isset($_REQUEST['AJAX_CALL'])) { ?>

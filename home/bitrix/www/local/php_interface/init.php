@@ -129,3 +129,14 @@ function OnBeforePrologHandler2()
     //file_put_contents( '/local/a_OnBeforePrologHandler.json', json_encode(date('F j, Y, g:i a')));
     //echo '123';
 }
+
+// Возможность вести лог запуска агентов.
+define("BX_AGENTS_LOG_FUNCTION","sysAgentLog");
+
+function sysAgentLog($arAgent =false,$state = false, $eval_result = false, $e = false){
+    AddMessage2Log(array('STATE' => $state,'AGENT'=> $arAgent,'EVAL' => $eval_result,'E'=>$e));
+}
+
+// Константа BX_AGENTS_LOG_FUNCTION должна содержать название функции, которая будет вызвана до начала исполнения агента и после него.
+// Все вызовы агентов пишутся в лог, вместе с параметрами.
+// Не забудьте удалить определение после работы иначе лог сожрет все место на диске!

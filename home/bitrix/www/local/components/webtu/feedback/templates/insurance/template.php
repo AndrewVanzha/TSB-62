@@ -161,7 +161,7 @@ while ($ar_section=$rsSection->fetch()) {
                         <?//debugg($arResult);?>
                         <div class="v21-input-group">
                             <span class="v21-input-group__label"><?= GetMessage("WEBTU_FEEDBACK_4_CITY") ?></span>
-                            <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                            <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
                             <?/*?><select name="CITY" class="v21-input-group__field v21-select js-v21-select"><?*/?>
                             <select name="CITY" class="v21-input-group__field v21-field jjs-v21-select">
                                 <? while ($city = $cities->Fetch()) { ?>

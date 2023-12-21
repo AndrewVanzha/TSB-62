@@ -1,9 +1,12 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
+use Debugg\Oop\Dvlp;
+
 global $APPLICATION;
 
 CModule::IncludeModule('iblock');
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_ajax_post.json', json_encode($_POST));
+//file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_ajax_post.json', json_encode($_POST));
+Dvlp::logger('common_ajax_post', $_POST);
 
 function sanitizePost(array $data): array
 {
@@ -62,7 +65,8 @@ if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID
 
     finish($arResult);
 }
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post.json', json_encode($fields));
+//file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post.json', json_encode($fields));
+Dvlp::logger('common_ajax_post_fields', $fields);
 
 $fields = sanitizePost($fields);
 //file_put_contents("/home/bitrix/www".'/logs/a_fields.json', json_encode($fields));
@@ -128,7 +132,8 @@ if ($id = $element->Add($elementFields)) {
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
 
     //$postFields = getSex($postFields);
-    file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    //file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    Dvlp::logger('common_ajax_postFields', $postFields);
     //file_put_contents("/home/bitrix/www".'/logs/a_$arParams.json', json_encode($arParams));
 
     $arResult["message"][] = [
