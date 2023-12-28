@@ -10,8 +10,10 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true); ?>
-list
+$this->setFrameMode(true);
+use Debugg\Oop\Dvlp;
+?>
+<? Dvlp::debug('list'); ?>
 <?
 $typeFilter = array("LOGIC"=>"OR");
 
@@ -60,7 +62,7 @@ for ($ii=0; $ii<count($arSections); $ii++) {
     }
 }
 //debugg('$arSections');
-//debugg($arSections);
+//Dvlp::debug($arSections);
 ?>
 
 <div class="page-content page-container">
